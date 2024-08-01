@@ -1,7 +1,5 @@
-from flask import Flask, request, render_template # type: ignore
+from flask import Flask, request, render_template, jsonify # type: ignore
 import re
-# testing
-
 
 app = Flask(__name__)
 
@@ -20,14 +18,14 @@ class Processor:
         match = re.match(r'(i[357])[- ]?(\d{4})', self.model)
         if match:
             core = match.group(1)
-            generation = int(match.group(2)[0])
+            generation = int(match.group(2)[0]) #Extract the first digit as generation
             return core, generation
-        return None, 0
+        return None, 0 #Handle the case where the core and generation are not found
 
     def processor_price(self):
         if self.kind.lower() == 'amd':
             return self.user_price
-
+        #Calculates the price of the intel cpu based on the core and then generation of that core
         if self.kind.lower() == 'intel':
             if self.core.lower() == 'i3':
                 if self.generation in [4, 5]:
@@ -73,7 +71,7 @@ class Processor:
 class Ram:
     def __init__(self, ram_size):
         self.ram_size = ram_size
-
+    #Calculates the price of the ram based on if the ram is more than 4 GB
     def ram_price(self):
         if self.ram_size == 4:
             return -10
@@ -91,8 +89,8 @@ class Storage:
             size = int(match.group(1))
             unit = match.group(2).upper()
             if unit == 'TB':
-                return size * 1000
-            return size
+                return size * 1000 # Convert TB to GB
+            return size # Already in GB
         else:
             raise ValueError("Invalid storage size format. Use '500 GB' or '2 TB'.")
 
@@ -117,107 +115,87 @@ class Graphics:
         else:
             return self.user_price
 
-@app.route("/", methods=["GET", "POST"])
+@app.route('/')
 def index():
-    if request.method == "POST":
-        kind = request.form.get("kind")
-        model = request.form.get("model")
-        ram_size = int(request.form.get("ram_size"))
-        os = request.form.get("os")
-        is_laptop = request.form.get("is_laptop") == "yes"
+    return render_template('index.html')
 
-        processor = Processor(kind, model)
-        processor_price = processor.processor_price()
+@app.route('/calculate', methods=['POST'])
+def calculate():
+    data = request.json
 
-        ram = Ram(ram_size)
-        ram_price = ram.ram_price()
+    kind = data['kind']
+    model = data['model']
+    ram_size = int(data['ram_size'])
+    os = data['os']
+    storage_details = data['storage']
+    is_laptop = data['is_laptop']
 
-        def operating_system():
-            if os.lower() in ['windows', 'windows 10', 'windows 11']:
-                return 15
-            else:
-                return 0
+    processor = Processor(kind, model)
+    processor_price = processor.processor_price()
+
+    ram = Ram(ram_size)
+    ram_price = ram.ram_price()
+
+    total_storage_price = 0
+    for storage in storage_details:
+        storage_obj = Storage(storage['size'], storage['kind'])
+        total_storage_price += storage_obj.storage_price()
+
+    def operating_system():
+        if os.lower() in ['windows', 'windows 10', 'windows 11']:
+            return 15
+        else:
+            return 0
         
-        os_price = operating_system()
+    os_price = operating_system()
 
-        total_price = processor_price + ram_price + os_price
+    total_price = processor_price + ram_price + os_price + total_storage_price
 
-        if is_laptop:
-            total_price += 30
-            battery_capacity = int(request.form.get("battery_capacity"))
-            if battery_capacity < 50:
-                total_price -= 50
-            elif battery_capacity < 90:
-                total_price -= 5
+    if is_laptop:
+        total_price += 30
+        battery_capacity = int(data['battery_capacity'])
+        if battery_capacity < 50:
+            total_price -= 50
+        elif battery_capacity < 90:
+            total_price -= 5
 
-            has_large_screen = request.form.get("has_large_screen") == "yes"
-            has_touch_screen = request.form.get("has_touch_screen") == "yes"
+        has_large_screen = data['has_large_screen']
+        has_touch_screen = data['has_touch_screen']
 
-            if has_large_screen:
-                total_price += 15
-            if has_touch_screen:
-                total_price += 15
-        else:
-            has_wifi = request.form.get("has_wifi") == "yes"
-            if has_wifi:
-                wifi_kind = request.form.get("wifi_kind")
-                if wifi_kind in ['ac', 'n/ac']:
-                    total_price += 5
-                elif wifi_kind == 'ax':
-                    total_price += 10
+        if has_large_screen:
+            total_price += 15
+        if has_touch_screen:
+            total_price += 15
+    else:
+        desktop_wifi = data.get('desktop_wifi', False)
+        if desktop_wifi:
+            wifi_kind = data['wifi_kind']
+            if wifi_kind.lower() in ['ac', 'n/ac']:
+                total_price += 5
+            if wifi_kind.lower() == 'ax':
+                total_price += 10
 
-        has_gpu = request.form.get("has_gpu") == "yes"
-        if has_gpu:
-            gpu_type = request.form.get("gpu_type")
-            if gpu_type in ['discrete', 'amd radeon']:
-                passmark_score = int(request.form.get("passmark_score"))
-                graphics = Graphics(has_gpu, gpu_type, passmark_score=passmark_score)
-            else:
-                user_price = int(request.form.get("gpu_price"))
-                graphics = Graphics(has_gpu, gpu_type, user_price=user_price)
-        else:
-            graphics = Graphics(has_gpu)
+    has_gpu = data['has_gpu']
+    gpu_type = data.get('gpu_type')
+    passmark_score = data.get('passmark_score')
+    graphics = Graphics(has_gpu, gpu_type, passmark_score)
+    gpu_price = graphics.gpu_price()
 
-        gpu_price = graphics.gpu_price()
+    total_price += gpu_price
 
-        num_drives = int(request.form.get("num_drives"))
-        if num_drives > 4:
-            return "A maximum of 4 drives (2 SSDs and 2 HDDs) are allowed."
+    if ram_size == 4:
+        total_price -= 10
 
-        total_storage_price = 0
-        ssd_count = 0
-        hdd_count = 0
+    total_price = round(total_price)
 
-        for i in range(1, num_drives + 1):
-            storage_size = request.form.get(f"storage_size_{i}")
-            storage_kind = request.form.get(f"storage_kind_{i}")
-
-            if storage_kind.lower() == 'hdd':
-                if hdd_count >= 2:
-                    continue
-                hdd_count += 1
-            else:
-                if ssd_count >= 2:
-                    continue
-                ssd_count += 1
-
-            storage = Storage(storage_size, storage_kind)
-            total_storage_price += storage.storage_price()
-
-        total_price += total_storage_price + gpu_price
-        total_price = round(total_price)
-
-        return render_template(
-            "result.html",
-            processor_price=processor_price,
-            ram_price=ram_price,
-            total_storage_price=total_storage_price,
-            gpu_price=gpu_price,
-            os_price=os_price,
-            total_price=total_price,
-        )
-
-    return render_template("index.html")
+    return jsonify({
+        'processor_price': processor_price,
+        'ram_price': ram_price,
+        'storage_price': total_storage_price,
+        'os_price': os_price,
+        'gpu_price': gpu_price,
+        'total_price': total_price
+    })
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)

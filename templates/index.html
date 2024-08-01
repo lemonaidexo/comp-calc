@@ -1,132 +1,194 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Price Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Computer Price Calculator</h1>
-    <form method="post">
-        <label for="kind">Processor Kind:</label>
-        <input type="text" name="kind" id="kind" required><br>
-
-        <label for="model">Processor Model:</label>
-        <input type="text" name="model" id="model" required><br>
-
-        <label for="ram_size">RAM Size (in GB):</label>
-        <input type="number" name="ram_size" id="ram_size" required><br>
-
-        <label for="os">Operating System:</label>
-        <input type="text" name="os" id="os" required><br>
-
-        <label for="is_laptop">Is this computer a laptop?</label>
-        <input type="radio" name="is_laptop" value="yes" id="is_laptop_yes"> Yes
-        <input type="radio" name="is_laptop" value="no" id="is_laptop_no"> No<br>
-
-        <div id="laptop_details" style="display: none;">
-            <label for="battery_capacity">Battery Capacity (in %):</label>
-            <input type="number" name="battery_capacity" id="battery_capacity"><br>
-
-            <label for="has_large_screen">Does the laptop have a large screen larger than 15.6"?</label>
-            <input type="radio" name="has_large_screen" value="yes" id="large_screen_yes"> Yes
-            <input type="radio" name="has_large_screen" value="no" id="large_screen_no"> No<br>
-
-            <label for="has_touch_screen">Does the laptop have a touch screen?</label>
-            <input type="radio" name="has_touch_screen" value="yes" id="touch_screen_yes"> Yes
-            <input type="radio" name="has_touch_screen" value="no" id="touch_screen_no"> No<br>
-        </div>
-
-        <div id="desktop_details" style="display: none;">
-            <label for="has_wifi">Does this desktop have wifi?</label>
-            <input type="radio" name="has_wifi" value="yes" id="has_wifi_yes"> Yes
-            <input type="radio" name="has_wifi" value="no" id="has_wifi_no"> No<br>
-
-            <div id="wifi_details" style="display: none;">
-                <label for="wifi_kind">Wifi Kind (n/ac or ax):</label>
-                <input type="text" name="wifi_kind" id="wifi_kind"><br>
+    <div class="container mt-5">
+        <h1>Computer Price Calculator</h1>
+        <form id="priceCalcForm">
+            <div class="form-group">
+                <label for="kind">Processor Kind</label>
+                <input type="text" class="form-control" id="kind" name="kind" required>
             </div>
-        </div>
-
-        <label for="has_gpu">Does this computer have a graphics card?</label>
-        <input type="radio" name="has_gpu" value="yes" id="has_gpu_yes"> Yes
-        <input type="radio" name="has_gpu" value="no" id="has_gpu_no"> No<br>
-
-        <div id="gpu_details" style="display: none;">
-            <label for="gpu_type">GPU Type (discrete or AMD Radeon):</label>
-            <input type="text" name="gpu_type" id="gpu_type"><br>
-
-            <div id="passmark_details" style="display: none;">
-                <label for="passmark_score">Passmark Score:</label>
-                <input type="number" name="passmark_score" id="passmark_score"><br>
+            <div class="form-group">
+                <label for="model">Processor Model</label>
+                <input type="text" class="form-control" id="model" name="model" required>
             </div>
-
-            <div id="user_price_details" style="display: none;">
-                <label for="gpu_price">GPU Price:</label>
-                <input type="number" name="gpu_price" id="gpu_price"><br>
+            <div class="form-group">
+                <label for="ram_size">RAM Size (GB)</label>
+                <input type="number" class="form-control" id="ram_size" name="ram_size" required>
             </div>
-        </div>
-
-        <label for="num_drives">Number of Drives:</label>
-        <input type="number" name="num_drives" id="num_drives" required><br>
-
-        <div id="drives">
-            <!-- Drive inputs will be generated here by JavaScript -->
-        </div>
-
-        <button type="submit">Calculate Price</button>
-    </form>
+            <div class="form-group">
+                <label for="os">Operating System</label>
+                <input type="text" class="form-control" id="os" name="os" required>
+            </div>
+            <div id="storage-container">
+                <h4>Storage Devices</h4>
+                <button type="button" class="btn btn-primary mb-2" onclick="addStorage()">Add Storage Device</button>
+            </div>
+            <div class="form-group">
+                <label for="is_laptop">Is this computer a laptop?</label>
+                <select class="form-control" id="is_laptop" name="is_laptop" required onchange="toggleLaptopOptions()">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+            <div id="laptop-options" style="display: none;">
+                <div class="form-group">
+                    <label for="battery_capacity">Battery Capacity (%)</label>
+                    <input type="number" class="form-control" id="battery_capacity" name="battery_capacity">
+                </div>
+                <div class="form-group">
+                    <label for="has_large_screen">Has large screen (>15.6")?</label>
+                    <select class="form-control" id="has_large_screen" name="has_large_screen">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="has_touch_screen">Has touch screen?</label>
+                    <select class="form-control" id="has_touch_screen" name="has_touch_screen">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+            </div>
+            <div id="desktop-options">
+                <div class="form-group">
+                    <label for="desktop_wifi">Does this desktop have wifi?</label>
+                    <select class="form-control" id="desktop_wifi" name="desktop_wifi" onchange="toggleWifiOptions()">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group" id="wifi-kind-container" style="display: none;">
+                    <label for="wifi_kind">Wifi kind</label>
+                    <input type="text" class="form-control" id="wifi_kind" name="wifi_kind">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="has_gpu">Has GPU?</label>
+                <select class="form-control" id="has_gpu" name="has_gpu" required onchange="toggleGpuOptions()">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+            <div id="gpu-options" style="display: none;">
+                <div class="form-group">
+                    <label for="gpu_type">GPU Type</label>
+                    <select class="form-control" id="gpu_type" name="gpu_type">
+                        <option value="discrete">Discrete GPU</option>
+                        <option value="amd">AMD Radeon GPU</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="passmark_score">Passmark Score</label>
+                    <input type="number" class="form-control" id="passmark_score" name="passmark_score">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+        <div id="result" class="mt-4"></div>
+    </div>
 
     <script>
-        document.getElementById('is_laptop_yes').addEventListener('change', function() {
-            document.getElementById('laptop_details').style.display = 'block';
-            document.getElementById('desktop_details').style.display = 'none';
-        });
+        document.getElementById('priceCalcForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const storage = [];
 
-        document.getElementById('is_laptop_no').addEventListener('change', function() {
-            document.getElementById('laptop_details').style.display = 'none';
-            document.getElementById('desktop_details').style.display = 'block';
-        });
-
-        document.getElementById('has_wifi_yes').addEventListener('change', function() {
-            document.getElementById('wifi_details').style.display = 'block';
-        });
-
-        document.getElementById('has_wifi_no').addEventListener('change', function() {
-            document.getElementById('wifi_details').style.display = 'none';
-        });
-
-        document.getElementById('has_gpu_yes').addEventListener('change', function() {
-            document.getElementById('gpu_details').style.display = 'block';
-        });
-
-        document.getElementById('has_gpu_no').addEventListener('change', function() {
-            document.getElementById('gpu_details').style.display = 'none';
-        });
-
-        document.getElementById('gpu_type').addEventListener('input', function() {
-            if (this.value.toLowerCase() === 'discrete' || this.value.toLowerCase() === 'amd radeon') {
-                document.getElementById('passmark_details').style.display = 'block';
-                document.getElementById('user_price_details').style.display = 'none';
-            } else {
-                document.getElementById('passmark_details').style.display = 'none';
-                document.getElementById('user_price_details').style.display = 'block';
+            for (let i = 0; i < formData.getAll('storage_size').length; i++) {
+                storage.push({
+                    size: formData.getAll('storage_size')[i],
+                    kind: formData.getAll('storage_kind')[i]
+                });
             }
+
+            const data = {
+                kind: formData.get('kind'),
+                model: formData.get('model'),
+                ram_size: formData.get('ram_size'),
+                os: formData.get('os'),
+                storage: storage,
+                is_laptop: formData.get('is_laptop') === 'yes',
+                battery_capacity: formData.get('battery_capacity') || 0,
+                has_large_screen: formData.get('has_large_screen') === 'yes',
+                has_touch_screen: formData.get('has_touch_screen') === 'yes',
+                desktop_wifi: formData.get('desktop_wifi') === 'yes',
+                wifi_kind: formData.get('wifi_kind') || '',
+                has_gpu: formData.get('has_gpu') === 'yes',
+                gpu_type: formData.get('gpu_type') || '',
+                passmark_score: formData.get('passmark_score') || 0
+            };
+
+            const response = await fetch('/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            document.getElementById('result').innerHTML = `
+                <h4>Results:</h4>
+                <p>Processor Price: $${result.processor_price}</p>
+                <p>RAM Price: $${result.ram_price}</p>
+                <p>Storage Price: $${result.storage_price}</p>
+                <p>OS Price: $${result.os_price}</p>
+                <p>GPU Price: $${result.gpu_price}</p>
+                <h3>Total Price: $${result.total_price}</h3>
+            `;
         });
 
-        document.getElementById('num_drives').addEventListener('input', function() {
-            const numDrives = parseInt(this.value);
-            const drivesDiv = document.getElementById('drives');
-            drivesDiv.innerHTML = '';
-            for (let i = 1; i <= numDrives; i++) {
-                const driveDiv = document.createElement('div');
-                driveDiv.innerHTML = `
-                    <label for="storage_size_${i}">Storage Size ${i}:</label>
-                    <input type="text" name="storage_size_${i}" required><br>
-                    <label for="storage_kind_${i}">Storage Kind ${i} (HDD/SSD):</label>
-                    <input type="text" name="storage_kind_${i}" required><br>
-                `;
-                drivesDiv.appendChild(driveDiv);
-            }
-        });
+        function addStorage() {
+            const container = document.getElementById('storage-container');
+            if (container.querySelectorAll('.storage-item').length >= 4) return;
+
+            const storageItem = document.createElement('div');
+            storageItem.className = 'form-group storage-item';
+            storageItem.innerHTML = `
+                <label>Storage Device</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="storage_size" placeholder="e.g., 500 GB or 2 TB" required>
+                    <select class="form-control" name="storage_kind" required>
+                        <option value="HDD">HDD</option>
+                        <option value="SATA">SATA</option>
+                        <option value="NvME">NvME</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-danger" type="button" onclick="removeStorage(this)">Remove</button>
+                    </div>
+                </div>
+            `;
+            container.appendChild(storageItem);
+        }
+
+        function removeStorage(button) {
+            button.closest('.storage-item').remove();
+        }
+
+        function toggleLaptopOptions() {
+            const isLaptop = document.getElementById('is_laptop').value === 'yes';
+            document.getElementById('laptop-options').style.display = isLaptop ? '' : 'none';
+            document.getElementById('desktop-options').style.display = isLaptop ? 'none' : '';
+        }
+
+        function toggleWifiOptions() {
+            const hasWifi = document.getElementById('desktop_wifi').value === 'yes';
+            document.getElementById('wifi-kind-container').style.display = hasWifi ? '' : 'none';
+        }
+
+        function toggleGpuOptions() {
+            const hasGpu = document.getElementById('has_gpu').value === 'yes';
+            document.getElementById('gpu-options').style.display = hasGpu ? '' : 'none';
+        }
     </script>
 </body>
 </html>
