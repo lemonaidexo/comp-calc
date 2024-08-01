@@ -98,9 +98,9 @@ class Storage:
 
     def storage_price(self):
         if self.storage_kind.lower() == 'hdd':
-            return (self.storage_size / 1000) * 5
+            return round((self.storage_size / 1000) * 5)
         else:
-            return (self.storage_size / 128) * 10
+            return round((self.storage_size / 128) * 10)
 
 class Graphics:
     def __init__(self, has_gpu, gpu_type=None, passmark_score=None, user_price=None):
@@ -112,7 +112,7 @@ class Graphics:
     def gpu_price(self):
         if not self.has_gpu:
             return 0
-        if self.gpu_type.lower() == 'discrete' or self.gpu_type.lower() == 'amd radeon':
+        if self.gpu_type.lower() == 'discrete' or self.gpu_type.lower() == 'amd radeon' or self.gpu_type.lower() == 'amd':
             return self.passmark_score / 125
         else:
             return self.user_price
