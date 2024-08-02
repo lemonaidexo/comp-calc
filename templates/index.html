@@ -12,11 +12,18 @@
         <form id="priceCalcForm">
             <div class="form-group">
                 <label for="kind">Processor Kind</label>
-                <input type="text" class="form-control" id="kind" name="kind" required>
+                <select class="form-control" id="kind" name="kind" required onchange="toggleProcessorOptions()">
+                    <option value="intel">Intel</option>
+                    <option value="amd">AMD</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="model">Processor Model</label>
                 <input type="text" class="form-control" id="model" name="model" required>
+            </div>
+            <div class="form-group" id="amd-price-container" style="display: none;">
+                <label for="amd_price">AMD Processor Price</label>
+                <input type="number" class="form-control" id="amd_price" name="amd_price" step="0.01">
             </div>
             <div class="form-group">
                 <label for="ram_size">RAM Size (GB)</label>
@@ -98,54 +105,56 @@
 
     <script>
         document.getElementById('priceCalcForm').addEventListener('submit', async function(event) {
-            event.preventDefault();
-            const form = event.target;
-            const formData = new FormData(form);
-            const storage = [];
+    event.preventDefault();
+    const form = event.target;
+    const formData = new FormData(form);
+    const storage = [];
 
-            for (let i = 0; i < formData.getAll('storage_size').length; i++) {
-                storage.push({
-                    size: formData.getAll('storage_size')[i],
-                    kind: formData.getAll('storage_kind')[i]
-                });
-            }
-
-            const data = {
-                kind: formData.get('kind'),
-                model: formData.get('model'),
-                ram_size: formData.get('ram_size'),
-                os: formData.get('os'),
-                storage: storage,
-                is_laptop: formData.get('is_laptop') === 'yes',
-                battery_capacity: formData.get('battery_capacity') || 0,
-                has_large_screen: formData.get('has_large_screen') === 'yes',
-                has_touch_screen: formData.get('has_touch_screen') === 'yes',
-                desktop_wifi: formData.get('desktop_wifi') === 'yes',
-                wifi_kind: formData.get('wifi_kind') || '',
-                has_gpu: formData.get('has_gpu') === 'yes',
-                gpu_type: formData.get('gpu_type') || '',
-                passmark_score: formData.get('passmark_score') || 0
-            };
-
-            const response = await fetch('/calculate', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            });
-
-            const result = await response.json();
-            document.getElementById('result').innerHTML = `
-                <h4>Results:</h4>
-                <p>Processor Price: $${result.processor_price}</p>
-                <p>RAM Price: $${result.ram_price}</p>
-                <p>Storage Price: $${result.storage_price}</p>
-                <p>OS Price: $${result.os_price}</p>
-                <p>GPU Price: $${result.gpu_price}</p>
-                <h3>Total Price: $${result.total_price}</h3>
-            `;
+    for (let i = 0; i < formData.getAll('storage_size').length; i++) {
+        storage.push({
+            size: formData.getAll('storage_size')[i],
+            kind: formData.getAll('storage_kind')[i]
         });
+    }
+
+    const data = {
+        kind: formData.get('kind'),
+        model: formData.get('model'),
+        amd_price: parseFloat(formData.get('amd_price') || 0),  // Ensure to parse as float
+        ram_size: parseFloat(formData.get('ram_size')),
+        os: formData.get('os'),
+        storage: storage,
+        is_laptop: formData.get('is_laptop') === 'yes',
+        battery_capacity: parseFloat(formData.get('battery_capacity') || 0),
+        has_large_screen: formData.get('has_large_screen') === 'yes',
+        has_touch_screen: formData.get('has_touch_screen') === 'yes',
+        desktop_wifi: formData.get('desktop_wifi') === 'yes',
+        wifi_kind: formData.get('wifi_kind') || '',
+        has_gpu: formData.get('has_gpu') === 'yes',
+        gpu_type: formData.get('gpu_type') || '',
+        passmark_score: parseFloat(formData.get('passmark_score') || 0)  // Ensure to parse as float
+    };
+
+    const response = await fetch('/calculate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    });
+
+    const result = await response.json();
+    document.getElementById('result').innerHTML = `
+        <h4>Results:</h4>
+        <p>Processor Price: $${result.processor_price}</p>
+        <p>RAM Price: $${result.ram_price}</p>
+        <p>Storage Price: $${result.storage_price}</p>
+        <p>OS Price: $${result.os_price}</p>
+        <p>GPU Price: $${result.gpu_price}</p>
+        <h3>Total Price: $${result.total_price}</h3>
+    `;
+});
+
 
         function addStorage() {
             const container = document.getElementById('storage-container');
@@ -172,6 +181,17 @@
 
         function removeStorage(button) {
             button.closest('.storage-item').remove();
+        }
+
+        function toggleProcessorOptions() {
+            const kind = document.getElementById('kind').value;
+            const amdPriceContainer = document.getElementById('amd-price-container');
+            
+            if (kind.toLowerCase() === 'amd') {
+                amdPriceContainer.style.display = '';
+            } else {
+                amdPriceContainer.style.display = 'none';
+            }
         }
 
         function toggleLaptopOptions() {

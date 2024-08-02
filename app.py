@@ -4,28 +4,25 @@ import re
 app = Flask(__name__)
 
 class Processor:
-    def __init__(self, kind, model):
+    def __init__(self, kind, model, user_price=None):
         self.kind = kind
         self.model = model
         self.core, self.generation = self.extract_core_and_gen()
-
-        if kind.lower() == 'amd':
-            self.user_price = int(input("Enter the price of the AMD processor here: "))
-        else:
-            self.user_price = None
+        self.user_price = float(user_price) if user_price else 0  # Default to 0 if not provided
 
     def extract_core_and_gen(self):
         match = re.match(r'(i[357])[- ]?(\d{4})', self.model)
         if match:
             core = match.group(1)
-            generation = int(match.group(2)[0]) #Extract the first digit as generation
+            generation = int(match.group(2)[0])  # Extract the first digit as generation
             return core, generation
-        return None, 0 #Handle the case where the core and generation are not found
+        return None, 0  # Handle the case where the core and generation are not found
 
     def processor_price(self):
         if self.kind.lower() == 'amd':
-            return self.user_price
-        #Calculates the price of the intel cpu based on the core and then generation of that core
+            print(f"AMD Processor selected with user price: {self.user_price}")
+            return self.user_price  # Return the user price directly
+        # Existing Intel price calculation code
         if self.kind.lower() == 'intel':
             if self.core.lower() == 'i3':
                 if self.generation in [4, 5]:
@@ -37,7 +34,7 @@ class Processor:
                 elif self.generation in [10, 11]:
                     return 130
                 elif self.generation in [12, 13]:
-                    return int(input("Enter the processor price: "))
+                    return 0  # Default to 0 for unknown price
             elif self.core.lower() == 'i5':
                 if self.generation == 3:
                     return 35
@@ -50,7 +47,7 @@ class Processor:
                 elif self.generation in [10, 11]:
                     return 160
                 elif self.generation in [12, 13]:
-                    return int(input("Enter the processor price: "))
+                    return 0  # Default to 0 for unknown price
             elif self.core.lower() == 'i7':
                 if self.generation == 1:
                     return 25
@@ -65,13 +62,14 @@ class Processor:
                 elif self.generation in [10, 11]:
                     return 200
                 elif self.generation in [12, 13]:
-                    return int(input("Enter the processor price: "))
+                    return 0  # Default to 0 for unknown price
         return 0
+
 
 class Ram:
     def __init__(self, ram_size):
         self.ram_size = ram_size
-    #Calculates the price of the ram based on if the ram is more than 4 GB
+    # Calculates the price of the RAM based on if the RAM is more than 4 GB
     def ram_price(self):
         if self.ram_size == 4:
             return -10
@@ -89,8 +87,8 @@ class Storage:
             size = int(match.group(1))
             unit = match.group(2).upper()
             if unit == 'TB':
-                return size * 1000 # Convert TB to GB
-            return size # Already in GB
+                return size * 1000  # Convert TB to GB
+            return size  # Already in GB
         else:
             raise ValueError("Invalid storage size format. Use '500 GB' or '2 TB'.")
 
@@ -104,16 +102,16 @@ class Graphics:
     def __init__(self, has_gpu, gpu_type=None, passmark_score=None, user_price=None):
         self.has_gpu = has_gpu
         self.gpu_type = gpu_type
-        self.passmark_score = passmark_score
+        self.passmark_score = float(passmark_score) if passmark_score else 0  # Convert to float
         self.user_price = user_price
 
     def gpu_price(self):
         if not self.has_gpu:
             return 0
-        if self.gpu_type.lower() == 'discrete' or self.gpu_type.lower() == 'amd radeon' or self.gpu_type.lower() == 'amd':
+        if self.gpu_type.lower() in ['discrete', 'amd radeon', 'amd']:
             return self.passmark_score / 125
         else:
-            return self.user_price
+            return self.user_price if self.user_price else 0
 
 @app.route('/')
 def index():
@@ -129,9 +127,13 @@ def calculate():
     os = data['os']
     storage_details = data['storage']
     is_laptop = data['is_laptop']
+    user_price = float(data.get('amd_price', 0))  # Ensure user_price is a float
 
-    processor = Processor(kind, model)
+    processor = Processor(kind, model, user_price)
     processor_price = processor.processor_price()
+
+    # Debug print
+    print(f"Processor price calculated: {processor_price}")
 
     ram = Ram(ram_size)
     ram_price = ram.ram_price()
@@ -154,8 +156,12 @@ def calculate():
     if is_laptop:
         total_price += 30
         battery_capacity = int(data['battery_capacity'])
-        if battery_capacity < 50:
+        if battery_capacity < 25:
             total_price -= 50
+        elif battery_capacity < 50:
+            total_price -= 25
+        elif battery_capacity < 75:
+            total_price -= 10
         elif battery_capacity < 90:
             total_price -= 5
 
@@ -177,14 +183,14 @@ def calculate():
 
     has_gpu = data['has_gpu']
     gpu_type = data.get('gpu_type')
-    passmark_score = data.get('passmark_score')
+    passmark_score = float(data.get('passmark_score', 0))  # Ensure passmark_score is a float
     graphics = Graphics(has_gpu, gpu_type, passmark_score)
     gpu_price = graphics.gpu_price()
 
     total_price += gpu_price
 
     if ram_size == 4:
-        total_price -= 10
+        total_price -= 5
 
     total_price = round(total_price)
 
@@ -196,6 +202,7 @@ def calculate():
         'gpu_price': gpu_price,
         'total_price': total_price
     })
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
