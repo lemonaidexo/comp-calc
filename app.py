@@ -14,10 +14,14 @@ class Processor:
         """
         Extracts the core type and generation from the model string.
         """
-        match = re.match(r'(i[357])[- ]?(\d{4})', self.model)
+        match = re.match(r'(i[357])[- ]?(\d{4,5})', self.model)
         if match:
             core = match.group(1)
-            generation = int(match.group(2)[0])  # Extract the first digit as generation
+            generation_str = match.group(2)
+            if len(generation_str) == 4:
+                generation = int(generation_str[0])  # Extract the first digit as generation for 9th gen and below
+            else:
+                generation = int(generation_str[:2])  # Extract the first two digits as generation for 10th gen and above
             return core, generation
         return None, 0  # Handle the case where the core and generation are not found
 
