@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify # type: ignore
+from flask import Flask, request, render_template, jsonify  # type: ignore
 import re
 
 app = Flask(__name__)
@@ -11,6 +11,9 @@ class Processor:
         self.user_price = float(user_price) if user_price else 0  # Default to 0 if not provided
 
     def extract_core_and_gen(self):
+        """
+        Extracts the core type and generation from the model string.
+        """
         match = re.match(r'(i[357])[- ]?(\d{4})', self.model)
         if match:
             core = match.group(1)
@@ -19,62 +22,45 @@ class Processor:
         return None, 0  # Handle the case where the core and generation are not found
 
     def processor_price(self):
+        """
+        Calculates the processor price based on the kind, core, and generation.
+        """
         if self.kind.lower() == 'amd':
             print(f"AMD Processor selected with user price: {self.user_price}")
             return self.user_price  # Return the user price directly
-        # Existing Intel price calculation code
+
         if self.kind.lower() == 'intel':
-            if self.core.lower() == 'i3':
-                if self.generation in [4, 5]:
-                    return 40
-                elif self.generation in [6, 7]:
-                    return 55
-                elif self.generation in [8, 9]:
-                    return 90
-                elif self.generation in [10, 11]:
-                    return 130
-                elif self.generation in [12, 13]:
-                    return 0  # Default to 0 for unknown price
-            elif self.core.lower() == 'i5':
-                if self.generation == 3:
-                    return 35
-                elif self.generation in [4, 5]:
-                    return 50
-                elif self.generation in [6, 7]:
-                    return 75
-                elif self.generation in [8, 9]:
-                    return 110
-                elif self.generation in [10, 11]:
-                    return 160
-                elif self.generation in [12, 13]:
-                    return 0  # Default to 0 for unknown price
-            elif self.core.lower() == 'i7':
-                if self.generation == 1:
-                    return 25
-                elif self.generation in [2, 3]:
-                    return 45
-                elif self.generation in [4, 5]:
-                    return 65
-                elif self.generation in [6, 7]:
-                    return 100
-                elif self.generation in [8, 9]:
-                    return 130
-                elif self.generation in [10, 11]:
-                    return 200
-                elif self.generation in [12, 13]:
-                    return 0  # Default to 0 for unknown price
-        return 0
+            return self._intel_processor_price()
+        
+        return 0  # Default to 0 for unknown kind
+
+    def _intel_processor_price(self):
+        """
+        Calculates the price for Intel processors based on core and generation.
+        """
+        price_map = {
+            'i3': {4: 40, 5: 40, 6: 55, 7: 55, 8: 90, 9: 90, 10: 130, 11: 130, 12: 0, 13: 0},
+            'i5': {3: 35, 4: 50, 5: 50, 6: 75, 7: 75, 8: 110, 9: 110, 10: 160, 11: 160, 12: 0, 13: 0},
+            'i7': {1: 25, 2: 45, 3: 45, 4: 65, 5: 65, 6: 100, 7: 100, 8: 130, 9: 130, 10: 200, 11: 200, 12: 0, 13: 0}
+        }
+
+        core_prices = price_map.get(self.core.lower(), {})
+        return core_prices.get(self.generation, 0)  # Default to 0 for unknown price
 
 
 class Ram:
     def __init__(self, ram_size):
         self.ram_size = ram_size
-    # Calculates the price of the RAM based on if the RAM is more than 4 GB
+
     def ram_price(self):
+        """
+        Calculates the price of the RAM based on its size.
+        """
         if self.ram_size == 4:
             return -10
         else:
             return (((self.ram_size - 8) / 4) * 5)
+
 
 class Storage:
     def __init__(self, storage_size_str, storage_kind):
@@ -82,6 +68,9 @@ class Storage:
         self.storage_kind = storage_kind
 
     def parse_storage_size(self, storage_size_str):
+        """
+        Parses the storage size string and converts it to GB.
+        """
         match = re.match(r'(\d+)\s*(GB|TB)', storage_size_str, re.IGNORECASE)
         if match:
             size = int(match.group(1))
@@ -93,10 +82,14 @@ class Storage:
             raise ValueError("Invalid storage size format. Use '500 GB' or '2 TB'.")
 
     def storage_price(self):
+        """
+        Calculates the price of the storage based on its kind and size.
+        """
         if self.storage_kind.lower() == 'hdd':
             return round((self.storage_size / 1000) * 5)
         else:
             return round((self.storage_size / 128) * 10)
+
 
 class Graphics:
     def __init__(self, has_gpu, gpu_type=None, passmark_score=None, user_price=None):
@@ -106,6 +99,9 @@ class Graphics:
         self.user_price = user_price
 
     def gpu_price(self):
+        """
+        Calculates the price of the GPU based on its type and passmark score.
+        """
         if not self.has_gpu:
             return 0
         if self.gpu_type.lower() in ['discrete', 'amd radeon', 'amd']:
@@ -113,9 +109,11 @@ class Graphics:
         else:
             return self.user_price if self.user_price else 0
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
@@ -144,6 +142,9 @@ def calculate():
         total_storage_price += storage_obj.storage_price()
 
     def operating_system():
+        """
+        Determines the price of the operating system.
+        """
         if os.lower() in ['windows', 'windows 10', 'windows 11']:
             return 15
         else:
@@ -156,12 +157,8 @@ def calculate():
     if is_laptop:
         total_price += 30
         battery_capacity = int(data['battery_capacity'])
-        if battery_capacity < 25:
+        if battery_capacity < 50:
             total_price -= 50
-        elif battery_capacity < 50:
-            total_price -= 25
-        elif battery_capacity < 75:
-            total_price -= 10
         elif battery_capacity < 90:
             total_price -= 5
 
