@@ -130,9 +130,6 @@ def calculate():
     processor = Processor(kind, model, user_price)
     processor_price = processor.processor_price()
 
-    # Debug print
-    print(f"Processor price calculated: {processor_price}")
-
     ram = Ram(ram_size)
     ram_price = ram.ram_price()
 
