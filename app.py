@@ -159,8 +159,12 @@ def calculate():
     if is_laptop:
         total_price += 30
         battery_capacity = int(data['battery_capacity'])
-        if battery_capacity < 50:
+        if battery_capacity < 20:
             total_price -= 50
+        elif battery_capacity < 40:
+            total_price -= 25
+        elif battery_capacity < 60:
+            total_price -= 10
         elif battery_capacity < 90:
             total_price -= 5
 
