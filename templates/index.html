@@ -76,6 +76,13 @@
                     <label for="wifi_kind">Wifi kind</label>
                     <input type="text" class="form-control" id="wifi_kind" name="wifi_kind">
                 </div>
+                <div class="form-group">
+                    <label for="custom_build">Is this a custom-built desktop?</label>
+                    <select class="form-control" id="custom_build" name="custom_build">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
             </div>
             <div class="form-group">
                 <label for="has_gpu">Has GPU?</label>
@@ -132,7 +139,8 @@
         wifi_kind: formData.get('wifi_kind') || '',
         has_gpu: formData.get('has_gpu') === 'yes',
         gpu_type: formData.get('gpu_type') || '',
-        passmark_score: parseFloat(formData.get('passmark_score') || 0)  // Ensure to parse as float
+        passmark_score: parseFloat(formData.get('passmark_score') || 0),  // Ensure to parse as float
+        custom_build: formData.get('custom_build') === 'yes'
     };
 
     const response = await fetch('/calculate', {

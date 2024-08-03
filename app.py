@@ -183,12 +183,15 @@ def calculate():
     gpu_type = data.get('gpu_type')
     passmark_score = float(data.get('passmark_score', 0))  # Ensure passmark_score is a float
     graphics = Graphics(has_gpu, gpu_type, passmark_score)
-    gpu_price = graphics.gpu_price()
+    gpu_price = round(graphics.gpu_price())
 
     total_price += gpu_price
 
     if ram_size == 4:
         total_price -= 5
+
+    if data['custom_build']:
+        total_price += 20  # Add custom build charge
 
     total_price = round(total_price)
 
