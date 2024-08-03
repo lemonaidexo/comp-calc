@@ -146,7 +146,8 @@ def calculate():
         """
         Determines the price of the operating system.
         """
-        if os.lower() in ['windows', 'windows 10', 'windows 11']:
+        os_lower = os.lower()
+        if os_lower in ['windows', 'windows 10', 'windows 11']:
             return 15
         else:
             return 0
