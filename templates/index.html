@@ -31,7 +31,10 @@
             </div>
             <div class="form-group">
                 <label for="os">Operating System</label>
-                <input type="text" class="form-control" id="os" name="os" required>
+                <select class="form-control" id="os" name="os" required>
+                    <option value="windows">Windows</option>
+                    <option value="linux">Linux</option>
+                </select>
             </div>
             <div id="storage-container">
                 <h4>Storage Devices</h4>
@@ -66,7 +69,7 @@
             </div>
             <div id="desktop-options">
                 <div class="form-group">
-                    <label for="desktop_wifi">Does this desktop have wifi?</label>
+                    <label for="desktop_wifi">Does this desktop have 'ac' or 'ax' wifi?</label>
                     <select class="form-control" id="desktop_wifi" name="desktop_wifi" onchange="toggleWifiOptions()">
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
