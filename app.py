@@ -178,10 +178,10 @@ def calculate():
         desktop_wifi = data.get('desktop_wifi', False)
         if desktop_wifi:
             wifi_kind = data['wifi_kind']
-            if wifi_kind.lower() in ['ac', 'n/ac']:
+            if wifi_kind.lower() == 'ac':
                 total_price += 5
-            if wifi_kind.lower() == 'ax':
-                total_price += 10
+            elif wifi_kind.lower() == 'ax':
+                total_price += 15
 
     has_gpu = data['has_gpu']
     gpu_type = data.get('gpu_type')

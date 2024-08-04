@@ -67,18 +67,20 @@
                     </select>
                 </div>
             </div>
-            <div id="desktop-options">
-                <div class="form-group">
-                    <label for="desktop_wifi">Does this desktop have 'ac' or 'ax' wifi?</label>
-                    <select class="form-control" id="desktop_wifi" name="desktop_wifi" onchange="toggleWifiOptions()">
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
-                <div class="form-group" id="wifi-kind-container" style="display: none;">
-                    <label for="wifi_kind">Wifi kind</label>
-                    <input type="text" class="form-control" id="wifi_kind" name="wifi_kind">
-                </div>
+            <div class="form-group">
+                <label for="desktop_wifi">Does this desktop have 'ac' or 'ax' wifi?</label>
+                <select class="form-control" id="desktop_wifi" name="desktop_wifi" onchange="toggleWifiOptions()">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+            <div class="form-group" id="wifi-kind-container" style="display: none;">
+                <label for="wifi_kind">Wifi kind</label>
+                <select class="form-control" id="wifi_kind" name="wifi_kind">
+                    <option value="ac">ac</option>
+                    <option value="ax">ax</option>
+                </select>
+            </div>
                 <div class="form-group">
                     <label for="custom_build">Is this a custom-built desktop?</label>
                     <select class="form-control" id="custom_build" name="custom_build">
@@ -86,7 +88,6 @@
                         <option value="yes">Yes</option>
                     </select>
                 </div>
-            </div>
             <div class="form-group">
                 <label for="has_gpu">Has dedicated GPU?</label>
                 <select class="form-control" id="has_gpu" name="has_gpu" required onchange="toggleGpuOptions()">
@@ -212,8 +213,13 @@
         }
 
         function toggleWifiOptions() {
-            const hasWifi = document.getElementById('desktop_wifi').value === 'yes';
-            document.getElementById('wifi-kind-container').style.display = hasWifi ? '' : 'none';
+            const wifiKindContainer = document.getElementById('wifi-kind-container');
+            const desktopWifi = document.getElementById('desktop_wifi').value;
+            if (desktopWifi === 'yes') {
+                wifiKindContainer.style.display = 'block';
+            } else {
+                wifiKindContainer.style.display = 'none';
+            }
         }
 
         function toggleGpuOptions() {
