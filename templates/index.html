@@ -67,7 +67,7 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" id="desktop-wifi-container">
                 <label for="desktop_wifi">Does this desktop have 'ac' or 'ax' wifi?</label>
                 <select class="form-control" id="desktop_wifi" name="desktop_wifi" onchange="toggleWifiOptions()">
                     <option value="no">No</option>
@@ -81,13 +81,13 @@
                     <option value="ax">ax</option>
                 </select>
             </div>
-                <div class="form-group">
-                    <label for="custom_build">Is this a custom-built desktop?</label>
-                    <select class="form-control" id="custom_build" name="custom_build">
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
+            <div class="form-group" id="custom-build-container">
+                <label for="custom_build">Is this a custom-built desktop?</label>
+                <select class="form-control" id="custom_build" name="custom_build">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="has_gpu">Has dedicated GPU?</label>
                 <select class="form-control" id="has_gpu" name="has_gpu" required onchange="toggleGpuOptions()">
@@ -208,24 +208,28 @@
 
         function toggleLaptopOptions() {
             const isLaptop = document.getElementById('is_laptop').value === 'yes';
-            document.getElementById('laptop-options').style.display = isLaptop ? '' : 'none';
-            document.getElementById('desktop-options').style.display = isLaptop ? 'none' : '';
+            document.getElementById('laptop-options').style.display = isLaptop ? 'block' : 'none';
+            document.getElementById('desktop-wifi-container').style.display = isLaptop ? 'none' : 'block';
+            document.getElementById('custom-build-container').style.display = isLaptop ? 'none' : 'block';
+            if (!isLaptop) {
+                toggleWifiOptions(); // Ensure wifi options are correctly displayed
+            }
         }
 
         function toggleWifiOptions() {
             const wifiKindContainer = document.getElementById('wifi-kind-container');
             const desktopWifi = document.getElementById('desktop_wifi').value;
-            if (desktopWifi === 'yes') {
-                wifiKindContainer.style.display = 'block';
-            } else {
-                wifiKindContainer.style.display = 'none';
-            }
+            wifiKindContainer.style.display = desktopWifi === 'yes' ? 'block' : 'none';
         }
 
         function toggleGpuOptions() {
             const hasGpu = document.getElementById('has_gpu').value === 'yes';
             document.getElementById('gpu-options').style.display = hasGpu ? '' : 'none';
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            toggleLaptopOptions(); // Ensure correct initial state
+        });
     </script>
 </body>
 </html>
