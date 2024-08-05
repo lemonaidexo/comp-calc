@@ -183,6 +183,10 @@ def calculate():
             elif wifi_kind.lower() == 'ax':
                 total_price += 15
 
+        desktop_bluetooth = data.get('desktop_bluetooth', False)
+        if desktop_bluetooth:
+            total_price += 10
+
     has_gpu = data['has_gpu']
     gpu_type = data.get('gpu_type')
     passmark_score = float(data.get('passmark_score', 0))  # Ensure passmark_score is a float

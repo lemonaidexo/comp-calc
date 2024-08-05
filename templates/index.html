@@ -88,6 +88,13 @@
                     <option value="yes">Yes</option>
                 </select>
             </div>
+            <div class="form-group" id="desktop-bluetooth-container">
+                <label for="desktop_bluetooth">Does this desktop have Bluetooth?</label>
+                <select class="form-control" id="desktop_bluetooth" name="desktop_bluetooth">
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
             <div class="form-group">
                 <label for="has_gpu">Has dedicated GPU?</label>
                 <select class="form-control" id="has_gpu" name="has_gpu" required onchange="toggleGpuOptions()">
@@ -113,104 +120,13 @@
         </form>
         <div id="result" class="mt-4"></div>
     </div>
-
     <script>
-        document.getElementById('priceCalcForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-    const storage = [];
-
-    for (let i = 0; i < formData.getAll('storage_size').length; i++) {
-        storage.push({
-            size: formData.getAll('storage_size')[i],
-            kind: formData.getAll('storage_kind')[i]
-        });
-    }
-
-    const data = {
-        kind: formData.get('kind'),
-        model: formData.get('model'),
-        amd_price: parseFloat(formData.get('amd_price') || 0),  // Ensure to parse as float
-        ram_size: parseFloat(formData.get('ram_size')),
-        os: formData.get('os'),
-        storage: storage,
-        is_laptop: formData.get('is_laptop') === 'yes',
-        battery_capacity: parseFloat(formData.get('battery_capacity') || 0),
-        has_large_screen: formData.get('has_large_screen') === 'yes',
-        has_touch_screen: formData.get('has_touch_screen') === 'yes',
-        desktop_wifi: formData.get('desktop_wifi') === 'yes',
-        wifi_kind: formData.get('wifi_kind') || '',
-        has_gpu: formData.get('has_gpu') === 'yes',
-        gpu_type: formData.get('gpu_type') || '',
-        passmark_score: parseFloat(formData.get('passmark_score') || 0),  // Ensure to parse as float
-        custom_build: formData.get('custom_build') === 'yes'
-    };
-
-    const response = await fetch('/calculate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-
-    const result = await response.json();
-    document.getElementById('result').innerHTML = `
-        <h4>Results:</h4>
-        <p>Processor Price: $${result.processor_price}</p>
-        <p>RAM Price: $${result.ram_price}</p>
-        <p>Storage Price: $${result.storage_price}</p>
-        <p>OS Price: $${result.os_price}</p>
-        <p>GPU Price: $${result.gpu_price}</p>
-        <h3>Total Price: $${result.total_price}</h3>
-    `;
-});
-
-
-        function addStorage() {
-            const container = document.getElementById('storage-container');
-            if (container.querySelectorAll('.storage-item').length >= 4) return;
-
-            const storageItem = document.createElement('div');
-            storageItem.className = 'form-group storage-item';
-            storageItem.innerHTML = `
-                <label>Storage Device</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="storage_size" placeholder="e.g., 500 GB or 2 TB" required>
-                    <select class="form-control" name="storage_kind" required>
-                        <option value="HDD">HDD</option>
-                        <option value="SATA">SATA</option>
-                        <option value="NvME">NvME</option>
-                    </select>
-                    <div class="input-group-append">
-                        <button class="btn btn-danger" type="button" onclick="removeStorage(this)">Remove</button>
-                    </div>
-                </div>
-            `;
-            container.appendChild(storageItem);
-        }
-
-        function removeStorage(button) {
-            button.closest('.storage-item').remove();
-        }
-
-        function toggleProcessorOptions() {
-            const kind = document.getElementById('kind').value;
-            const amdPriceContainer = document.getElementById('amd-price-container');
-            
-            if (kind.toLowerCase() === 'amd') {
-                amdPriceContainer.style.display = '';
-            } else {
-                amdPriceContainer.style.display = 'none';
-            }
-        }
-
         function toggleLaptopOptions() {
             const isLaptop = document.getElementById('is_laptop').value === 'yes';
             document.getElementById('laptop-options').style.display = isLaptop ? 'block' : 'none';
             document.getElementById('desktop-wifi-container').style.display = isLaptop ? 'none' : 'block';
             document.getElementById('custom-build-container').style.display = isLaptop ? 'none' : 'block';
+            document.getElementById('desktop-bluetooth-container').style.display = isLaptop ? 'none' : 'block';
             if (!isLaptop) {
                 toggleWifiOptions(); // Ensure wifi options are correctly displayed
             }
@@ -220,11 +136,6 @@
             const wifiKindContainer = document.getElementById('wifi-kind-container');
             const desktopWifi = document.getElementById('desktop_wifi').value;
             wifiKindContainer.style.display = desktopWifi === 'yes' ? 'block' : 'none';
-        }
-
-        function toggleGpuOptions() {
-            const hasGpu = document.getElementById('has_gpu').value === 'yes';
-            document.getElementById('gpu-options').style.display = hasGpu ? '' : 'none';
         }
 
         document.addEventListener('DOMContentLoaded', function() {
