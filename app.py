@@ -175,9 +175,8 @@ def calculate():
         if has_touch_screen:
             total_price += 15
     else:
-        desktop_wifi = data.get('desktop_wifi', False)
-        if desktop_wifi:
-            wifi_kind = data['wifi_kind']
+        wifi_kind = data['wifi_kind']
+        if wifi_kind:
             if wifi_kind.lower() == 'ac':
                 total_price += 5
             elif wifi_kind.lower() == 'ax':

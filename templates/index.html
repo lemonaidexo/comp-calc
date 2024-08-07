@@ -50,7 +50,7 @@
             <div id="laptop-options" style="display: none;">
                 <div class="form-group">
                     <label for="battery_capacity">Battery Capacity (%)</label>
-                    <input type="number" class="form-control" id="battery_capacity" name="battery_capacity">
+                    <input type="number" class="form-control" id="battery_capacity" name="battery_capacity" value="100">
                 </div>
                 <div class="form-group">
                     <label for="has_large_screen">Has large screen (>15.6")?</label>
@@ -67,33 +67,27 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group" id="desktop-wifi-container">
-                <label for="desktop_wifi">Does this desktop have 'ac' or 'ax' wifi?</label>
-                <select class="form-control" id="desktop_wifi" name="desktop_wifi" onchange="toggleWifiOptions()">
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-            </div>
-            <div class="form-group" id="wifi-kind-container" style="display: none;">
+            <div class="form-group" id="desktop-options" style="display: none;">
                 <label for="wifi_kind">Wifi kind</label>
                 <select class="form-control" id="wifi_kind" name="wifi_kind">
+                    <option value="none">None</option>
                     <option value="ac">ac</option>
                     <option value="ax">ax</option>
                 </select>
-            </div>
-            <div class="form-group" id="custom-build-container">
-                <label for="custom_build">Is this a custom-built desktop?</label>
-                <select class="form-control" id="custom_build" name="custom_build">
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-            </div>
-            <div class="form-group" id="desktop-bluetooth-container">
-                <label for="desktop_bluetooth">Does this desktop have Bluetooth?</label>
-                <select class="form-control" id="desktop_bluetooth" name="desktop_bluetooth">
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
+                <div class="form-group">
+                    <label for="custom_build">Is this a custom-built desktop?</label>
+                    <select class="form-control" id="custom_build" name="custom_build">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="desktop_bluetooth">Does this desktop have Bluetooth?</label>
+                    <select class="form-control" id="desktop_bluetooth" name="desktop_bluetooth">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
             </div>
             <div class="form-group">
                 <label for="has_gpu">Has dedicated GPU?</label>
@@ -123,58 +117,56 @@
 
     <script>
         document.getElementById('priceCalcForm').addEventListener('submit', async function(event) {
-    event.preventDefault();
-    const form = event.target;
-    const formData = new FormData(form);
-    const storage = [];
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const storage = [];
 
-    for (let i = 0; i < formData.getAll('storage_size').length; i++) {
-        storage.push({
-            size: formData.getAll('storage_size')[i],
-            kind: formData.getAll('storage_kind')[i]
+            for (let i = 0; i < formData.getAll('storage_size').length; i++) {
+                storage.push({
+                    size: formData.getAll('storage_size')[i],
+                    kind: formData.getAll('storage_kind')[i]
+                });
+            }
+
+            const data = {
+                kind: formData.get('kind'),
+                model: formData.get('model'),
+                amd_price: parseFloat(formData.get('amd_price') || 0),  // Ensure to parse as float
+                ram_size: parseFloat(formData.get('ram_size')),
+                os: formData.get('os'),
+                storage: storage,
+                is_laptop: formData.get('is_laptop') === 'yes',
+                battery_capacity: parseFloat(formData.get('battery_capacity') || 0),
+                has_large_screen: formData.get('has_large_screen') === 'yes',
+                has_touch_screen: formData.get('has_touch_screen') === 'yes',
+                wifi_kind: formData.get('wifi_kind'),
+                has_gpu: formData.get('has_gpu') === 'yes',
+                gpu_type: formData.get('gpu_type') || '',
+                passmark_score: parseFloat(formData.get('passmark_score') || 0),  // Ensure to parse as float
+                custom_build: formData.get('custom_build') === 'yes',
+                desktop_bluetooth: formData.get('desktop_bluetooth') === 'yes' // Ensure this field is included
+            };
+
+            const response = await fetch('/calculate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            document.getElementById('result').innerHTML = `
+                <h4>Results:</h4>
+                <p>Processor Price: $${result.processor_price}</p>
+                <p>RAM Price: $${result.ram_price}</p>
+                <p>Storage Price: $${result.storage_price}</p>
+                <p>OS Price: $${result.os_price}</p>
+                <p>GPU Price: $${result.gpu_price}</p>
+                <h3>Total Price: $${result.total_price}</h3>
+            `;
         });
-    }
-
-    const data = {
-        kind: formData.get('kind'),
-        model: formData.get('model'),
-        amd_price: parseFloat(formData.get('amd_price') || 0),  // Ensure to parse as float
-        ram_size: parseFloat(formData.get('ram_size')),
-        os: formData.get('os'),
-        storage: storage,
-        is_laptop: formData.get('is_laptop') === 'yes',
-        battery_capacity: parseFloat(formData.get('battery_capacity') || 0),
-        has_large_screen: formData.get('has_large_screen') === 'yes',
-        has_touch_screen: formData.get('has_touch_screen') === 'yes',
-        desktop_wifi: formData.get('desktop_wifi') === 'yes',
-        wifi_kind: formData.get('wifi_kind') || '',
-        has_gpu: formData.get('has_gpu') === 'yes',
-        gpu_type: formData.get('gpu_type') || '',
-        passmark_score: parseFloat(formData.get('passmark_score') || 0),  // Ensure to parse as float
-        custom_build: formData.get('custom_build') === 'yes',
-        desktop_bluetooth: formData.get('desktop_bluetooth') === 'yes' // Ensure this field is included
-    };
-
-    const response = await fetch('/calculate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    });
-
-    const result = await response.json();
-    document.getElementById('result').innerHTML = `
-        <h4>Results:</h4>
-        <p>Processor Price: $${result.processor_price}</p>
-        <p>RAM Price: $${result.ram_price}</p>
-        <p>Storage Price: $${result.storage_price}</p>
-        <p>OS Price: $${result.os_price}</p>
-        <p>GPU Price: $${result.gpu_price}</p>
-        <h3>Total Price: $${result.total_price}</h3>
-    `;
-});
-
 
         function addStorage() {
             const container = document.getElementById('storage-container');
@@ -217,18 +209,7 @@
         function toggleLaptopOptions() {
             const isLaptop = document.getElementById('is_laptop').value === 'yes';
             document.getElementById('laptop-options').style.display = isLaptop ? 'block' : 'none';
-            document.getElementById('desktop-wifi-container').style.display = isLaptop ? 'none' : 'block';
-            document.getElementById('custom-build-container').style.display = isLaptop ? 'none' : 'block';
-            document.getElementById('desktop-bluetooth-container').style.display = isLaptop ? 'none' : 'block';
-            if (!isLaptop) {
-                toggleWifiOptions(); // Ensure wifi options are correctly displayed
-            }
-        }
-
-        function toggleWifiOptions() {
-            const wifiKindContainer = document.getElementById('wifi-kind-container');
-            const desktopWifi = document.getElementById('desktop_wifi').value;
-            wifiKindContainer.style.display = desktopWifi === 'yes' ? 'block' : 'none';
+            document.getElementById('desktop-options').style.display = isLaptop ? 'none' : 'block';
         }
 
         function toggleGpuOptions() {
