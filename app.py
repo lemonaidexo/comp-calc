@@ -96,22 +96,18 @@ class Storage:
 
 
 class Graphics:
-    def __init__(self, has_gpu, gpu_type=None, passmark_score=None, user_price=None):
+    def __init__(self, has_gpu, passmark_score=None):
         self.has_gpu = has_gpu
-        self.gpu_type = gpu_type
-        self.passmark_score = float(passmark_score) if passmark_score else 0  # Convert to float
-        self.user_price = user_price
+        self.passmark_score = float(passmark_score) if passmark_score else 0  # Convert to float and default to 0
 
     def gpu_price(self):
         """
         Calculates the price of the GPU based on its type and passmark score.
         """
-        if not self.has_gpu:
-            return 0
-        if self.gpu_type.lower() in ['discrete', 'amd radeon', 'amd']:
-            return self.passmark_score / 125
+        if self.has_gpu:
+            return self.passmark_score / 125 
         else:
-            return self.user_price if self.user_price else 0
+            return 0
 
 
 @app.route('/')
@@ -189,7 +185,7 @@ def calculate():
     has_gpu = data['has_gpu']
     gpu_type = data.get('gpu_type')
     passmark_score = float(data.get('passmark_score', 0))  # Ensure passmark_score is a float
-    graphics = Graphics(has_gpu, gpu_type, passmark_score)
+    graphics = Graphics(has_gpu, passmark_score)
     gpu_price = round(graphics.gpu_price())
 
     total_price += gpu_price

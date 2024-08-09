@@ -9,110 +9,110 @@
 <body>
     <div class="container mt-5">
         <h1>Computer Price Calculator</h1>
-        <form id="priceCalcForm">
-            <div class="form-group">
-                <label for="kind">Processor Kind</label>
-                <select class="form-control" id="kind" name="kind" required onchange="toggleProcessorOptions()">
-                    <option value="intel">Intel</option>
-                    <option value="amd">AMD</option>
-                </select>
+        <div class="row">
+            <!-- Form Section -->
+            <div class="col-md-7"> <!-- Adjust column width as needed -->
+                <form id="priceCalcForm">
+                    <div class="form-group">
+                        <label for="kind">Processor Kind</label>
+                        <select class="form-control" id="kind" name="kind" required onchange="toggleProcessorOptions()">
+                            <option value="intel">Intel</option>
+                            <option value="amd">AMD</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="model">Processor Model</label>
+                        <input type="text" class="form-control" id="model" name="model" required>
+                    </div>
+                    <div class="form-group" id="amd-price-container" style="display: none;">
+                        <label for="amd_price">AMD Processor Price</label>
+                        <input type="number" class="form-control" id="amd_price" name="amd_price" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="ram_size">RAM Size (GB)</label>
+                        <input type="number" class="form-control" id="ram_size" name="ram_size" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="os">Operating System</label>
+                        <select class="form-control" id="os" name="os" required>
+                            <option value="windows">Windows</option>
+                            <option value="linux">Linux</option>
+                        </select>
+                    </div>
+                    <div id="storage-container">
+                        <h4>Storage Devices</h4>
+                        <button type="button" class="btn btn-primary mb-2" onclick="addStorage()">Add Storage Device</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="is_laptop">Is this computer a laptop?</label>
+                        <select class="form-control" id="is_laptop" name="is_laptop" required onchange="toggleLaptopOptions()">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                    <div id="laptop-options" style="display: none;">
+                        <div class="form-group">
+                            <label for="battery_capacity">Battery Capacity (%)</label>
+                            <input type="number" class="form-control" id="battery_capacity" name="battery_capacity" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="has_large_screen">Has large screen (>15.6")?</label>
+                            <select class="form-control" id="has_large_screen" name="has_large_screen">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="has_touch_screen">Has touch screen?</label>
+                            <select class="form-control" id="has_touch_screen" name="has_touch_screen">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="desktop-options" style="display: none;">
+                        <label for="wifi_kind">Wifi kind</label>
+                        <select class="form-control" id="wifi_kind" name="wifi_kind">
+                            <option value="none">None</option>
+                            <option value="ac">ac</option>
+                            <option value="ax">ax</option>
+                        </select>
+                        <div class="form-group">
+                            <label for="custom_build">Is this a custom-built desktop?</label>
+                            <select class="form-control" id="custom_build" name="custom_build">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="desktop_bluetooth">Does this desktop have Bluetooth?</label>
+                            <select class="form-control" id="desktop_bluetooth" name="desktop_bluetooth">
+                                <option value="no">No</option>
+                                <option value="yes">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="has_gpu">Has dedicated GPU or AMD Radeon APU?</label>
+                        <select class="form-control" id="has_gpu" name="has_gpu" required onchange="toggleGpuOptions()">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                    <div id="gpu-options" style="display: none;">
+                        <div class="form-group">
+                            <label for="passmark_score">Passmark Score</label>
+                            <input type="number" class="form-control" id="passmark_score" name="passmark_score">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </form>
             </div>
-            <div class="form-group">
-                <label for="model">Processor Model</label>
-                <input type="text" class="form-control" id="model" name="model" required>
+            <!-- Result Section -->
+            <div class="col-md-5"> <!-- Adjust column width as needed -->
+                <div id="result" class="mt-4"></div>
             </div>
-            <div class="form-group" id="amd-price-container" style="display: none;">
-                <label for="amd_price">AMD Processor Price</label>
-                <input type="number" class="form-control" id="amd_price" name="amd_price" step="0.01">
-            </div>
-            <div class="form-group">
-                <label for="ram_size">RAM Size (GB)</label>
-                <input type="number" class="form-control" id="ram_size" name="ram_size" required>
-            </div>
-            <div class="form-group">
-                <label for="os">Operating System</label>
-                <select class="form-control" id="os" name="os" required>
-                    <option value="windows">Windows</option>
-                    <option value="linux">Linux</option>
-                </select>
-            </div>
-            <div id="storage-container">
-                <h4>Storage Devices</h4>
-                <button type="button" class="btn btn-primary mb-2" onclick="addStorage()">Add Storage Device</button>
-            </div>
-            <div class="form-group">
-                <label for="is_laptop">Is this computer a laptop?</label>
-                <select class="form-control" id="is_laptop" name="is_laptop" required onchange="toggleLaptopOptions()">
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-            </div>
-            <div id="laptop-options" style="display: none;">
-                <div class="form-group">
-                    <label for="battery_capacity">Battery Capacity (%)</label>
-                    <input type="number" class="form-control" id="battery_capacity" name="battery_capacity" value="100">
-                </div>
-                <div class="form-group">
-                    <label for="has_large_screen">Has large screen (>15.6")?</label>
-                    <select class="form-control" id="has_large_screen" name="has_large_screen">
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="has_touch_screen">Has touch screen?</label>
-                    <select class="form-control" id="has_touch_screen" name="has_touch_screen">
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group" id="desktop-options" style="display: none;">
-                <label for="wifi_kind">Wifi kind</label>
-                <select class="form-control" id="wifi_kind" name="wifi_kind">
-                    <option value="none">None</option>
-                    <option value="ac">ac</option>
-                    <option value="ax">ax</option>
-                </select>
-                <div class="form-group">
-                    <label for="custom_build">Is this a custom-built desktop?</label>
-                    <select class="form-control" id="custom_build" name="custom_build">
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="desktop_bluetooth">Does this desktop have Bluetooth?</label>
-                    <select class="form-control" id="desktop_bluetooth" name="desktop_bluetooth">
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="has_gpu">Has dedicated GPU?</label>
-                <select class="form-control" id="has_gpu" name="has_gpu" required onchange="toggleGpuOptions()">
-                    <option value="no">No</option>
-                    <option value="yes">Yes</option>
-                </select>
-            </div>
-            <div id="gpu-options" style="display: none;">
-                <div class="form-group">
-                    <label for="gpu_type">GPU Type</label>
-                    <select class="form-control" id="gpu_type" name="gpu_type">
-                        <option value="discrete">Discrete GPU</option>
-                        <option value="amd">AMD Radeon GPU</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="passmark_score">Passmark Score</label>
-                    <input type="number" class="form-control" id="passmark_score" name="passmark_score">
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Calculate</button>
-        </form>
-        <div id="result" class="mt-4"></div>
+        </div>
     </div>
 
     <script src="../static/script.js"></script>
