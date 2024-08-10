@@ -7,14 +7,15 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
     for (let i = 0; i < formData.getAll('storage_size').length; i++) {
         storage.push({
             size: formData.getAll('storage_size')[i],
-            kind: formData.getAll('storage_kind')[i]
+            kind: formData.getAll('storage_kind')[i],
+            unit: formData.getAll('storage_unit')[i] 
         });
     }
 
     const data = {
         kind: formData.get('kind'),
         model: formData.get('model'),
-        amd_price: parseFloat(formData.get('amd_price') || 0),  // Ensure to parse as float
+        amd_price: parseFloat(formData.get('amd_price') || 0),
         ram_size: parseFloat(formData.get('ram_size')),
         os: formData.get('os'),
         storage: storage,
@@ -25,9 +26,9 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         wifi_kind: formData.get('wifi_kind'),
         has_gpu: formData.get('has_gpu') === 'yes',
         gpu_type: formData.get('gpu_type') || '',
-        passmark_score: parseFloat(formData.get('passmark_score') || 0),  // Ensure to parse as float
+        passmark_score: parseFloat(formData.get('passmark_score') || 0),
         custom_build: formData.get('custom_build') === 'yes',
-        desktop_bluetooth: formData.get('desktop_bluetooth') === 'yes' // Ensure this field is included
+        desktop_bluetooth: formData.get('desktop_bluetooth') === 'yes'
     };
 
     const response = await fetch('/calculate', {
@@ -59,7 +60,11 @@ function addStorage() {
     storageItem.innerHTML = `
         <label>Storage Device</label>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" name="storage_size" placeholder="e.g., 500 GB or 2 TB" required>
+            <input type="number" class="form-control" name="storage_size" placeholder="e.g., 500" required>
+            <select class="form-control" name="storage_unit" required>
+                <option value="GB">GB</option>
+                <option value="TB">TB</option>
+            </select>
             <select class="form-control" name="storage_kind" required>
                 <option value="HDD">HDD</option>
                 <option value="SATA">SATA</option>

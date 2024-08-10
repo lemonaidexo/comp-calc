@@ -73,23 +73,19 @@ class Ram:
 
 
 class Storage:
-    def __init__(self, storage_size_str, storage_kind):
-        self.storage_size = self.parse_storage_size(storage_size_str)
+    def __init__(self, storage_size, storage_unit, storage_kind):
+        self.storage_size = self.parse_storage_size(storage_size, storage_unit)
         self.storage_kind = storage_kind
 
-    def parse_storage_size(self, storage_size_str):
+    def parse_storage_size(self, storage_size, storage_unit):
         """
-        Parses the storage size string and converts it to GB.
+        Parses the storage size and unit and converts it to GB.
         """
-        match = re.match(r'(\d+)\s*(GB|TB)', storage_size_str, re.IGNORECASE)
-        if match:
-            size = int(match.group(1))
-            unit = match.group(2).upper()
-            if unit == 'TB':
-                return size * 1000  # Convert TB to GB
-            return size  # Already in GB
-        else:
-            raise ValueError("Invalid storage size format. Use '500 GB' or '2 TB'.")
+        size = int(storage_size)
+        unit = storage_unit.upper()
+        if unit == 'TB':
+            return size * 1000  # Convert TB to GB
+        return size  # Already in GB
 
     def storage_price(self):
         """
@@ -141,7 +137,7 @@ def calculate():
 
     total_storage_price = 0
     for storage in storage_details:
-        storage_obj = Storage(storage['size'], storage['kind'])
+        storage_obj = Storage(storage['size'], storage['unit'], storage['kind'])
         total_storage_price += storage_obj.storage_price()
 
     def operating_system():
@@ -212,7 +208,6 @@ def calculate():
         'gpu_price': gpu_price,
         'total_price': total_price
     })
-
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
