@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Computer Price Calculator</title>
+    <!-- Bootstrap CSS for styling -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
@@ -13,6 +14,7 @@
             <!-- Form Section -->
             <div class="col-md-7"> 
                 <form id="priceCalcForm">
+                    <!-- Processor Kind Selection -->
                     <div class="form-group">
                         <label for="kind">Processor Kind</label>
                         <select class="form-control" id="kind" name="kind" required onchange="toggleProcessorOptions()">
@@ -20,18 +22,22 @@
                             <option value="amd">AMD</option>
                         </select>
                     </div>
+                    <!-- Processor Model Input -->
                     <div class="form-group">
                         <label for="model">Processor Model</label>
                         <input type="text" class="form-control" id="model" name="model" required>
                     </div>
+                    <!-- AMD Processor Price Input (hidden by default) -->
                     <div class="form-group" id="amd-price-container" style="display: none;">
                         <label for="amd_price">AMD Processor Price</label>
                         <input type="number" class="form-control" id="amd_price" name="amd_price" step="0.01">
                     </div>
+                    <!-- RAM Size Input -->
                     <div class="form-group">
                         <label for="ram_size">RAM Size (GB)</label>
                         <input type="number" class="form-control" id="ram_size" name="ram_size" required>
                     </div>
+                    <!-- Operating System Selection -->
                     <div class="form-group">
                         <label for="os">Operating System</label>
                         <select class="form-control" id="os" name="os" required>
@@ -39,10 +45,12 @@
                             <option value="linux">Linux</option>
                         </select>
                     </div>
+                    <!-- Storage Devices Section -->
                     <div id="storage-container">
                         <h4>Storage Devices</h4>
                         <button type="button" class="btn btn-primary mb-2" onclick="addStorage()">Add Storage Device</button>
                     </div>
+                    <!-- Laptop or Desktop Selection -->
                     <div class="form-group">
                         <label for="is_laptop">Is this computer a laptop?</label>
                         <select class="form-control" id="is_laptop" name="is_laptop" required onchange="toggleLaptopOptions()">
@@ -50,6 +58,7 @@
                             <option value="yes">Yes</option>
                         </select>
                     </div>
+                    <!-- Laptop Options (hidden by default) -->
                     <div id="laptop-options" style="display: none;">
                         <div class="form-group">
                             <label for="battery_capacity">Battery Capacity (%)</label>
@@ -70,6 +79,7 @@
                             </select>
                         </div>
                     </div>
+                    <!-- Desktop Options (hidden by default) -->
                     <div class="form-group" id="desktop-options" style="display: none;">
                         <label for="wifi_kind">Wifi kind</label>
                         <select class="form-control" id="wifi_kind" name="wifi_kind">
@@ -92,6 +102,7 @@
                             </select>
                         </div>
                     </div>
+                    <!-- GPU Selection -->
                     <div class="form-group">
                         <label for="has_gpu">Has dedicated GPU or AMD Radeon APU?</label>
                         <select class="form-control" id="has_gpu" name="has_gpu" required onchange="toggleGpuOptions()">
@@ -99,12 +110,14 @@
                             <option value="yes">Yes</option>
                         </select>
                     </div>
+                    <!-- GPU Options (hidden by default) -->
                     <div id="gpu-options" style="display: none;">
                         <div class="form-group">
                             <label for="passmark_score">Passmark Score</label>
                             <input type="number" class="form-control" id="passmark_score" name="passmark_score">
                         </div>
                     </div>
+                    <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary">Calculate</button>
                 </form>
             </div>
@@ -115,6 +128,7 @@
         </div>
     </div>
 
+    <!-- External JavaScript file -->
     <script src="../static/script.js"></script>
 </body>
 </html>

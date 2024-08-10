@@ -1,10 +1,14 @@
-from flask import Flask, request, render_template, jsonify  # type: ignore
 import re
+
+from flask import Flask, request, render_template, jsonify  # type: ignore
 
 app = Flask(__name__)
 
 class Processor:
     def __init__(self, kind, model, user_price=None):
+        """
+        Initializes a Processor object with the given kind, model, and user_price.
+        """
         self.kind = kind
         self.model = model
         self.core, self.generation = self.extract_core_and_gen()
@@ -60,6 +64,9 @@ class Processor:
 
 class Ram:
     def __init__(self, ram_size):
+        """
+        Initializes a Ram object with the given ram_size.
+        """
         self.ram_size = ram_size
 
     def ram_price(self):
@@ -74,6 +81,9 @@ class Ram:
 
 class Storage:
     def __init__(self, storage_size, storage_unit, storage_kind):
+        """
+        Initializes a Storage object with the given storage_size, storage_unit, and storage_kind.
+        """
         self.storage_size = self.parse_storage_size(storage_size, storage_unit)
         self.storage_kind = storage_kind
 
@@ -99,6 +109,9 @@ class Storage:
 
 class Graphics:
     def __init__(self, has_gpu, passmark_score=None):
+        """
+        Initializes a Graphics object with the given has_gpu and passmark_score.
+        """
         self.has_gpu = has_gpu
         self.passmark_score = float(passmark_score) if passmark_score else 0  # Convert to float and default to 0
 
@@ -114,11 +127,17 @@ class Graphics:
 
 @app.route('/')
 def index():
+    """
+    Renders the index.html template.
+    """
     return render_template('index.html')
 
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
+    """
+    Calculates the total price based on the user input.
+    """
     data = request.json
 
     kind = data['kind']
