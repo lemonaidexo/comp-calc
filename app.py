@@ -13,15 +13,22 @@ class Processor:
     def extract_core_and_gen(self):
         """
         Extracts the core type and generation from the model string.
+        Handles cases where the model number includes a letter.
         """
-        match = re.match(r'(i[357])[- ]?(\d{4,5})', self.model)
+        # Updated regex to capture the letter if it exists
+        match = re.match(r'(i[357])[- ]?(\d{4,5}[A-Za-z]?)', self.model)
         if match:
             core = match.group(1)
             generation_str = match.group(2)
-            if len(generation_str) == 4:
-                generation = int(generation_str[0])  # Extract the first digit as generation for 9th gen and below
+
+            # Extract generation based on the length of the model string
+            if len(generation_str) == 4:  # No letter, older generation
+                generation = int(generation_str[0])  # First digit as generation for 9th gen and below
+            elif len(generation_str) == 5 and generation_str[-1].isalpha():
+                generation = int(generation_str[:2])  # First two digits as generation for 10th gen and above
             else:
-                generation = int(generation_str[:2])  # Extract the first two digits as generation for 10th gen and above
+                generation = int(generation_str[:2])  # Handle regular cases without letters
+
             return core, generation
         return None, 0  # Handle the case where the core and generation are not found
 
@@ -32,7 +39,6 @@ class Processor:
         if self.kind.lower() == 'amd':
             print(f"AMD Processor selected with user price: {self.user_price}")
             return self.user_price  # Return the user price directly
-
         if self.kind.lower() == 'intel':
             return self._intel_processor_price()
         
