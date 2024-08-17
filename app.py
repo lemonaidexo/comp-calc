@@ -136,7 +136,7 @@ def index():
 @app.route('/calculate', methods=['POST'])
 def calculate():
     """
-    Calculates the total price based on the user input.
+    Calculates the total price based on the user input and provides an itemized breakdown.
     """
     data = request.json
 
@@ -170,63 +170,90 @@ def calculate():
         
     os_price = operating_system()
 
+    itemized_prices = {
+        'processor_price': processor_price,
+        'ram_price': ram_price,
+        'storage_price': total_storage_price,
+        'os_price': os_price,
+    }
+
     total_price = processor_price + ram_price + os_price + total_storage_price
 
+    # Laptop-specific pricing
     if is_laptop:
-        total_price += 30
+        laptop_price = 30
         battery_capacity = int(data['battery_capacity'])
+        battery_discount = 0
         if battery_capacity < 20:
-            total_price -= 50
+            battery_discount = -50
         elif battery_capacity < 40:
-            total_price -= 25
+            battery_discount = -25
         elif battery_capacity < 60:
-            total_price -= 10
+            battery_discount = -10
         elif battery_capacity < 90:
-            total_price -= 5
+            battery_discount = -5
 
         has_large_screen = data['has_large_screen']
-        has_touch_screen = data['has_touch_screen']
+        large_screen_price = 15 if has_large_screen else 0
 
-        if has_large_screen:
-            total_price += 15
-        if has_touch_screen:
-            total_price += 15
+        has_touch_screen = data['has_touch_screen']
+        touch_screen_price = 15 if has_touch_screen else 0
+
+        itemized_prices.update({
+            'laptop_base_price': laptop_price,
+            'battery_discount': battery_discount,
+            'large_screen_price': large_screen_price,
+            'touch_screen_price': touch_screen_price
+        })
+
+        total_price += laptop_price + battery_discount + large_screen_price + touch_screen_price
+
+    # Desktop-specific pricing
     else:
         wifi_kind = data['wifi_kind']
+        wifi_price = 0
         if wifi_kind:
             if wifi_kind.lower() == 'ac':
-                total_price += 5
+                wifi_price = 5
             elif wifi_kind.lower() == 'ax':
-                total_price += 15
+                wifi_price = 15
 
         desktop_bluetooth = data.get('desktop_bluetooth', False)
-        if desktop_bluetooth:
-            total_price += 10
+        bluetooth_price = 10 if desktop_bluetooth else 0
 
+        itemized_prices.update({
+            'wifi_price': wifi_price,
+            'bluetooth_price': bluetooth_price
+        })
+
+        total_price += wifi_price + bluetooth_price
+
+    # GPU Price
     has_gpu = data['has_gpu']
     gpu_type = data.get('gpu_type')
     passmark_score = float(data.get('passmark_score', 0))  # Ensure passmark_score is a float
     graphics = Graphics(has_gpu, passmark_score)
     gpu_price = round(graphics.gpu_price())
 
+    itemized_prices['gpu_price'] = gpu_price
     total_price += gpu_price
 
+    # RAM discount for 4GB
     if ram_size == 4:
-        total_price -= 5
+        ram_discount = -5
+        itemized_prices['ram_discount'] = ram_discount
+        total_price += ram_discount
 
-    if data['custom_build']:
-        total_price += 20  # Add custom build charge
+    # Custom build charge
+    custom_build_price = 20 if data['custom_build'] else 0
+    itemized_prices['custom_build_price'] = custom_build_price
+    total_price += custom_build_price
 
+    # Final rounding and returning the result
     total_price = round(total_price)
+    itemized_prices['total_price'] = total_price
 
-    return jsonify({
-        'processor_price': processor_price,
-        'ram_price': ram_price,
-        'storage_price': total_storage_price,
-        'os_price': os_price,
-        'gpu_price': gpu_price,
-        'total_price': total_price
-    })
+    return jsonify(itemized_prices)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)

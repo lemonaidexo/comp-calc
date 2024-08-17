@@ -8,7 +8,7 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         storage.push({
             size: formData.getAll('storage_size')[i],
             kind: formData.getAll('storage_kind')[i],
-            unit: formData.getAll('storage_unit')[i] 
+            unit: formData.getAll('storage_unit')[i]
         });
     }
 
@@ -40,16 +40,35 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
     });
 
     const result = await response.json();
-    document.getElementById('result').innerHTML = `
-        <h4>Results:</h4>
-        <p>Processor Price: $${result.processor_price}</p>
-        <p>RAM Price: $${result.ram_price}</p>
-        <p>Storage Price: $${result.storage_price}</p>
-        <p>OS Price: $${result.os_price}</p>
-        <p>GPU Price: $${result.gpu_price}</p>
-        <h3>Total Price: $${result.total_price}</h3>
-    `;
+    let resultHTML = '<h4>Results:</h4>';
+    if (result.processor_price) resultHTML += `<p>Processor Price: $${result.processor_price}</p>`;
+    if (result.ram_price) resultHTML += `<p>RAM Price: $${result.ram_price}</p>`;
+    if (result.storage_price) resultHTML += `<p>Storage Price: $${result.storage_price}</p>`;
+    if (result.os_price) resultHTML += `<p>OS Price: $${result.os_price}</p>`;
+    if (result.gpu_price) resultHTML += `<p>GPU Price: $${result.gpu_price}</p>`;
+    
+    // Add laptop-specific prices if the computer is a laptop
+    if (data.is_laptop) {
+        if (result.laptop_base_price) resultHTML += `<p>Laptop Price: $${result.laptop_base_price}</p>`;
+        if (result.battery_discount) resultHTML += `<p>Battery Discount: $${result.battery_discount}</p>`;
+        if (result.large_screen_price) resultHTML += `<p>Large Screen Price: $${result.large_screen_price}</p>`;
+        if (result.touch_screen_price) resultHTML += `<p>Touch Screen Price: $${result.touch_screen_price}</p>`;
+    }
+
+    // Add desktop-specific prices if the computer is a desktop
+    if (!data.is_laptop) {
+        if (result.wifi_price) resultHTML += `<p>Wi-Fi Price: $${result.wifi_price}</p>`;
+        if (result.bluetooth_price) resultHTML += `<p>Bluetooth Price: $${result.bluetooth_price}</p>`;
+    }
+
+    if (result.ram_discount) resultHTML += `<p>RAM Discount: $${result.ram_discount}</p>`;
+    if (result.custom_build_price) resultHTML += `<p>Custom Build Price: $${result.custom_build_price}</p>`;
+
+    resultHTML += `<h3>Total Price: $${result.total_price}</h3>`;
+
+    document.getElementById('result').innerHTML = resultHTML;
 });
+
 
 function addStorage() {
     const container = document.getElementById('storage-container');
