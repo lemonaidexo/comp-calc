@@ -79,7 +79,7 @@ function addStorage() {
     storageItem.innerHTML = `
         <label>Storage Device</label>
         <div class="input-group mb-3">
-            <input type="number" class="form-control" name="storage_size" placeholder="e.g., 500" required>
+            <input type="number" class="form-control" name="storage_size" placeholder="e.g., 500" step="any" required>
             <select class="form-control" name="storage_unit" required>
                 <option value="GB">GB</option>
                 <option value="TB">TB</option>

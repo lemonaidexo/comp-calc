@@ -91,7 +91,7 @@ class Storage:
         """
         Parses the storage size and unit and converts it to GB.
         """
-        size = int(storage_size)
+        size = float(storage_size)
         unit = storage_unit.upper()
         if unit == 'TB':
             return size * 1000  # Convert TB to GB
