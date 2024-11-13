@@ -53,9 +53,9 @@ class Processor:
         Calculates the price for Intel processors based on core and generation.
         """
         price_map = {
-            'i3': {3: 25, 4: 40, 5: 40, 6: 55, 7: 55, 8: 90, 9: 90, 10: 130, 11: 130, 12: 0, 13: 0},
-            'i5': {3: 35, 4: 50, 5: 50, 6: 75, 7: 75, 8: 110, 9: 110, 10: 160, 11: 160, 12: 0, 13: 0},
-            'i7': {1: 25, 2: 45, 3: 45, 4: 65, 5: 65, 6: 100, 7: 100, 8: 130, 9: 130, 10: 200, 11: 200, 12: 0, 13: 0}
+            'i3': {5: 50, 6: 60, 7: 75, 8: 90, 9: 90, 10: 100, 11: 115, 12: 130},
+            'i5': {5: 55, 6: 65, 7: 80, 8: 110, 9: 115, 10: 130, 11: 160, 12: 185},
+            'i7': {5: 60, 6: 75, 7: 90, 8: 130, 9: 140, 10: 160, 11: 200, 12: 240}
         }
 
         core_prices = price_map.get(self.core.lower(), {})
@@ -74,7 +74,7 @@ class Ram:
         Calculates the price of the RAM based on its size.
         """
         if self.ram_size == 4:
-            return -10
+            return -5
         else:
             return (((self.ram_size - 8) / 4) * 5)
 
