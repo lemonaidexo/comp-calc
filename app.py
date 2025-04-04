@@ -126,12 +126,25 @@ class Graphics:
 
 
 @app.route('/')
-def index():
+def landing():
     """
-    Renders the index.html template.
+    Renders the landing.html template.
+    """
+    return render_template('landing.html')
+
+@app.route('/calculator')
+def calculator():
+    """
+    Renders the index.html template for the calculator.
     """
     return render_template('index.html')
 
+@app.route('/build-sheet')
+def build_sheet():
+    """
+    Renders a placeholder page for the build sheet.
+    """
+    return render_template('build_sheet.html')  # Create this template later
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
