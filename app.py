@@ -142,9 +142,11 @@ def calculator():
 @app.route('/build-sheet')
 def build_sheet():
     """
-    Renders the PC inputs page for creating build sheets.
+    Renders the PC inputs page with database context.
     """
-    return render_template('pc_inputs.html')
+    return render_template('inputs.html', 
+                         database='pc',
+                         database_title='PC Build Sheet')
 
 @app.route('/build-sheet/inputs')
 def build_sheet_inputs():
@@ -288,6 +290,16 @@ def calculate():
     itemized_prices['total_price'] = total_price
 
     return jsonify(itemized_prices)
+
+@app.route('/save', methods=['POST'])
+def save():
+    """
+    Handles form submission for saving the build sheet.
+    """
+    # Process the form data here
+    form_data = request.form
+    # Save the data to a database or perform other actions
+    return jsonify({"message": "Build sheet saved successfully!"})
 
 @app.errorhandler(500)
 def internal_error(error):
