@@ -1,0 +1,84 @@
+/* General label */
+
+@page { size: auto;  margin: 1mm; }
+
+#label {
+    height: 2100px;
+    margin-left: 10px;
+}
+
+#left-label, #right-label {
+    width: 400px;
+}
+
+/* Label header */
+
+#label-title {
+    padding: 15px;
+    text-align: center;
+}
+
+
+#fg-logo {
+    width: 80px;
+    margin-left: 15px;
+}
+
+.fg-info {
+    padding-top: 12px;
+    line-height: 3px;
+    color: black;
+}
+
+/* Label specifications */
+
+#sku-and-price {
+    margin-left: 30px;
+}
+
+.specs-box {
+    border: 1px solid black;
+    height: 830px;
+    width: 90%;
+    margin-left: 5%;
+    line-height: normal;
+}
+
+.right-specs-box {
+    height: 1000px;
+    margin-top: 20px;
+}
+
+.box {
+    border-bottom: 1px solid black;
+    padding: 2.5%;
+    padding-bottom: 0px;
+}
+
+#notes {
+    border-bottom: 0px;
+    font-size: small;
+}
+
+.header, .bold {
+    font-weight: bold;
+}
+
+.selected-value {
+    border: 3px solid black;
+    padding: 3px;
+    border-radius: 6px;
+}
+
+.deselected-value {
+    color: gray;
+}
+
+.multi-select {
+    line-height: 30px;
+    margin-top: -1%;
+}
+
+.right-align {
+    float: right;
+}
