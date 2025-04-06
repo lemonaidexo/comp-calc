@@ -1,0 +1,337 @@
+<div id="label">
+
+    <div id="left-label">
+
+        <div class="row" id="label-title">
+            <div class="col-3">
+                <img id="fg-logo" src="../static/images/freegeeklogo.jpg">
+            </div>
+            <div class="fg-info col-9">
+                <p class="bold">2537 25th Ave S</p>
+                <p class="bold">Minneapolis, MN 55406</p>
+                <p>612-223-5967</p>
+                <p>fgtc.us</p>
+            </div>
+        </div>
+
+
+        <div id="sku-and-price">
+            <h3>
+                <span class="header">SKU:</span>
+                <span class="lbl-text" id="lbl-sku"></span>
+            </h3>
+            <h3>
+                <span class="header">Price:</span>
+                $<span class="lbl-text" id="lbl-price"></span>
+            </h3>
+        </div>
+
+        <div class="specs-box">
+
+            <div class="box">
+                <h6 class="header">Manufacturer & Model #:</h6>
+                <p>
+                    <span class="lbl-text" id="lbl-manufacturer"></span>
+                    <span class="lbl-text" id="lbl-model-number"></span>
+                </p>
+            </div>
+
+            <div class="box">
+                <h6>
+                    <span class="header">Screen Diagonal:</span>
+                    <span class="lbl-text" blanks=7 id="lbl-diagonal-screen"></span>"
+                </h6>
+                <h6>
+                    <span id="header">Resolution:</span>
+                    <span class="lbl-text" blanks=9 id="lbl-resolution1"></span> x
+                    <span class="lbl-text" blanks=9 id="lbl-resolution2"></span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <h5>
+                    <span class="header">Year:</span>
+                    <span class="lbl-text" id="lbl-year"></span>
+                </h5>
+            </div>
+
+            <div class="box">
+                <h5>
+                    <span class="header">Operating System (OS):</span>
+                    <span class="lbl-text" id="lbl-OS"></span>
+                </h5>
+            </div>
+
+            <div class="box">
+                <h6 class="header">Storage:</h6>
+                <ul>
+                    <li id="lbl-ssd1-storage-iffilled">
+                        SSD:
+                        <span class="lbl-text empty-alt" id="lbl-ssd1-storage"></span>
+                        <span class="lbl-text" id="lbl-ssd1-storage-unit"></span>
+                        <span class="lbl-text" id="lbl-ssd1-type"></span>
+                    </li>
+                    <li id="lbl-ssd2-storage-iffilled">
+                        SSD:
+                        <span class="lbl-text empty-alt" id="lbl-ssd2-storage"></span>
+                        <span class="lbl-text" id="lbl-ssd2-storage-unit"></span>
+                        <span class="lbl-text" id="lbl-ssd2-type"></span>
+                    </li>
+                    <li id="lbl-hdd1-storage-iffilled">
+                        HDD:
+                        <span class="lbl-text empty-alt" id="lbl-hdd1-storage"></span>
+                        <span class="lbl-text" id="lbl-hdd1-storage-unit"></span>
+                    </li>
+                    <li id="lbl-hdd2-storage-iffilled">
+                        HDD:
+                        <span class="lbl-text empty-alt" id="lbl-hdd2-storage"></span>
+                        <span class="lbl-text" id="lbl-hdd2-storage-unit"></span>
+                    </li>
+                    <li id="lbl-ssd1-storage-ifempty"></li>
+                    <li id="lbl-ssd2-storage-ifempty"></li>
+                    <li id="lbl-hdd1-storage-ifempty"></li>
+                    <li id="lbl-hdd2-storage-ifempty"></li>
+                    </ol>
+            </div>
+
+            <div class="row" style="padding-left: 3%; padding-right: 3.5%">
+                <div class="box col-8" style="border-right: 1px solid black">
+                    <h6 class="header">Processor (CPU):</h6>
+                    <h6>
+                        <span class="lbl-text" blanks="7" id="lbl-cpu"></span>
+                    </h6>
+                </div>
+                <div class="box col-4">
+                    <h6 class="header">RAM (GB):</h6>
+                    <h6>
+                        <span class="lbl-text" blanks="5" id="lbl-ram"></span>
+                    </h6>
+                </div>
+            </div>
+
+            <div class="box">
+                <h6>
+                    <span class="header">Graphics (GPU):</span>
+                    <span class="lbl-text" id="lbl-gpu"></span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <h6 class="multi-select">
+                    <span class="header">WIFI ?</span>
+                    <span class="right-align">
+                        <span class="lbl-checkbox" id="lbl-wifi-yes">YES</span> /
+                        <span class="lbl-checkbox" id="lbl-wifi-no">NO</span>
+                    </span>
+                </h6>
+            </div>
+
+
+            <div class="box">
+                <h6 class="multi-select checkbox-from-dropdown" id="lbl-webcam">
+                    <span class="header">WEBCAM ?</span>
+                    <span class="right-align">
+                        <span class="lbl-checkbox"
+                            id="lbl-webcam-true">YES</span> /
+                        <span class="lbl-checkbox"
+                            id="lbl-webcam-false">NO</span>
+                    </span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <h6 class="multi-select checkbox-from-dropdown" id="lbl-microphone">
+                    <span class="header">MIC ?</span>
+                    <span class="right-align">
+                        <span class="lbl-checkbox"
+                            id="lbl-microphone-true">YES</span> /
+                        <span class="lbl-checkbox"
+                            id="lbl-microphone-false">NO</span>
+                    </span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <h6 class="multi-select">
+                    <span class="header">DISC READER ?</span>
+                    <span class="right-align">
+                        <span class="lbl-checkbox" id="lbl-disc-reader-yes">YES</span> /
+                        <span class="lbl-checkbox" id="lbl-disc-reader-no">NO</span>
+                    </span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <h6 class="multi-select">
+                    <span class="header">Monitor Connections:</span>
+                    <span class="lbl-checkbox" id="lbl-VGA">VGA</span>
+                    <span class="lbl-checkbox" id="lbl-DVI">DVI</span>
+                    <span class="lbl-checkbox" id="lbl-USBC">USB-C</span>
+                    <span class="lbl-checkbox" id="lbl-THUNDERBOLT">THUNDERBOLT</span>
+                    <span class="lbl-checkbox" id="lbl-HDMI">HDMI</span>
+                    <span class="lbl-checkbox" id="lbl-DP">DP</span>
+                    <span class="selected-value lbl-text empty-alt" id="lbl-other-video-output"></span>
+                    <span class="deselected-value" id="lbl-other-video-output-ifempty">Other</span>
+                </h6>
+            </div>
+
+            <div class="box" id="notes">
+                <span class="deselected-value">
+                    Battery Capacity (if applicable):
+                    <span class="lbl-text" blanks="8" id="lbl-battery-capacity"></span>%
+                </span>
+                <br>
+                <h9 class="header">Free Geek Twin Cities has a 30-Day hardware guarantee. See Back for more information.</h9>
+                <br>
+                <p class="lbl-text" id="lbl-notes"></p>
+            </div>
+
+        </div>
+
+    </div>
+    <div id="right-label">
+
+        <div class="specs-box right-specs-box">
+
+            <div class="box">
+                <h6>
+                    <span class="header">DEFAULT PASSWORD:</span>
+                </h6>
+                <h4>
+                    <span class="header">freegeek</span>
+                </h4>
+            </div>
+
+            <div class="box">
+                <h6>
+                    <span class="header">BIOS Setup Key: </span>
+                    <span class="lbl-text" id="lbl-bios"></span>
+                </h6>
+                <h6>
+                    <span class="header">Boot Menu Key: </span>
+                    <span class="lbl-text" id="lbl-boot-menu"></span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <p>CPU details:</p>
+                <h6>
+                    <span class="header">Base Speed:</span>
+                    <span class="lbl-text" blanks=1 id="lbl-base-speed"></span> GHz |
+                    <span class="header">Cores:</span>
+                    <span class="lbl-text" blanks=1 id="lbl-cores"></span> |
+                    <span class="header">Threads:</span>
+                    <span class="lbl-text" blanks=1 id="lbl-threads"></span>
+                </h6>
+                <h6>
+                    <span>Newest Supported Windows Version:</span>
+                    <span class="lbl-text" id="lbl-newest-windows-version"></span>
+                </h6>
+
+            </div>
+
+            <div class="box">
+                <p>RAM details:</p>
+                <h6>
+                    <span class="header">DDR:</span>
+                    <span class="lbl-text" blanks=5 id="lbl-ram-type"></span> |
+                    <span class="header">Clock Rate:</span>
+                    <span class="lbl-text" blanks=5 id="lbl-clock-rate"></span> MHz
+                </h6>
+                <h6>
+                    <span class="header">Slots used:</span>
+                    <span class="lbl-text" blanks=5 id="lbl-slots-used"></span> |
+                    <span class="header">Slots empty:</span>
+                    <span class="lbl-text" blanks=5 id="lbl-slots-empty"></span>
+                </h6>
+                <h6 class="multi-select checkbox-from-dropdown" id="lbl-ram-upgradable">
+                    <span class="header">Upgradable: </span>
+                    <span class="lbl-checkbox"
+                        id="lbl-ram-upgradable-true">YES</span> /
+                    <span class="lbl-checkbox"
+                        id="lbl-ram-upgradable-false">NO</span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <p>GPU details:</p>
+                <h6>
+                    Passmark Score:
+                    <span class="lbl-text" blanks=9 id="lbl-passmark-score"></span> | VRAM
+                    <span class="lbl-text" blanks=9 id="lbl-vram"></span> GB
+                </h6>
+            </div>
+
+            <div class="box">
+                <h6 class="multi-select">
+                    <span class="header">Wifi:</span>
+                    <span class="lbl-checkbox" id="lbl-802-bgn">802.11-bgn</span> /
+                    <span class="lbl-checkbox" id="lbl-dual-band">dual band</span> /
+                    <span class="lbl-checkbox" id="lbl-ax">ax</span> /
+                    <span class="lbl-checkbox" id="lbl-ac">ac</span> /
+                    <span class="lbl-checkbox" id="lbl-none-wireless">None</span>
+                </h6>
+
+                <h6 class="multi-select">
+                    <span class="header">Wired:</span>
+                    <span class="lbl-checkbox" id="lbl-10-100">10/100</span> /
+                    <span class="lbl-checkbox" id="lbl-gigabit">Gigabit</span> /
+                    <span class="lbl-checkbox" id="lbl-25-GbE">2.5+GbE</span> /
+                    <span class="lbl-checkbox" id="lbl-none-wired">None</span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <h6 class="header">Disc Reader (Optic Drive):</h6>
+                <h6 class="multi-select">
+                    <span class="lbl-checkbox" id="lbl-dvd">DVD</span> /
+                    <span class="lbl-checkbox" id="lbl-blu-ray">Blu-Ray</span> /
+                    <span class="lbl-checkbox" id="lbl-none-optical-drive">None</span> /
+                    <span class="selected-value lbl-text empty-alt" id="lbl-other-disc-reader"></span>
+                    <span class="deselected-value" id="lbl-other-disc-reader-ifempty">Other</span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <h6 class="header">Card Reader:</h6>
+                <h6 class="multi-select">
+                    <span class="lbl-checkbox" id="lbl-card-reader-sd">SD</span> /
+                    <span class="lbl-checkbox" id="lbl-card-reader-microsd">Micro SD</span> /
+                    <span class="lbl-checkbox" id="lbl-card-reader-none">None</span> /
+                    <span class="selected-value  lbl-text empty-alt" id="lbl-other-card-reader"></span>
+                    <span class="deselected-value" id="lbl-other-card-reader-ifempty">Other</span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <h6 class="multi-select checkbox-from-dropdown" id="lbl-bluetooth">
+                    <span class="header">BLUETOOTH?</span>
+                    <span class="right-align">
+                        <span class="lbl-checkbox"
+                            id="lbl-bluetooth-true">YES</span> /
+                        <span class="lbl-checkbox"
+                            id="lbl-bluetooth-false">NO</span>
+                    </span>
+                </h6>
+            </div>
+
+            <div class="box">
+                <h6 class="header">Power Adapter Wattage:</h6>
+                <p>
+                    <span class="lbl-text" id="lbl-wattage-adapter"></span>
+                    W
+                </p>
+            </div>
+
+            <div class="box" id="notes">
+                <h7 style="height: 400px;" class="header">Any hardware issues that are not specified on this sheet are covered within 30 days of your purchase under our Hardware Guarantee policy.
+                     To be eligible for our hardware guarantee, you must present your receipt of purchase and this build sheet so that we can properly diagnose the machine.</h6>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<script src="../static/label.js"></script>
+<script src="../static/pc_label.js"></script>

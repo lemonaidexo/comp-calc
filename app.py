@@ -1,6 +1,6 @@
 import re
 
-from flask import Flask, request, render_template, jsonify  # type: ignore
+from flask import Flask, request, render_template, jsonify, redirect, url_for
 
 app = Flask(__name__)
 
@@ -142,9 +142,30 @@ def calculator():
 @app.route('/build-sheet')
 def build_sheet():
     """
-    Renders a placeholder page for the build sheet.
+    Renders the PC inputs page for creating build sheets.
     """
-    return render_template('build_sheet.html')  # Create this template later
+    return render_template('pc_inputs.html')
+
+@app.route('/build-sheet/inputs')
+def build_sheet_inputs():
+    """
+    Renders the inputs page for the build sheet.
+    """
+    return render_template('inputs.html')
+
+@app.route('/build-sheet/results')
+def build_sheet_results():
+    """
+    Renders the results page for the build sheet.
+    """
+    return render_template('results.html')
+
+@app.route('/build-sheet/print')
+def build_sheet_print():
+    """
+    Renders the print page for the build sheet.
+    """
+    return render_template('print.html')
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
@@ -267,6 +288,13 @@ def calculate():
     itemized_prices['total_price'] = total_price
 
     return jsonify(itemized_prices)
+
+@app.errorhandler(500)
+def internal_error(error):
+    """
+    Handles 500 internal server errors.
+    """
+    return render_template('error_500.html'), 500
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5001)

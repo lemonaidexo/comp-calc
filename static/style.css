@@ -1,3 +1,11 @@
+/* Import Build Sheet styles */
+@import 'home.css';
+@import 'inputs.css';
+@import 'results.css';
+@import 'print.css';
+@import 'error_500.css';
+@import 'label.css';
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f5f5f5;
@@ -82,4 +90,32 @@ button:hover {
 
 .button-container .btn:hover {
     opacity: 0.9;
+}
+
+a.btn {
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.form-section {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.form-section h3 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+@media print {
+    .btn {
+        display: none;
+    }
 }

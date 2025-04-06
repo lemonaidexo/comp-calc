@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Label for {{ database_title }}</title>
+    
+    <link rel="stylesheet" type="text/css" href="../static/inputs.css">
+    </link>
+    <link rel="stylesheet" type="text/css" href="../static/label.css">
+    </link>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="row" id="back-and-home-buttons">
+        <button id="home-button" class="btn btn-primary" type="button" onclick="redirectToHome()">Home</button>
+        <span id="back-button">
+            <button class="btn btn-danger"  onclick="window.history.back()" type="button">Back</button>
+        </span>
+    </div>
+
+    <div class="row">
+        <div class="col-7" id="left-side-column">
+            <div id="left-side-inputs">
+                <form id="input-form" action="{{ url_for('save') }}" method="post" target="_blank">
+                    <input hidden value="{{database}}" name="database" />
+
+                    <!-- TODO: FIX!!! -->
+                    <div style="height:80px;">
+                        <h2>{{ database_title }}</h2>
+
+                        <div style="position:relative; bottom: 55px;" id="help-button-div" class="right-align">
+                            <button id="help-button" type="button" data-bs-toggle="modal"
+                                data-bs-target="#question-modal">?</button>
+                        </div>
+                        <br>
+                    </div>
+
+                    {% include ("forms/" + database + "_inputs.html") %}
+
+                    <div class="row" id="back-and-submit-buttons">
+                        <div class="col-6" id="bottom-back-button-div">
+                            <button style="width: 150px;" class="btn btn-lg btn-danger" onclick="window.history.back()" type="button" id="bottom-back-button">Back</button>
+                        </div>
+                        <div class="col-6" id="submit-button-div">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-primary btn-lg fields-submit" id="submit-button">Submit</button>
+                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="submit-drop-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item fields-submit" id="submit-print">Print</a>
+                                    <a class="dropdown-item fields-submit" id="submit-db">Log to Database</a>
+                                    <a class="dropdown-item fields-submit" id="submit-both">Print & Log</a>
+                                </div>
+                                <input hidden name="submit-type" id="submit-type" />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <div class="col-4" id="right-side-inputs">
+            {% include ("labels/" + database + '_label.html') %}
+        </div>
+    </div>
+
+    <div class="modal fade" id="question-modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        This page is for entering label infromation on the current item you're pricing. Most of the
+                        fields you see will directly update the label on the right half
+                        of the screen. Upon completion, this form will prompt you to save the filled out label and save
+                        it to a database.
+                    </p>
+                    <p>
+                        Key Notes:
+                    </p>
+                    <p>
+                        *: An asterisk next to an input field means this data is important for logging/database purposes
+                        but won't be shown on the label.
+                    </p>
+                    <p>
+                        Submit: On clicking submit, all the current values are saved into the database and you are
+                        prompted to save the label.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/inputs.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

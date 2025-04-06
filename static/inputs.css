@@ -1,0 +1,203 @@
+body:before {
+    content:"";
+	position:fixed;
+	left:0;
+	top:0;
+	right:0;
+	bottom:0;
+	z-index:-1;
+	display:block;
+	background: rgb(242, 242, 242);
+	background-size:cover;
+}
+
+table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#help-button-div{
+    text-align: right;
+    margin-top: 2%;
+    border-radius: 200px
+}
+#help-button{
+    border-radius: 150px;
+}
+
+#back-button{
+    text-align: left;
+    margin-left: 1%;
+    width: auto;
+}
+
+#back-and-home-buttons {
+    text-align: left;
+    margin-left: 2%;
+    margin-top: 20px;
+}
+
+#home-button {
+    width: auto;
+    background-color: #3498db;
+}
+
+/* Hover effect */
+#home-button:hover {
+    background-color: #2980b9;
+}
+
+#top-header{
+    font-family: 'Short Stack',;
+    font-weight: bold;
+    margin-top: -4%;
+}
+.headers{
+    font-family: 'Short Stack',;
+    font-weight: bold;   
+}
+
+#right-title {
+    height: 5%;
+    margin-top: 2vh;
+    margin-left: 2vw;
+}
+
+#results-title {
+    margin-top: 1.5vh;
+    margin-left: 2vw;
+}
+
+#left-column {
+    height: 100%;
+    border-right: 1px solid black;
+    padding: 0%;
+}
+
+#right-column {
+    height: 100%
+}
+
+.search-parameter {
+    padding: 0%;
+    text-align: left;
+    /* line-height: */
+}
+
+.search-parameter input{
+    margin-right: 3%;
+    margin-bottom: 20px;
+    border-radius: 4px;
+
+}
+
+.search-parameter label:not(:last-child) {
+    margin-bottom: 20px; /* Adjust the value as needed */
+} 
+
+
+.search-parameter input[type="checkbox"] {
+    padding: 0;
+    margin-left: -20px;
+    width: 60px;
+    height: 20px;
+    position: relative;
+    top: 4px;
+}
+
+.checkbox-header-inline{
+    font-weight: bold;
+    /* margin-right: 3%; */
+}
+
+#back-and-submit-buttons{
+    margin-top: 3%;
+}
+
+#submit-button-div {
+    text-align: right;
+}
+
+#bottom-back-button-div{
+    text-align: left;
+}
+
+#bottom-back-button {
+    width: 150px;
+}
+
+#submit-button {
+    width: 120px;
+}
+
+#submit-drop-toggle {
+    width: 30px;
+}
+
+#free-geek-info {
+    height: 78%;
+}
+
+.short-label-input{
+    width: 70px;
+}
+.long-label-input{
+    width: 150px;
+}
+#left-side-inputs{
+    background-color: rgba(163, 191, 212, 0.492);
+    border-radius: 5px;
+    padding: 2%;
+}
+
+#left-side-column {
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 2%;
+}
+
+#right-side-inputs {
+    /* background-color: rgb(49, 72, 90); */
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left:2%;
+}
+
+#label {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    width: 400px;
+}
+
+select {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.adjust-right {
+    margin-right: 3%;
+}
