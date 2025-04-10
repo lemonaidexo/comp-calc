@@ -67,6 +67,28 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
     resultHTML += `<h3>Total Price: $${result.total_price}</h3>`;
 
     document.getElementById('result').innerHTML = resultHTML;
+    document.getElementById('transferToBuildSheet').style.display = 'inline-block';
+
+    // Add event listener for transfer button
+    document.getElementById('transferToBuildSheet').addEventListener('click', function() {
+        const formData = new FormData(document.getElementById('priceCalcForm'));
+        const calculatorData = {
+            price: result.total_price,
+            manufacturer: formData.get('kind') === 'intel' ? 'Intel' : 'AMD',
+            model: formData.get('model'),
+            ram: formData.get('ram_size'),
+            os: formData.get('os'),
+            storage: formData.getAll('storage_size'),
+            storage_type: formData.getAll('storage_kind'),
+            is_laptop: formData.get('is_laptop') === 'yes'
+        };
+        
+        // Store data in sessionStorage
+        sessionStorage.setItem('calculatorData', JSON.stringify(calculatorData));
+        
+        // Redirect to build sheet page
+        window.location.href = '/build-sheet';
+    });
 });
 
 

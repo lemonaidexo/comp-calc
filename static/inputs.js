@@ -73,3 +73,34 @@ $("#input-form").on("submit", function(event) {
 function redirectToHome() {
     window.location.href = 'http://localhost:3421'
   }
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Check for calculator data
+    const calculatorData = sessionStorage.getItem('calculatorData');
+    if (calculatorData) {
+        const data = JSON.parse(calculatorData);
+        
+        // Populate form fields
+        document.getElementById('price').value = data.price;
+        document.getElementById('manufacturer').value = data.manufacturer;
+        document.getElementById('model-number').value = data.model;
+        
+        // Handle storage devices
+        if (data.storage && data.storage.length > 0) {
+            document.getElementById('ssd1-storage').value = data.storage[0];
+            if (data.storage_type && data.storage_type[0]) {
+                document.getElementById('ssd1-type').value = data.storage_type[0];
+            }
+            
+            if (data.storage.length > 1) {
+                document.getElementById('ssd2-storage').value = data.storage[1];
+                if (data.storage_type && data.storage_type[1]) {
+                    document.getElementById('ssd2-type').value = data.storage_type[1];
+                }
+            }
+        }
+        
+        // Clear the stored data after using it
+        sessionStorage.removeItem('calculatorData');
+    }
+});
