@@ -61,6 +61,15 @@ $(".fields-submit").click(function() {
     
 });
 
+// Replace the existing submit handler with this simpler version
+$("#input-form").on("submit", function(event) {
+    if (confirm("Are you sure you want to print this build sheet?")) {
+        return true;
+    }
+    event.preventDefault();
+    return false;
+});
+
 function redirectToHome() {
     window.location.href = 'http://localhost:3421'
   }

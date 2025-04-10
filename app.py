@@ -160,11 +160,16 @@ def build_sheet_results():
     """
     return render_template('results.html')
 
-@app.route('/build-sheet/print')
+@app.route('/build-sheet/print', methods=['GET', 'POST'])
 def build_sheet_print():
     """
-    Renders the print page for the build sheet.
+    Renders the print page for the build sheet with form data.
     """
+    if request.method == 'POST':
+        form_data = request.form
+        return render_template('print.html', 
+                             database='pc',
+                             results=form_data)
     return render_template('print.html')
 
 @app.route('/calculate', methods=['POST'])

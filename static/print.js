@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    updateAllLabelValues(results);
-    /* Automatically opens a print pop-up */
-    window.print();
+    if (Object.keys(results).length > 0) {
+        updateAllLabelValues(results);
+        window.print();
+    }
 });

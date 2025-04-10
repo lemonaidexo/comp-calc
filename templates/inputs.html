@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-7" id="left-side-column">
             <div id="left-side-inputs">
-                <form id="input-form" action="{{ url_for('save') }}" method="post" target="_blank">
+                <form id="input-form" action="{{ url_for('build_sheet_print') }}" method="post" target="_blank">
                     <div style="height:80px;">
                         <h2>PC Build Sheet</h2>
 
@@ -39,21 +39,11 @@
 
                     <div class="row" id="back-and-submit-buttons">
                         <div class="col-6" id="bottom-back-button-div">
-                            <button style="width: 150px;" class="btn btn-lg btn-danger" onclick="window.history.back()" type="button" id="bottom-back-button">Back</button>
+                            <a href="/" class="btn btn-lg btn-danger" style="width: 150px;">Back to Home</a>
                         </div>
                         <div class="col-6" id="submit-button-div">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary btn-lg fields-submit" id="submit-button">Submit</button>
-                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="submit-drop-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item fields-submit" id="submit-print">Print</a>
-                                    <a class="dropdown-item fields-submit" id="submit-db">Log to Database</a>
-                                    <a class="dropdown-item fields-submit" id="submit-both">Print & Log</a>
-                                </div>
-                                <input hidden name="submit-type" id="submit-type" />
-                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg" id="submit-button">Print</button>
+                            <input hidden name="submit-type" id="submit-type" value="print" />
                         </div>
                     </div>
 
