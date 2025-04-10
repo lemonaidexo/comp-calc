@@ -135,9 +135,9 @@ def landing():
 @app.route('/calculator')
 def calculator():
     """
-    Renders the index.html template for the calculator.
+    Renders the calculator.html template for the calculator.
     """
-    return render_template('index.html')
+    return render_template('calculator.html')
 
 @app.route('/build-sheet')
 def build_sheet():
