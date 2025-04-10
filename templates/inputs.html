@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Label for {{ database_title }}</title>
+    <title>PC Build Sheet</title>
     
     <link rel="stylesheet" type="text/css" href="../static/inputs.css">
     </link>
@@ -28,11 +28,8 @@
         <div class="col-7" id="left-side-column">
             <div id="left-side-inputs">
                 <form id="input-form" action="{{ url_for('save') }}" method="post" target="_blank">
-                    <input hidden value="{{database}}" name="database" />
-
-                    <!-- TODO: FIX!!! -->
                     <div style="height:80px;">
-                        <h2>{{ database_title }}</h2>
+                        <h2>PC Build Sheet</h2>
 
                         <div style="position:relative; bottom: 55px;" id="help-button-div" class="right-align">
                             <button id="help-button" type="button" data-bs-toggle="modal"
@@ -41,7 +38,7 @@
                         <br>
                     </div>
 
-                    {% include ("forms/" + database + "_inputs.html") %}
+                    {% include "forms/pc_inputs.html" %}
 
                     <div class="row" id="back-and-submit-buttons">
                         <div class="col-6" id="bottom-back-button-div">
@@ -68,7 +65,7 @@
         </div>
 
         <div class="col-4" id="right-side-inputs">
-            {% include ("labels/" + database + '_label.html') %}
+            {% include "labels/pc_label.html" %}
         </div>
     </div>
 

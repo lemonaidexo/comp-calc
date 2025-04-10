@@ -142,11 +142,9 @@ def calculator():
 @app.route('/build-sheet')
 def build_sheet():
     """
-    Renders the PC inputs page with database context.
+    Renders the PC inputs page without database context.
     """
-    return render_template('inputs.html', 
-                         database='pc',
-                         database_title='PC Build Sheet')
+    return render_template('inputs.html')
 
 @app.route('/build-sheet/inputs')
 def build_sheet_inputs():
