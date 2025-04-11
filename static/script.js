@@ -77,15 +77,50 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             'windows10': 'Windows 10',
             'linux': 'Linux Mint'
         };
+
+        const storage = [];
+
+        // Get all storage devices
+        const sizes = formData.getAll('storage_size');
+        const kinds = formData.getAll('storage_kind');
+        const units = formData.getAll('storage_unit');
+        
+        // Group storage devices by type
+        const ssdDevices = [];
+        const hddDevices = [];
+
+        for (let i = 0; i < sizes.length; i++) {
+            const device = {
+                size: sizes[i],
+                kind: kinds[i],
+                unit: units[i]
+            };
+            
+            if (kinds[i].toLowerCase() === 'hdd') {
+                hddDevices.push(device);
+            } else {
+                ssdDevices.push(device);
+            }
+        }
+
         
         const calculatorData = {
             price: result.total_price,
             manufacturer: formData.get('kind') === 'intel' ? 'Intel' : 'AMD',
             model: formData.get('model'),
             ram: formData.get('ram_size'),
-            OS: osMapping[formData.get('os')] || formData.get('os'), // Use mapped OS name
-            storage: formData.getAll('storage_size'),
-            storage_type: formData.getAll('storage_kind'),
+            OS: osMapping[formData.get('os')] || formData.get('os'),
+            // Storage data
+            ssd1_storage: ssdDevices[0]?.size || '',
+            ssd1_storage_unit: ssdDevices[0]?.unit || 'GB',
+            ssd1_type: ssdDevices[0]?.kind === 'NvME' ? 'NVMe' : 'SATA',
+            ssd2_storage: ssdDevices[1]?.size || '',
+            ssd2_storage_unit: ssdDevices[1]?.unit || 'GB',
+            ssd2_type: ssdDevices[1]?.kind === 'NvME' ? 'NVMe' : 'SATA',
+            hdd1_storage: hddDevices[0]?.size || '',
+            hdd1_storage_unit: hddDevices[0]?.unit || 'GB',
+            hdd2_storage: hddDevices[1]?.size || '',
+            hdd2_storage_unit: hddDevices[1]?.unit || 'GB',
             is_laptop: formData.get('is_laptop') === 'yes'
         };
         

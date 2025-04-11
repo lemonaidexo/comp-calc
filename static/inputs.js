@@ -75,7 +75,6 @@ function redirectToHome() {
   }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Check for calculator data
     const calculatorData = sessionStorage.getItem('calculatorData');
     if (calculatorData) {
         const data = JSON.parse(calculatorData);
@@ -85,21 +84,29 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('manufacturer').value = data.manufacturer;
         document.getElementById('model-number').value = data.model;
         document.getElementById('ram').value = data.ram;
-        document.getElementById('OS').value = data.OS; 
+        document.getElementById('OS').value = data.OS;
         
-        // Handle storage devices
-        if (data.storage && data.storage.length > 0) {
-            document.getElementById('ssd1-storage').value = data.storage[0];
-            if (data.storage_type && data.storage_type[0]) {
-                document.getElementById('ssd1-type').value = data.storage_type[0];
-            }
-            
-            if (data.storage.length > 1) {
-                document.getElementById('ssd2-storage').value = data.storage[1];
-                if (data.storage_type && data.storage_type[1]) {
-                    document.getElementById('ssd2-type').value = data.storage_type[1];
-                }
-            }
+        // Populate storage devices
+        if (data.ssd1_storage) {
+            document.getElementById('ssd1-storage').value = data.ssd1_storage;
+            document.getElementById('ssd1-storage-unit').value = data.ssd1_storage_unit;
+            document.getElementById('ssd1-type').value = data.ssd1_type;
+        }
+        
+        if (data.ssd2_storage) {
+            document.getElementById('ssd2-storage').value = data.ssd2_storage;
+            document.getElementById('ssd2-storage-unit').value = data.ssd2_storage_unit;
+            document.getElementById('ssd2-type').value = data.ssd2_type;
+        }
+        
+        if (data.hdd1_storage) {
+            document.getElementById('hdd1-storage').value = data.hdd1_storage;
+            document.getElementById('hdd1-storage-unit').value = data.hdd1_storage_unit;
+        }
+        
+        if (data.hdd2_storage) {
+            document.getElementById('hdd2-storage').value = data.hdd2_storage;
+            document.getElementById('hdd2-storage-unit').value = data.hdd2_storage_unit;
         }
         
         // Clear the stored data after using it
