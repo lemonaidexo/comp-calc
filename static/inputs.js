@@ -81,9 +81,17 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Populate form fields
         document.getElementById('price').value = data.price;
-        document.getElementById('cpu').value = data.cpu;  // Use the combined CPU info
+        document.getElementById('cpu').value = data.cpu;
         document.getElementById('ram').value = data.ram;
         document.getElementById('OS').value = data.OS;
+        
+        // Add battery capacity and screen size
+        if (data.battery_capacity) {
+            document.getElementById('battery-capacity').value = data.battery_capacity;
+        }
+        if (data.diagonal_screen) {
+            document.getElementById('diagonal-screen').value = data.diagonal_screen;
+        }
         
         // Populate storage devices
         if (data.ssd1_storage) {

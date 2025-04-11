@@ -121,7 +121,10 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             hdd1_storage_unit: hddDevices[0]?.unit || 'GB',
             hdd2_storage: hddDevices[1]?.size || '',
             hdd2_storage_unit: hddDevices[1]?.unit || 'GB',
-            is_laptop: formData.get('is_laptop') === 'yes'
+            is_laptop: formData.get('is_laptop') === 'yes',
+            // Add battery and screen info for laptops
+            battery_capacity: formData.get('is_laptop') === 'yes' ? formData.get('battery_capacity') : '',
+            diagonal_screen: formData.get('screen_size') || '15.6'
         };
         
         // Store data in sessionStorage
