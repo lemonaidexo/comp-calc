@@ -72,12 +72,18 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
     // Add event listener for transfer button
     document.getElementById('transferToBuildSheet').addEventListener('click', function() {
         const formData = new FormData(document.getElementById('priceCalcForm'));
+        const osMapping = {
+            'windows11': 'Windows 11',
+            'windows10': 'Windows 10',
+            'linux': 'Linux Mint'
+        };
+        
         const calculatorData = {
             price: result.total_price,
             manufacturer: formData.get('kind') === 'intel' ? 'Intel' : 'AMD',
             model: formData.get('model'),
             ram: formData.get('ram_size'),
-            os: formData.get('os'),
+            OS: osMapping[formData.get('os')] || formData.get('os'), // Use mapped OS name
             storage: formData.getAll('storage_size'),
             storage_type: formData.getAll('storage_kind'),
             is_laptop: formData.get('is_laptop') === 'yes'
