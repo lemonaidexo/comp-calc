@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('price').value = data.price;
         document.getElementById('manufacturer').value = data.manufacturer;
         document.getElementById('model-number').value = data.model;
+        document.getElementById('ram').value = data.ram;
+        document.getElementById('os').value = data.os;
         
         // Handle storage devices
         if (data.storage && data.storage.length > 0) {
