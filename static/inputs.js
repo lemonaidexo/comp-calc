@@ -81,8 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Populate form fields
         document.getElementById('price').value = data.price;
-        document.getElementById('manufacturer').value = data.manufacturer;
-        document.getElementById('model-number').value = data.model;
+        document.getElementById('cpu').value = data.cpu;  // Use the combined CPU info
         document.getElementById('ram').value = data.ram;
         document.getElementById('OS').value = data.OS;
         

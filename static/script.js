@@ -106,8 +106,8 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         
         const calculatorData = {
             price: result.total_price,
-            manufacturer: formData.get('kind') === 'intel' ? 'Intel' : 'AMD',
-            model: formData.get('model'),
+            // Replace manufacturer and model with combined CPU info
+            cpu: `${formData.get('kind') === 'intel' ? 'Intel' : 'AMD'} ${formData.get('model')}`,
             ram: formData.get('ram_size'),
             OS: osMapping[formData.get('os')] || formData.get('os'),
             // Storage data
