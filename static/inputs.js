@@ -116,6 +116,28 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('hdd2-storage-unit').value = data.hdd2_storage_unit;
         }
         
+        // Handle WiFi kind checkboxes
+        if (data.wifi_kind) {
+            // Uncheck all WiFi options first
+            document.querySelectorAll('[name^="802-bgn"], [name^="dual-band"], [name^="ax"], [name^="ac"], [name^="none-wireless"]')
+                .forEach(checkbox => checkbox.checked = false);
+            
+            // Map the WiFi kinds to their corresponding checkbox IDs
+            const wifiMapping = {
+                '802.11-bgn': '802-bgn',
+                'Dual Band': 'dual-band',
+                'ac': 'ac',
+                'ax': 'ax',
+                'none': 'none-wireless'
+            };
+            
+            // Check the appropriate WiFi option
+            const checkboxId = wifiMapping[data.wifi_kind];
+            if (checkboxId) {
+                document.getElementById(checkboxId).checked = true;
+            }
+        }
+        
         // Clear the stored data after using it
         sessionStorage.removeItem('calculatorData');
     }

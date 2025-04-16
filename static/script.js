@@ -78,6 +78,14 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             'linux': 'Linux Mint'
         };
 
+        const wifiKindMapping = {
+            '802.11-bgn': '802-bgn',
+            'Dual Band': 'dual-band',
+            'ac': 'ac',
+            'ax': 'ax',
+            'none': 'none-wireless'
+        };
+
         const storage = [];
 
         // Get all storage devices
@@ -124,7 +132,9 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             is_laptop: formData.get('is_laptop') === 'yes',
             // Add battery and screen info for laptops
             battery_capacity: formData.get('is_laptop') === 'yes' ? formData.get('battery_capacity') : '',
-            diagonal_screen: formData.get('screen_size') || '15.6'
+            diagonal_screen: formData.get('screen_size') || '15.6',
+            // Fix WiFi kind mapping by passing the value directly
+            wifi_kind: formData.get('wifi_kind')
         };
         
         // Store data in sessionStorage
