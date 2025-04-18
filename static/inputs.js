@@ -39,29 +39,7 @@ $(".has-other-option").on("change", function() {
     }
 });
 
-$(".fields-submit").click(function() {
-    var button_id = $(this).attr("id");
-    if (button_id == "submit-button" || button_id == "submit-both") {
-        if (confirm("Are you sure you want to submit? This build will be added to the database and you will be taken to a page where you can print the label.")) {
-            $("#submit-type").val("both");
-            $("#input-form").submit();
-        }
-    } else if (button_id == "submit-print") {
-        if (confirm("Are you sure you want to submit? You will be taken to a page where you can print the label.")) {
-            $("#submit-type").val("print");
-            $("#input-form").submit();
-        }
-    } else {
-        if (confirm("Are you sure you want to submit? This build will be added to the database and you will be sent to the home page.")) {
-            $("#submit-type").val("db");
-            $("#input-form").attr("target", "_self");
-            $("#input-form").submit();
-        }
-    }
-    
-});
-
-// Replace the existing submit handler with this simpler version
+// Keep only this simpler version
 $("#input-form").on("submit", function(event) {
     if (confirm("Are you sure you want to print this build sheet?")) {
         return true;

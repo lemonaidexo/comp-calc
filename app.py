@@ -167,9 +167,7 @@ def build_sheet_print():
     """
     if request.method == 'POST':
         form_data = request.form
-        return render_template('print.html', 
-                             database='pc',
-                             results=form_data)
+        return render_template('print.html', results=form_data)  # Remove 'database' parameter
     return render_template('print.html')
 
 @app.route('/calculate', methods=['POST'])
@@ -234,7 +232,7 @@ def calculate():
 
         # Fix screen size pricing
         try:
-            screen_size = float(data.get('screen_size', '15.6').strip())  # Add strip() to clean the input
+            screen_size = float(data.get('screen_size', '15.6').strip())
             print(f"Raw screen size input: {data.get('screen_size')}")  # Debug print
             large_screen_price = 15 if float(screen_size) > 15.6 else 0
             print(f"Screen size after conversion: {screen_size}, Price added: {large_screen_price}")  # Debug print
@@ -301,16 +299,6 @@ def calculate():
     itemized_prices['total_price'] = total_price
 
     return jsonify(itemized_prices)
-
-@app.route('/save', methods=['POST'])
-def save():
-    """
-    Handles form submission for saving the build sheet.
-    """
-    # Process the form data here
-    form_data = request.form
-    # Save the data to a database or perform other actions
-    return jsonify({"message": "Build sheet saved successfully!"})
 
 @app.errorhandler(500)
 def internal_error(error):
