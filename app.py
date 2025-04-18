@@ -232,11 +232,18 @@ def calculate():
         elif battery_capacity < 90:
             battery_discount = -5
 
-        # Use screen size value for large screen determination
-        screen_size = float(data.get('screen_size', 15.6))
-        large_screen_price = 15 if screen_size > 15.6 else 0
+        # Fix screen size pricing
+        try:
+            screen_size = float(data.get('screen_size', '15.6').strip())  # Add strip() to clean the input
+            print(f"Raw screen size input: {data.get('screen_size')}")  # Debug print
+            large_screen_price = 15 if float(screen_size) > 15.6 else 0
+            print(f"Screen size after conversion: {screen_size}, Price added: {large_screen_price}")  # Debug print
+        except (ValueError, TypeError) as e:
+            print(f"Error processing screen size: {e}")  # Debug print
+            screen_size = 15.6
+            large_screen_price = 0
 
-        has_touch_screen = data['has_touch_screen']
+        has_touch_screen = data['has_touch_screen'] == 'yes'  # Fix touch screen check
         touch_screen_price = 15 if has_touch_screen else 0
 
         itemized_prices.update({

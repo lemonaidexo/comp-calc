@@ -19,6 +19,7 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         ram_size: parseFloat(formData.get('ram_size')),
         os: formData.get('os'),
         storage: storage,
+        screen_size: formData.get('screen_size') || '15.6',  // Make sure this field is being sent
         is_laptop: formData.get('is_laptop') === 'yes',
         battery_capacity: parseFloat(formData.get('battery_capacity') || 0),
         has_large_screen: formData.get('has_large_screen') === 'yes',
