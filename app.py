@@ -146,20 +146,6 @@ def build_sheet():
     """
     return render_template('inputs.html')
 
-@app.route('/build-sheet/inputs')
-def build_sheet_inputs():
-    """
-    Renders the inputs page for the build sheet.
-    """
-    return render_template('inputs.html')
-
-@app.route('/build-sheet/results')
-def build_sheet_results():
-    """
-    Renders the results page for the build sheet.
-    """
-    return render_template('results.html')
-
 @app.route('/build-sheet/print', methods=['GET', 'POST'])
 def build_sheet_print():
     """
