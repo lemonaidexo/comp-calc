@@ -177,10 +177,14 @@ def calculate():
     ram = Ram(ram_size)
     ram_price = ram.ram_price()
 
+    # Calculate storage prices
     total_storage_price = 0
+    storage_prices = []
     for storage in storage_details:
         storage_obj = Storage(storage['size'], storage['unit'], storage['kind'])
-        total_storage_price += storage_obj.storage_price()
+        storage_price = storage_obj.storage_price()
+        storage_prices.append(storage_price)
+        total_storage_price += storage_price
 
     def operating_system():
         """
@@ -197,6 +201,7 @@ def calculate():
         'processor_price': processor_price,
         'ram_price': ram_price,
         'storage_price': total_storage_price,
+        'storage_prices': storage_prices,  # Add individual storage prices
         'os_price': os_price,
     }
 

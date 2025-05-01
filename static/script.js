@@ -41,30 +41,57 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
     });
 
     const result = await response.json();
-    let resultHTML = '<h4>Results:</h4>';
-    if (result.processor_price) resultHTML += `<p>Processor Price: $${result.processor_price}</p>`;
-    if (result.ram_price) resultHTML += `<p>RAM Price: $${result.ram_price}</p>`;
-    if (result.storage_price) resultHTML += `<p>Storage Price: $${result.storage_price}</p>`;
-    if (result.os_price) resultHTML += `<p>OS Price: $${result.os_price}</p>`;
-    if (result.gpu_price) resultHTML += `<p>GPU Price: $${result.gpu_price}</p>`;
-    
-    // Add laptop-specific prices if the computer is a laptop
+    let resultHTML = data.is_laptop ? '<h4>Laptop:</h4>' : '<h4>Desktop:</h4>';
+
+    // Helper function to format storage prices
+    const formatStoragePrices = (storage, result) => {
+        let storageHTML = '<div style="margin-left: 20px;">';
+        let totalStoragePrice = 0;
+        
+        // Make sure storage_prices array exists in the result
+        const storagePrices = result.storage_prices || [];
+        
+        storage.forEach((drive, index) => {
+            // Get the specific price for this drive from the array
+            const price = storagePrices[index] || 0;
+            totalStoragePrice += price;
+            storageHTML += `<p>Drive ${index + 1} (${drive.size}${drive.unit} ${drive.kind}): $${price}</p>`;
+        });
+        
+        storageHTML += `<p><strong>Total Storage Price: $${totalStoragePrice}</strong></p>`;
+        storageHTML += '</div>';
+        return storageHTML;
+    };
+
+    // Common components
+    resultHTML += `<p>Processor (${data.kind} ${data.model}): $${result.processor_price || 0}</p>`;
+    resultHTML += `<p>RAM (${data.ram_size}GB): $${result.ram_price || 0}</p>`;
+    resultHTML += `<p>OS (${data.os}): $${result.os_price || 0}</p>`;
+    resultHTML += '<p>Storage:</p>';
+    resultHTML += formatStoragePrices(data.storage, result);
+
+    // Device-specific components
     if (data.is_laptop) {
-        if (result.laptop_base_price) resultHTML += `<p>Laptop Price: $${result.laptop_base_price}</p>`;
-        if (result.battery_discount) resultHTML += `<p>Battery Discount: $${result.battery_discount}</p>`;
-        if (result.large_screen_price) resultHTML += `<p>Large Screen Price: $${result.large_screen_price}</p>`;
-        if (result.touch_screen_price) resultHTML += `<p>Touch Screen Price: $${result.touch_screen_price}</p>`;
+        resultHTML += `<p>Laptop Price: $${result.laptop_base_price || 0}</p>`;
+        resultHTML += '<div style="margin-left: 20px;">';
+        if (result.battery_discount) {
+            resultHTML += `<p>Battery Discount: -($${Math.abs(result.battery_discount)})</p>`;
+        }
+        if (result.large_screen_price) {
+            resultHTML += `<p>Large Screen Price: $${result.large_screen_price}</p>`;
+        }
+        if (result.touch_screen_price) {
+            resultHTML += `<p>Touch Screen: $${result.touch_screen_price}</p>`;
+        }
+        resultHTML += '</div>';
+    } else {
+        resultHTML += `<p>WiFi Price (${data.wifi_kind || 'None'}): $${result.wifi_price || 0}</p>`;
+        resultHTML += `<p>Custom Build: $${result.custom_build_price || 0}</p>`;
+        resultHTML += `<p>Bluetooth: $${result.bluetooth_price || 0}</p>`;
     }
 
-    // Add desktop-specific prices if the computer is a desktop
-    if (!data.is_laptop) {
-        if (result.wifi_price) resultHTML += `<p>Wi-Fi Price: $${result.wifi_price}</p>`;
-        if (result.bluetooth_price) resultHTML += `<p>Bluetooth Price: $${result.bluetooth_price}</p>`;
-    }
-
-    if (result.ram_discount) resultHTML += `<p>RAM Discount: $${result.ram_discount}</p>`;
-    if (result.custom_build_price) resultHTML += `<p>Custom Build Price: $${result.custom_build_price}</p>`;
-
+    // GPU price and total
+    resultHTML += result.gpu_price ? `<p>GPU Price: $${result.gpu_price}</p>` : '';
     resultHTML += `<h3>Total Price: $${result.total_price}</h3>`;
 
     document.getElementById('result').innerHTML = resultHTML;
