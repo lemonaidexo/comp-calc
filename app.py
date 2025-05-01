@@ -1,6 +1,6 @@
 import re
 
-from flask import Flask, request, render_template, jsonify, redirect, url_for
+from flask import Flask, request, render_template, jsonify
 
 app = Flask(__name__)
 
@@ -12,8 +12,7 @@ class Processor:
         self.kind = kind
         self.model = model
         self.core, self.generation = self.extract_core_and_gen()
-        self.user_price = float(user_price) if user_price else 0  # Default to 0 if not provided
-
+        self.user_price = float(user_price) if user_price else 0
     def extract_core_and_gen(self):
         """
         Extracts the core type and generation from the model string.
@@ -42,11 +41,11 @@ class Processor:
         """
         if self.kind.lower() == 'amd':
             print(f"AMD Processor selected with user price: {self.user_price}")
-            return self.user_price  # Return the user price directly
+            return self.user_price
         if self.kind.lower() == 'intel':
             return self._intel_processor_price()
         
-        return 0  # Default to 0 for unknown kind
+        return 0
 
     def _intel_processor_price(self):
         """
@@ -59,8 +58,7 @@ class Processor:
         }
 
         core_prices = price_map.get(self.core.lower(), {})
-        return core_prices.get(self.generation, 0)  # Default to 0 for unknown price
-
+        return core_prices.get(self.generation, 0)
 
 class Ram:
     def __init__(self, ram_size):
@@ -94,8 +92,8 @@ class Storage:
         size = float(storage_size)
         unit = storage_unit.upper()
         if unit == 'TB':
-            return size * 1000  # Convert TB to GB
-        return size  # Already in GB
+            return size * 1000
+        return size
 
     def storage_price(self):
         """
@@ -113,7 +111,7 @@ class Graphics:
         Initializes a Graphics object with the given has_gpu and passmark_score.
         """
         self.has_gpu = has_gpu
-        self.passmark_score = float(passmark_score) if passmark_score else 0  # Convert to float and default to 0
+        self.passmark_score = float(passmark_score) if passmark_score else 0
 
     def gpu_price(self):
         """
@@ -127,33 +125,21 @@ class Graphics:
 
 @app.route('/')
 def landing():
-    """
-    Renders the landing.html template.
-    """
     return render_template('landing.html')
 
 @app.route('/calculator')
 def calculator():
-    """
-    Renders the calculator.html template for the calculator.
-    """
     return render_template('calculator.html')
 
 @app.route('/build-sheet')
 def build_sheet():
-    """
-    Renders the PC inputs page without database context.
-    """
     return render_template('inputs.html')
 
 @app.route('/build-sheet/print', methods=['GET', 'POST'])
 def build_sheet_print():
-    """
-    Renders the print page for the build sheet with form data.
-    """
     if request.method == 'POST':
         form_data = request.form
-        return render_template('print.html', results=form_data)  # Remove 'database' parameter
+        return render_template('print.html', results=form_data)
     return render_template('print.html')
 
 @app.route('/calculate', methods=['POST'])
@@ -169,7 +155,7 @@ def calculate():
     os = data['os']
     storage_details = data['storage']
     is_laptop = data['is_laptop']
-    user_price = float(data.get('amd_price', 0))  # Ensure user_price is a float
+    user_price = float(data.get('amd_price', 0))
 
     processor = Processor(kind, model, user_price)
     processor_price = processor.processor_price()
@@ -201,7 +187,7 @@ def calculate():
         'processor_price': processor_price,
         'ram_price': ram_price,
         'storage_price': total_storage_price,
-        'storage_prices': storage_prices,  # Add individual storage prices
+        'storage_prices': storage_prices,
         'os_price': os_price,
     }
 
@@ -224,15 +210,12 @@ def calculate():
         # Fix screen size pricing
         try:
             screen_size = float(data.get('screen_size', '15.6').strip())
-            print(f"Raw screen size input: {data.get('screen_size')}")  # Debug print
             large_screen_price = 15 if float(screen_size) > 15.6 else 0
-            print(f"Screen size after conversion: {screen_size}, Price added: {large_screen_price}")  # Debug print
         except (ValueError, TypeError) as e:
-            print(f"Error processing screen size: {e}")  # Debug print
             screen_size = 15.6
             large_screen_price = 0
 
-        has_touch_screen = data['has_touch_screen'] == 'yes'  # Fix touch screen check
+        has_touch_screen = data['has_touch_screen'] == 'yes'
         touch_screen_price = 15 if has_touch_screen else 0
 
         itemized_prices.update({
@@ -267,7 +250,7 @@ def calculate():
     # GPU Price
     has_gpu = data['has_gpu']
     gpu_type = data.get('gpu_type')
-    passmark_score = float(data.get('passmark_score', 0))  # Ensure passmark_score is a float
+    passmark_score = float(data.get('passmark_score', 0))
     graphics = Graphics(has_gpu, passmark_score)
     gpu_price = round(graphics.gpu_price())
 

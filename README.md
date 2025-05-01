@@ -23,3 +23,8 @@ This is a calculator that allows users to enter the specifications of a modern c
     docker compose up --build
 ```
 - Go to your web browser and enter "localhost:5001" or go through the button on the results page of the Free Geek Pricing Tool
+
+- To rebuild the program after making any saved changes, go to the project directory again and use this command:
+```bash
+  rebuild
+```
