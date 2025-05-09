@@ -1,4 +1,9 @@
 import re
+import sys
+
+path = '/home/freegeeektc/mysite'
+if path not in sys.path:
+    sys.path.append(path)
 
 from flask import Flask, request, render_template, jsonify
 
@@ -281,5 +286,4 @@ def internal_error(error):
     """
     return render_template('error_500.html'), 500
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5001)
+from app import app as application
