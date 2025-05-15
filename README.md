@@ -1,30 +1,44 @@
-
 # Free Geek Modern Computer Calculator
 
 This is a calculator that allows users to enter the specifications of a modern computer built at Free Geek Twin Cities and calculate a price for that machine.
 
-## Run Locally
+---
 
-- Clone the project
+## Live Site
+
+You can use the calculator and build sheet creator here:  
+**[https://freegeektc.pythonanywhere.com/](https://freegeektc.pythonanywhere.com/)**
+
+---
+
+## Local Development
+
+### 1. Clone the Project
 
 ```bash
-  git clone https://github.com/lemonaidexo/comp-calc.git
+git clone https://github.com/lemonaidexo/comp-calc.git
+cd comp-calc
 ```
 
-- Go to the project directory
+### 2. Set Up a Python Virtual Environment (Recommended)
 
 ```bash
-  cd comp-calc
+python3 -m venv venv
+source venv/bin/activate
 ```
-- Ensure Docker is running on your local machine.
 
-- Start the docker container
-```bash
-    docker compose up --build
-```
-- Go to your web browser and enter "localhost:5001" or go through the button on the results page of the Free Geek Pricing Tool
+### 3. Install Dependencies
 
-- To rebuild the program after making any saved changes, go to the project directory again and use this command:
 ```bash
-  rebuild
+pip install -r requirements.txt
 ```
+
+### 4. Run the Application
+
+```bash
+python app.py
+```
+
+The app will be available at [http://localhost:5001/](http://localhost:5001/).
+
+---
