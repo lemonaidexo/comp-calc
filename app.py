@@ -286,4 +286,6 @@ def internal_error(error):
     """
     return render_template('error_500.html'), 500
 
-from app import app as application
+if __name__ == "__main__":
+    app.run(debug=True, port=5001)
+
