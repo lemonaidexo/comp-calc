@@ -24,7 +24,23 @@ function populateWattageAdapter() {
     $("#lbl-wattage-adapter").text(wattageAdapter ? wattageAdapter + " W" : "N/A");
 }
 
+// Function to populate the Bluetooth field
+function populateBluetooth() {
+    const bluetoothValue = $("#bluetooth").val();
+    if (bluetoothValue === "bluetooth-true") {
+        $("#lbl-bluetooth-true").addClass("selected-value");
+        $("#lbl-bluetooth-false").removeClass("selected-value");
+    } else if (bluetoothValue === "bluetooth-false") {
+        $("#lbl-bluetooth-false").addClass("selected-value");
+        $("#lbl-bluetooth-true").removeClass("selected-value");
+    } else {
+        $("#lbl-bluetooth-true").removeClass("selected-value");
+        $("#lbl-bluetooth-false").removeClass("selected-value");
+    }
+}
+
 // Call the function to populate the wattage adapter field when the document is ready
 $(document).ready(function() {
     populateWattageAdapter();
+    populateBluetooth();
 });

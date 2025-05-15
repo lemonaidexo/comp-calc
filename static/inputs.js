@@ -115,6 +115,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById(checkboxId).checked = true;
             }
         }
+
+        if (data.desktop_bluetooth !== undefined) {
+            document.getElementById('bluetooth').value = data.desktop_bluetooth ? 'bluetooth-true' : 'bluetooth-false';
+        }
+
+        if (data.bluetooth !== undefined) {
+            document.getElementById('bluetooth').value = data.bluetooth;
+        }
         
         // Clear the stored data after using it
         sessionStorage.removeItem('calculatorData');

@@ -142,11 +142,10 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         
         const calculatorData = {
             price: result.total_price,
-            // Replace manufacturer and model with combined CPU info
             cpu: `${formData.get('kind') === 'intel' ? 'Intel' : 'AMD'} ${formData.get('model')}`,
             ram: formData.get('ram_size'),
             OS: osMapping[formData.get('os')] || formData.get('os'),
-            // Storage data
+            // Storage data...
             ssd1_storage: ssdDevices[0]?.size || '',
             ssd1_storage_unit: ssdDevices[0]?.unit || 'GB',
             ssd1_type: ssdDevices[0]?.kind === 'NvME' ? 'NVMe' : 'SATA',
@@ -158,11 +157,11 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             hdd2_storage: hddDevices[1]?.size || '',
             hdd2_storage_unit: hddDevices[1]?.unit || 'GB',
             is_laptop: formData.get('is_laptop') === 'yes',
-            // Add battery and screen info for laptops
             battery_capacity: formData.get('is_laptop') === 'yes' ? formData.get('battery_capacity') : '',
             diagonal_screen: formData.get('is_laptop') === 'yes' ? (formData.get('screen_size') || '15.6') : '',
-            // Fix WiFi kind mapping by passing the value directly
-            wifi_kind: formData.get('wifi_kind')
+            wifi_kind: formData.get('wifi_kind'),
+            // --- Add this line ---
+            bluetooth: formData.get('desktop_bluetooth') === 'yes' ? 'bluetooth-true' : 'bluetooth-false'
         };
         
         // Store data in sessionStorage
