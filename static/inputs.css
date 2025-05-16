@@ -226,3 +226,8 @@ select {
 #memory-inputs {
     margin-bottom: 25px;
 }
+
+.missing-field {
+    border: 2px solid red !important;
+    background-color: #ffeaea;
+}

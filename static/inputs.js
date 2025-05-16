@@ -41,6 +41,67 @@ $(".has-other-option").on("change", function() {
 
 // Keep only this simpler version
 $("#input-form").on("submit", function(event) {
+    // Get required fields
+    const baseSpeedInput = document.getElementById('base-speed');
+    const coresInput = document.getElementById('cores');
+    const threadsInput = document.getElementById('threads');
+    const ramTypeInput = document.getElementById('ram-type');
+    const clockRateInput = document.getElementById('clock-rate');
+    const ramUpgradableInput = document.getElementById('ram-upgradable');
+    const slotsUsedInput = document.getElementById('slots-used');
+    const slotsEmptyInput = document.getElementById('slots-empty');
+
+    // Remove previous highlights
+    [
+        baseSpeedInput, coresInput, threadsInput,
+        ramTypeInput, clockRateInput, ramUpgradableInput,
+        slotsUsedInput, slotsEmptyInput
+    ].forEach(input => {
+        input.classList.remove('missing-field');
+    });
+
+    let missing = false;
+
+    if (!baseSpeedInput.value) {
+        baseSpeedInput.classList.add('missing-field');
+        missing = true;
+    }
+    if (!coresInput.value) {
+        coresInput.classList.add('missing-field');
+        missing = true;
+    }
+    if (!threadsInput.value) {
+        threadsInput.classList.add('missing-field');
+        missing = true;
+    }
+    if (!ramTypeInput.value) {
+        ramTypeInput.classList.add('missing-field');
+        missing = true;
+    }
+    if (!clockRateInput.value) {
+        clockRateInput.classList.add('missing-field');
+        missing = true;
+    }
+    // For select, make sure a real value is chosen (not the blank/none option)
+    if (!ramUpgradableInput.value || ramUpgradableInput.value === "ram-upgradable-none") {
+        ramUpgradableInput.classList.add('missing-field');
+        missing = true;
+    }
+    if (!slotsUsedInput.value) {
+        slotsUsedInput.classList.add('missing-field');
+        missing = true;
+    }
+    if (!slotsEmptyInput.value) {
+        slotsEmptyInput.classList.add('missing-field');
+        missing = true;
+    }
+
+    if (missing) {
+        alert("Please enter values for all required CPU and RAM fields before printing the build sheet.");
+        event.preventDefault();
+        return false;
+    }
+
     if (confirm("Are you sure you want to print this build sheet?")) {
         return true;
     }
