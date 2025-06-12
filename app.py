@@ -1,6 +1,7 @@
 import re
 import sys
 import json
+import os
 
 path = '/home/freegeeektc/mysite'
 if path not in sys.path:
@@ -283,7 +284,8 @@ def calculate():
 @app.route('/cpu-specs')
 def cpu_specs():
     model = request.args.get('model', '').strip().lower().replace(' ', '').replace('_', '')
-    with open('intel_cpus.json') as f:
+    json_path = os.path.join(app.root_path, 'intel_cpus.json')
+    with open(json_path) as f:
         cpus = json.load(f)
     # Try exact match first
     for cpu in cpus:
