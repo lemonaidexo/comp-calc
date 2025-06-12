@@ -1,5 +1,6 @@
 import re
 import sys
+import json
 
 path = '/home/freegeeektc/mysite'
 if path not in sys.path:
@@ -278,6 +279,31 @@ def calculate():
     itemized_prices['total_price'] = total_price
 
     return jsonify(itemized_prices)
+
+@app.route('/cpu-specs')
+def cpu_specs():
+    model = request.args.get('model', '').strip().lower().replace(' ', '').replace('_', '')
+    with open('intel_cpus.json') as f:
+        cpus = json.load(f)
+    # Try exact match first
+    for cpu in cpus:
+        cpu_model = cpu.get('Model', '').strip().lower().replace(' ', '').replace('_', '')
+        if cpu_model == model:
+            return jsonify({
+                "base_ghz": cpu.get("Base GHz"),
+                "cores": cpu.get("Cores"),
+                "threads": cpu.get("Threads")
+            })
+    # Try partial match if exact not found
+    for cpu in cpus:
+        cpu_model = cpu.get('Model', '').strip().lower().replace(' ', '').replace('_', '')
+        if model in cpu_model:
+            return jsonify({
+                "base_ghz": cpu.get("Base GHz"),
+                "cores": cpu.get("Cores"),
+                "threads": cpu.get("Threads")
+            })
+    return jsonify({}), 404
 
 @app.errorhandler(500)
 def internal_error(error):

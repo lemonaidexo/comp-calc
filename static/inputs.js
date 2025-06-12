@@ -189,3 +189,19 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.removeItem('calculatorData');
     }
 });
+
+$("#cpu, #model").on("blur", function() {
+    let cpuModel = $(this).val().trim();
+    if (!cpuModel) return;
+
+    // Remove "Intel " or "AMD " prefix if present for lookup
+    cpuModel = cpuModel.replace(/^intel\s+/i, '').replace(/^amd\s+/i, '');
+
+    $.getJSON(`/cpu-specs?model=${encodeURIComponent(cpuModel)}`, function(data) {
+        if (data && data.base_ghz) {
+            $("#base-speed").val(data.base_ghz);
+            $("#cores").val(data.cores);
+            $("#threads").val(data.threads);
+        }
+    });
+});

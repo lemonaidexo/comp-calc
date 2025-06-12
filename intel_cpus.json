@@ -1,0 +1,2513 @@
+[
+    {
+        "Model": "i3-5005U",
+        "Base GHz": 2.0,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-5010U",
+        "Base GHz": 2.1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-5015U",
+        "Base GHz": 2.1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-5020U",
+        "Base GHz": 2.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-5157U",
+        "Base GHz": 2.5,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-5250U",
+        "Base GHz": 1.6,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-5350U",
+        "Base GHz": 1.8,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-5200U",
+        "Base GHz": 2.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-5257U",
+        "Base GHz": 2.7,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-5287U",
+        "Base GHz": 2.9,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-5300U",
+        "Base GHz": 2.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-5350H",
+        "Base GHz": 3.1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-5575R",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-5675C",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-5675R",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {   
+        "Model": "i7-5700EQ",
+        "Base GHz": 2.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-5650U",
+        "Base GHz": 2.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-5600U",
+        "Base GHz": 2.6,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i7-5550U",
+        "Base GHz": 2.0,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-5557U",
+        "Base GHz": 3.1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-5750HQ",
+        "Base GHz": 2.5,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-5700HQ",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {   
+        "Model": "i7-5850EQ",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-5850HQ",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-5950HQ",
+        "Base GHz": 2.9,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {   
+        "Model": "i7-5500U",
+        "Base GHz": 2.4,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-5775C",
+        "Base GHz": 3.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-5775R",
+        "Base GHz": 3.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {   
+        "Model": "i3-6006U",
+        "Base GHz": 2.0,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i3-6157U",
+        "Base GHz": 2.4,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i3-6098P",
+        "Base GHz": 3.6,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i3-6100E",
+        "Base GHz": 2.7,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i3-6100TE",
+        "Base GHz": 2.7,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i3-6102E",
+        "Base GHz": 1.9,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-6100",
+        "Base GHz": 3.7,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i3-6100H",
+        "Base GHz": 2.7,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-6300",
+        "Base GHz": 3.8,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i3-6300T",
+        "Base GHz": 3.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-6320",
+        "Base GHz": 3.9,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-6100T",
+        "Base GHz": 3.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-6100U",
+        "Base GHz": 2.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i3-6167U",
+        "Base GHz": 2.7,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6585R",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6685R",
+        "Base GHz": 3.2,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6350HQ",
+        "Base GHz": 2.3,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6402P",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6440EQ",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6442EQ",
+        "Base GHz": 1.9,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6500TE",
+        "Base GHz": 2.3,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-6400",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-6500",
+        "Base GHz": 3.2,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-6600",
+        "Base GHz": 3.3,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-6600K",
+        "Base GHz": 3.5,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-6400T",
+        "Base GHz": 2.2,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6440HQ",
+        "Base GHz": 2.6,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-6300U",
+        "Base GHz": 2.4,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-6200U",
+        "Base GHz": 2.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6260U",
+        "Base GHz": 1.8,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6267U",
+        "Base GHz": 2.9,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6287U",
+        "Base GHz": 3.1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {   
+        "Model": "i5-6300HQ",
+        "Base GHz": 2.3,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-6360U",
+        "Base GHz": 2.0,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-6500T",
+        "Base GHz": 2.5,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-6600U",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-6785R",
+        "Base GHz": 3.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6660U",
+        "Base GHz": 2.4,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-6700",
+        "Base GHz": 3.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6700K",
+        "Base GHz": 4.0,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6700T",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6500U",
+        "Base GHz": 2.5,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-6600U",
+        "Base GHz": 2.6,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-6770HQ",
+        "Base GHz": 2.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {   
+        "Model": "i7-6870HQ",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {   
+        "Model": "i7-6970HQ",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6700TE",
+        "Base GHz": 2.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6820EQ",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6822EQ",
+        "Base GHz": 2,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6560U",
+        "Base GHz": 2.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-6650U",
+        "Base GHz": 2.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-6700HQ",
+        "Base GHz": 2.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6820HK",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6820HQ",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6920HQ",
+        "Base GHz": 2.9,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-6567U",
+        "Base GHz": 3.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7020U",
+        "Base GHz": 2.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+
+    {
+        "Model": "i3-7100",
+        "Base GHz": 3.9,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7100E",
+        "Base GHz": 2.9,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7100H",
+        "Base GHz": 3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7101E",
+        "Base GHz": 3.9,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+       "Model": "i3-7101TE",
+       "Base GHz": 3.4,
+       "Cores": 2,
+       "Threads": 4 
+    },
+    {
+        "Model": "i3-7102E",
+        "Base GHz": 2.1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7167U",
+        "Base GHz": 2.8,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7300",
+        "Base GHz": 4.0,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7300T",
+        "Base GHz": 3.5,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7320",
+        "Base GHz": 4.1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7100T",
+        "Base GHz": 3.4,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7130U",
+        "Base GHz": 2.7,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7350K",
+        "Base GHz": 4.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-7100U",
+        "Base GHz": 2.4,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7260U",
+        "Base GHz": 2.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7267U",
+        "Base GHz": 3.1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7287U",
+        "Base GHz": 3.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7400",
+        "Base GHz": 3.0,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7500",
+        "Base GHz": 3.4,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7500T",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7600",
+        "Base GHz": 3.5,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7600K",
+        "Base GHz": 3.8,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7600T",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7Y57",
+        "Base GHz": 1.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7400T",
+        "Base GHz": 2.4,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7440EQ",
+        "Base GHz": 2.9,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7440HQ",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7442EQ",
+        "Base GHz": 2.1,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7300HQ",
+        "Base GHz": 2.5,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7200U",
+        "Base GHz": 2.5,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7Y54",
+        "Base GHz": 1.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7300U",
+        "Base GHz": 2.6,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-7360U",
+        "Base GHz": 2.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-7560U",
+        "Base GHz": 2.4,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-7567U",
+        "Base GHz": 3.5,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-7660U",
+        "Base GHz": 2.5,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-7700",
+        "Base GHz": 3.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-7700K",
+        "Base GHz": 4.2,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-7700T",
+        "Base GHz": 2.9,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-7820EQ",
+        "Base GHz": 3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-7820HK",
+        "Base GHz": 2.9,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-7820HQ",
+        "Base GHz": 2.9,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-7920HQ",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-7700HQ",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-7500U",
+        "Base GHz": 2.7,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-7600U",
+        "Base GHz": 2.8,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-7Y75",
+        "Base GHz": 1.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8140U",
+        "Base GHz": 2.1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8145UE",
+        "Base GHz": 2.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8100B",
+        "Base GHz": 3.6,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8145U",
+        "Base GHz": 3.9,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8109U",
+        "Base GHz": 3.6,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8100",
+        "Base GHz": 3.6,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8100T",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8300",
+        "Base GHz": 3.7,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8300T",
+        "Base GHz": 3.2,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8130U",
+        "Base GHz": 2.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8100H",
+        "Base GHz": 3,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-8350K",
+        "Base GHz": 4.0,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-8260U",
+        "Base GHz": 1.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8257U",
+        "Base GHz": 1.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8279U",
+        "Base GHz": 2.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8365U",
+        "Base GHz": 1.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8365UE",
+        "Base GHz": 1.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8210Y",
+        "Base GHz": 1.6,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-8200Y",
+        "Base GHz": 1.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-8265U",
+        "Base GHz": 1.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8305G",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8259U",
+        "Base GHz": 2.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8269U",
+        "Base GHz": 2.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8300H",
+        "Base GHz": 2.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8400",
+        "Base GHz": 2.8,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-8400B",
+        "Base GHz": 2.8,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-8400H",
+        "Base GHz": 2.5,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8400T",
+        "Base GHz": 1.7,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-8500",
+        "Base GHz": 3.0,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5+8500",
+        "Base GHz": 4.1,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-8500B",
+        "Base GHz": 4.1,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-8500T",
+        "Base GHz": 2.1,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-8600",
+        "Base GHz": 3.1,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-8600K",
+        "Base GHz": 3.6,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-8600T",
+        "Base GHz": 2.3,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-8305G",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8400",
+        "Base GHz": 2.8,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-8250U",
+        "Base GHz": 1.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-8350U",
+        "Base GHz": 1.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8557U",
+        "Base GHz": 1.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8569U",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8665U",
+        "Base GHz": 1.9,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8665UE",
+        "Base GHz": 1.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8500Y",
+        "Base GHz": 1.5,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i7-8565U",
+        "Base GHz": 1.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8706G",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8559U",
+        "Base GHz": 2.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7+8700",
+        "Base GHz": 3.2,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-8700B",
+        "Base GHz": 3.2,
+        "Cores": 6,
+        "Threads": 12
+    },
+
+    {
+        "Model": "i7-8700",
+        "Base GHz": 3.2,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-8700T",
+        "Base GHz": 2.4,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-8750H",
+        "Base GHz": 2.2,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-8850H",
+        "Base GHz": 2.6,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-8705G",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8706G",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8709G",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8700K",
+        "Base GHz": 3.7,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-8086K",
+        "Base GHz": 4.0,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-8550U",
+        "Base GHz": 1.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-8650U",
+        "Base GHz": 1.9,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-9100E",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-9100HL",
+        "Base GHz": 1.6,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-9100TE",
+        "Base GHz": 2.2,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-9100",
+        "Base GHz": 3.6,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-9100F",
+        "Base GHz": 3.6,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-9100T",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-9300",
+        "Base GHz": 3.7,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-9300T",
+        "Base GHz": 3.2,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-9320",
+        "Base GHz": 3.7,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-9350K",
+        "Base GHz": 4.0,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-9350KF",
+        "Base GHz": 4.0,
+        "Cores": 4,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-9500E",
+        "Base GHz": 3.0,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9300H",
+        "Base GHz": 2.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-9400H",
+        "Base GHz": 2.5,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-9400T",
+        "Base GHz": 1.8,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9400",
+        "Base GHz": 2.9,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9400F",
+        "Base GHz": 2.9,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9400T",
+        "Base GHz": 1.8,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9500",
+        "Base GHz": 3.0,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9500F",
+        "Base GHz": 3.0,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9500T",
+        "Base GHz": 2.2,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9600",
+        "Base GHz": 3.1,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9600K",
+        "Base GHz": 3.7,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9600KF",
+        "Base GHz": 3.7,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9600T",
+        "Base GHz": 2.3,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9300HF",
+        "Base GHz": 2.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-9600K",
+        "Base GHz": 3.7,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i5-9500TE",
+        "Base GHz": 2.2,
+        "Cores": 6,
+        "Threads": 6
+    },
+    {
+        "Model": "i7-9700E",
+        "Base GHz": 2.6,
+        "Cores": 8,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-9700TE",
+        "Base GHz": 1.8,
+        "Cores": 8,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-9850HE",
+        "Base GHz": 2.7,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-9850HL",
+        "Base GHz": 1.9,
+        "Cores": 6,
+        "Threads": 12
+    },
+
+    {
+        "Model": "i7-9700",
+        "Base GHz": 3.0,
+        "Cores": 8,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-9700F",
+        "Base GHz": 3.0,
+        "Cores": 8,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-9700T",
+        "Base GHz": 2.0,
+        "Cores": 8,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-9750H",
+        "Base GHz": 2.6,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-9750HF",
+        "Base GHz": 2.6,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-9850H",
+        "Base GHz": 2.6,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-9700K",
+        "Base GHz": 3.6,
+        "Cores": 8,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-9700KF",
+        "Base GHz": 3.6,
+        "Cores": 8,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10105",
+        "Base GHz": 3.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10105F",
+        "Base GHz": 3.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10105T",
+        "Base GHz": 3.0,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10305",
+        "Base GHz": 3.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10305T",
+        "Base GHz": 3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10325",
+        "Base GHz": 3.9,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10100Y",
+        "Base GHz": 1.3,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-10100",
+        "Base GHz": 3.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10100F",
+        "Base GHz": 3.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10100E",
+        "Base GHz": 3.2,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10100T",
+        "Base GHz": 3.0,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10100TE",
+        "Base GHz": 2.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10300",
+        "Base GHz": 3.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10300T",
+        "Base GHz": 3.0,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10320",
+        "Base GHz": 3.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-10110U",
+        "Base GHz": 2.1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-10110Y",
+        "Base GHz": 1,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-1005G1",
+        "Base GHz": 1.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-10505",
+        "Base GHz": 3.2,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10500H",
+        "Base GHz": 2.5,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10200H",
+        "Base GHz": 2.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-10310U",
+        "Base GHz": 1.7,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-10400",
+        "Base GHz": 2.9,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10400F",
+        "Base GHz": 2.9,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10400T",
+        "Base GHz": 2.0,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10500",
+        "Base GHz": 3.1,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10500E",
+        "Base GHz": 3.1,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10500T",
+        "Base GHz": 2.3,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10500TE",
+        "Base GHz": 2.3,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10600",
+        "Base GHz": 3.3,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10600K",
+        "Base GHz": 4.1,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10600KF",
+        "Base GHz": 4.1,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10600T",
+        "Base GHz": 2.4,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-10300H",
+        "Base GHz": 2.5,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-10400H",
+        "Base GHz": 2.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-10400H",
+        "Base GHz": 2.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-10210U",
+        "Base GHz": 1.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-10210Y",
+        "Base GHz": 1.0,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-10310Y",
+        "Base GHz": 1.10,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1035G1",
+        "Base GHz": 1.0,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1035G4",
+        "Base GHz": 1.1,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1035G7",
+        "Base GHz": 1.2,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-10870H",
+        "Base GHz": 2.2,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-10610U",
+        "Base GHz": 1.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-10810U",
+        "Base GHz": 1.1,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-10700",
+        "Base GHz": 2.9,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-10700E",
+        "Base GHz": 2.9,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-10700F",
+        "Base GHz": 2.9,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-10700K",
+        "Base GHz": 3.8,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-10700KF",
+        "Base GHz": 3.8,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-10700T",
+        "Base GHz": 2.0,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-10700TE",
+        "Base GHz": 2,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-10750H",
+        "Base GHz": 2.6,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-10850H",
+        "Base GHz": 2.7,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-10875H",
+        "Base GHz": 2.3,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-10510U",
+        "Base GHz": 1.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-10510Y",
+        "Base GHz": 1.2,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-10710U",
+        "Base GHz": 1.1,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-1065G7",
+        "Base GHz": 1.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-11100HE",
+        "Base GHz": 2.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-1115G4E",
+        "Base GHz": 2.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-1115GRE",
+        "Base GHz": 2.2,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-1120G4",
+        "Base GHz": 1.5,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-1125G4",
+        "Base GHz": 2.0,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-1115G4",
+        "Base GHz": 3.0,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-1110G4",
+        "Base GHz": 2.5,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i3-1125G4",
+        "Base GHz": 2.0,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-11100B",
+        "Base GHz": 3.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-1115G4",
+        "Base GHz": 3.0,
+        "Cores": 2,
+        "Threads": 4
+    },
+    {
+        "Model": "i5-11500HE",
+        "Base GHz": 2.6,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11320H",
+        "Base GHz": 3.2,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1155G7",
+        "Base GHz": 2.5,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-11260H",
+        "Base GHz": 2.6,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11400H",
+        "Base GHz": 2.7,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11500H",
+        "Base GHz": 2.9,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11400",
+        "Base GHz": 2.6,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11400F",
+        "Base GHz": 2.6,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11400T",
+        "Base GHz": 1.3,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-1130G7",
+        "Base GHz": 1.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1135G7",
+        "Base GHz": 2.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1145G7",
+        "Base GHz": 2.6,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1155G7",
+        "Base GHz": 2.5,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-11500",
+        "Base GHz": 2.7,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11500T",
+        "Base GHz": 1.5,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11600K",
+        "Base GHz": 3.9,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11600KF",
+        "Base GHz": 3.9,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11600T",
+        "Base GHz": 1.7,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-11300H",
+        "Base GHz": 3.1,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1140G7",
+        "Base GHz": 1.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-11600",
+        "Base GHz": 2.8,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-1145G7E",
+        "Base GHz": 1.5,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1145GRE",
+        "Base GHz": 1.5,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1135G7",
+        "Base GHz": 2.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-11850HE",
+        "Base GHz": 2.6,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-11600H",
+        "Base GHz": 2.9,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-11390H",
+        "Base GHz": 3.4,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-1195G7",
+        "Base GHz": 2.9,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-1195G7",
+        "Base GHz": 2.9,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-1160G7",
+        "Base GHz": 2.1,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-1165G7",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-1185G7",
+        "Base GHz": 3.0,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-11700",
+        "Base GHz": 2.5,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-11700F",
+        "Base GHz": 2.5,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-11700K",
+        "Base GHz": 3.6,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-11700KF",
+        "Base GHz": 3.6,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-11700T",
+        "Base GHz": 1.4,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-11370H",
+        "Base GHz": 3.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-11375H",
+        "Base GHz": 3.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-1180G7",
+        "Base GHz": 2.2,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-1185G7E",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-1185GRE",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-1165G7",
+        "Base GHz": 2.8,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i7-11800H",
+        "Base GHz": 2.3,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-11850H",
+        "Base GHz": 2.5,
+        "Cores": 8,
+        "Threads": 16
+    },
+    {
+        "Model": "i3-12100",
+        "Base GHz": 3.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-12100E",
+        "Base GHz": 3.2,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-12100F",
+        "Base GHz": 3.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-12100T",
+        "Base GHz": 2.2,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-12100TE",
+        "Base GHz": 2.1,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-12300",
+        "Base GHz": 3.5,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-12300HE",
+        "Base GHz": 1.9,
+        "Cores": 8,
+        "Threads": 12
+    },
+    {
+        "Model": "i3-12300T",
+        "Base GHz": 2.3,
+        "Cores": 4,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-1220P",
+        "Base GHz": 1.5,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i3-1215U",
+        "Base GHz": 1.2,
+        "Cores": 6,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-1215UL",
+        "Base GHz": 1.2,
+        "Cores": 6,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-12300HL",
+        "Base GHz": 2.0,
+        "Cores": 8,
+        "Threads": 12
+    },
+    {
+        "Model": "i3-1215UE",
+        "Base GHz": 0.9,
+        "Cores": 6,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-1220PE",
+        "Base GHz": 1.1,
+        "Cores": 8,
+        "Threads": 12
+    },
+    {
+        "Model": "i3-1210U",
+        "Base GHz": 3.3,
+        "Cores": 6,
+        "Threads": 8
+    },
+    {
+        "Model": "i3-1215U",
+        "Base GHz": 1.2,
+        "Cores": 6,
+        "Threads": 8
+    },
+    {
+        "Model": "i5-1235UL",
+        "Base GHz": 1.3,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-1245UL",
+        "Base GHz": 1.6,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12500HL",
+        "Base GHz": 2.5,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i5-12600HL",
+        "Base GHz": 2.7,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i5-12450HX",
+        "Base GHz": 2.4,
+        "Cores": 8,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12600HX",
+        "Base GHz": 1.8,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i5-1245UE",
+        "Base GHz": 3.3,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-1250PE",
+        "Base GHz": 1.2,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i5-1230U",
+        "Base GHz": 0.7,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-1235U",
+        "Base GHz": 1.3,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-1240P",
+        "Base GHz": 1.2,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i5-1240U",
+        "Base GHz": 1.1,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-1245U",
+        "Base GHz": 1.2,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-1250P",
+        "Base GHz": 2.1,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i5-12400",
+        "Base GHz": 2.5,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12400F",
+        "Base GHz": 2.5,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12400T",
+        "Base GHz": 1.8,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12500",
+        "Base GHz": 3.0,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12500E",
+        "Base GHz": 2.9,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12450H",
+        "Base GHz": 2.0,
+        "Cores": 8,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12600",
+        "Base GHz": 3.3,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12600K",
+        "Base GHz": 3.7,
+        "Cores": 10,
+        "Threads": 16
+    },
+    {
+        "Model": "i5-12600KF",
+        "Base GHz": 3.7,
+        "Cores": 10,
+        "Threads": 16
+    },
+    {
+        "Model": "i5-12600T",
+        "Base GHz": 2.1,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12500H",
+        "Base GHz": 2.5,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i5-12500T",
+        "Base GHz": 2.0,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12500TE",
+        "Base GHz": 1.9,
+        "Cores": 6,
+        "Threads": 12
+    },
+    {
+        "Model": "i5-12600H",
+        "Base GHz": 2.0,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i5-12600HE",
+        "Base GHz": 2.5,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-1255UL",
+        "Base GHz": 1.7,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-1265UL",
+        "Base GHz": 1.8,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-12700HL",
+        "Base GHz": 2.3,
+        "Cores": 14,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12800HL",
+        "Base GHz": 2.4,
+        "Cores": 14,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12650HX",
+        "Base GHz": 2.0,
+        "Cores": 14,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12800HX",
+        "Base GHz": 2.0,
+        "Cores": 16,
+        "Threads": 24
+    },
+    {
+        "Model": "i7-12850HX",
+        "Base GHz": 2.1,
+        "Cores": 16,
+        "Threads": 24
+    },
+    {
+        "Model": "i7-1265UE",
+        "Base GHz": 2.0,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-1270PE",
+        "Base GHz": 1.8,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-1250U",
+        "Base GHz": 1.1,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-1255U",
+        "Base GHz": 1.7,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-1260P",
+        "Base GHz": 2.1,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-1260U",
+        "Base GHz": 1.1,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-1265U",
+        "Base GHz": 1.8,
+        "Cores": 10,
+        "Threads": 12
+    },
+    {
+        "Model": "i7-1270P",
+        "Base GHz": 2.2,
+        "Cores": 12,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-12650H",
+        "Base GHz": 2.3,
+        "Cores": 10,
+        "Threads": 16
+    },
+    {
+        "Model": "i7-12700",
+        "Base GHz": 2.1,
+        "Cores": 12,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12700E",
+        "Base GHz": 2.1,
+        "Cores": 12,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12700F",
+        "Base GHz": 2.1,
+        "Cores": 12,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12700K",
+        "Base GHz": 3.6,
+        "Cores": 12,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12700KF",
+        "Base GHz": 3.6,
+        "Cores": 12,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12700T",
+        "Base GHz": 1.4,
+        "Cores": 12,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12700TE",
+        "Base GHz": 1.4,
+        "Cores": 12,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-1280P",
+        "Base GHz": 1.8,
+        "Cores": 14,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12700H",
+        "Base GHz": 2.3,
+        "Cores": 14,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12800H",
+        "Base GHz": 2.4,
+        "Cores": 14,
+        "Threads": 20
+    },
+    {
+        "Model": "i7-12800HE",
+        "Base GHz": 2.4,
+        "Cores": 14,
+        "Threads": 20
+    }
+]
