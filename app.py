@@ -26,19 +26,15 @@ class Processor:
         Handles cases where the model number includes a letter.
         """
         # Updated regex to capture the letter if it exists
-        match = re.match(r'(i[357])[- ]?(\d{4,5}[A-Za-z]?)', self.model)
+        match = re.match(r'(i[357])[- ]?(\d{4,5})[A-Za-z]?', self.model)
         if match:
             core = match.group(1)
-            generation_str = match.group(2)
-
-            # Extract generation based on the length of the model string
-            if len(generation_str) == 4:  # No letter, older generation
-                generation = int(generation_str[0])  # First digit as generation for 9th gen and below
-            elif len(generation_str) == 5 and generation_str[-1].isalpha():
-                generation = int(generation_str[:2])  # First two digits as generation for 10th gen and above
+            model_number = match.group(2)
+            # 10th gen and above have 5 digits, 9th gen and below have 4
+            if len(model_number) == 5:
+                generation = int(model_number[:2])
             else:
-                generation = int(generation_str[:2])  # Handle regular cases without letters
-
+                generation = int(model_number[0])
             return core, generation
         return None, 0  # Handle the case where the core and generation are not found
 
