@@ -17,6 +17,11 @@ $(document).ready(function() {
           return false;
         }
     });
+
+    // Run fetchCpuSpecsIfPresent once on page load if CPU field is pre-filled
+    if ($("#cpu").val().trim()) {
+        fetchCpuSpecsIfPresent();
+    }
 });
 
 $("#input-form").on("change", function() {
@@ -190,8 +195,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-$("#cpu, #model").on("blur", function() {
-    let cpuModel = $(this).val().trim();
+function fetchCpuSpecsIfPresent() {
+    let cpuModel = $("#cpu").val().trim();
     if (!cpuModel) return;
 
     // Remove "Intel " or "AMD " prefix if present for lookup
@@ -204,4 +209,7 @@ $("#cpu, #model").on("blur", function() {
             $("#threads").val(data.threads);
         }
     });
-});
+}
+
+// Run on blur (already present)
+$("#cpu, #model").on("blur", fetchCpuSpecsIfPresent);
