@@ -25,13 +25,16 @@ class Processor:
         Extracts the core type and generation from the model string.
         Handles cases where the model number includes a letter.
         """
-        # Updated regex to capture the letter if it exists
-        match = re.match(r'(i[357])[- ]?(\d{4,5})[A-Za-z]?', self.model)
+        # Match i3/i5/i7, dash or space, then 4 or more digits, then optional letter(s)
+        match = re.match(r'(i[357])[- ]?(\d{4,5})([A-Za-z]*)', self.model)
         if match:
             core = match.group(1)
             model_number = match.group(2)
-            # 10th gen and above have 5 digits, 9th gen and below have 4
+            # If 5 digits, 10th gen or newer
             if len(model_number) == 5:
+                generation = int(model_number[:2])
+            # If 4 digits and starts with 10, 11, or 12, treat as 10th/11th/12th gen
+            elif len(model_number) == 4 and model_number[:2] in {'10', '11', '12'}:
                 generation = int(model_number[:2])
             else:
                 generation = int(model_number[0])
