@@ -201,7 +201,6 @@ def calculate():
 
     # Laptop-specific pricing
     if is_laptop:
-        laptop_price = 30
         battery_capacity = int(data['battery_capacity'])
         battery_discount = 0
         if battery_capacity < 20:
@@ -228,14 +227,17 @@ def calculate():
             has_touch_screen = str(has_touch_screen).lower() == 'yes'
         touch_screen_price = 15 if has_touch_screen else 0
 
+        # Sum all laptop add-ons for display
+        laptop_addon_total = battery_discount + large_screen_price + touch_screen_price
+
         itemized_prices.update({
-            'laptop_base_price': laptop_price,
+            'laptop_base_price': laptop_addon_total,
             'battery_discount': battery_discount,
             'large_screen_price': large_screen_price,
             'touch_screen_price': touch_screen_price
         })
 
-        total_price += laptop_price + battery_discount + large_screen_price + touch_screen_price
+        total_price += battery_discount + large_screen_price + touch_screen_price
 
     # Desktop-specific pricing
     else:
