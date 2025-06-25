@@ -221,7 +221,11 @@ def calculate():
             screen_size = 15.6
             large_screen_price = 0
 
-        has_touch_screen = data['has_touch_screen'] == 'yes'
+        has_touch_screen = data.get('has_touch_screen')
+        if isinstance(has_touch_screen, bool):
+            has_touch_screen = has_touch_screen
+        else:
+            has_touch_screen = str(has_touch_screen).lower() == 'yes'
         touch_screen_price = 15 if has_touch_screen else 0
 
         itemized_prices.update({
