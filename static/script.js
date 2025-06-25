@@ -29,7 +29,8 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         gpu_type: formData.get('gpu_type') || '',
         passmark_score: parseFloat(formData.get('passmark_score') || 0),
         custom_build: formData.get('custom_build') === 'yes',
-        desktop_bluetooth: formData.get('desktop_bluetooth') === 'yes'
+        desktop_bluetooth: formData.get('desktop_bluetooth') === 'yes',
+        screen_over_120hz: formData.get('screen_over_120hz') === 'yes'
     };
 
     const response = await fetch('/calculate', {
@@ -83,6 +84,9 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         if (result.touch_screen_price) {
             resultHTML += `<p>Touch Screen: $${result.touch_screen_price}</p>`;
         }
+        if (result.hz_price) {
+            resultHTML += `<p>120hz+ Screen: $${result.hz_price}</p>`;
+        }
         resultHTML += '</div>';
     } else {
         resultHTML += `<p>WiFi Price (${data.wifi_kind || 'None'}): $${result.wifi_price || 0}</p>`;
@@ -102,7 +106,6 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         const formData = new FormData(document.getElementById('priceCalcForm'));
         const osMapping = {
             'windows11': 'Windows 11',
-            'windows10': 'Windows 10',
             'linux': 'Linux Mint'
         };
 
