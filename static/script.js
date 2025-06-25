@@ -219,6 +219,7 @@ function toggleLaptopOptions() {
     const isLaptop = document.getElementById('is_laptop').value === 'yes';
     document.getElementById('laptop-options').style.display = isLaptop ? 'block' : 'none';
     document.getElementById('desktop-options').style.display = isLaptop ? 'none' : 'block';
+    document.getElementById('desktop-extra-options').style.display = isLaptop ? 'none' : 'block';
 }
 
 function toggleGpuOptions() {
