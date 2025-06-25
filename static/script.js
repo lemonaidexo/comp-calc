@@ -30,7 +30,8 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         passmark_score: parseFloat(formData.get('passmark_score') || 0),
         custom_build: formData.get('custom_build') === 'yes',
         desktop_bluetooth: formData.get('desktop_bluetooth') === 'yes',
-        screen_over_120hz: formData.get('screen_over_120hz') === 'yes'
+        screen_over_120hz: formData.get('screen_over_120hz') === 'yes',
+        screen_resolution: formData.get('screen_resolution')
     };
 
     const response = await fetch('/calculate', {
@@ -86,6 +87,9 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         }
         if (result.hz_price) {
             resultHTML += `<p>120hz+ Screen: $${result.hz_price}</p>`;
+        }
+        if (result.resolution_price) {
+            resultHTML += `<p>Screen Resolution: $${result.resolution_price}</p>`;
         }
         resultHTML += '</div>';
     } else {

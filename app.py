@@ -235,18 +235,34 @@ def calculate():
             screen_over_120hz = str(screen_over_120hz).lower() == 'yes'
         hz_price = 20 if screen_over_120hz else 0
 
-        # Sum all laptop add-ons for display
-        laptop_addon_total = battery_discount + large_screen_price + touch_screen_price + hz_price
+        # New: Screen resolution pricing
+        screen_resolution = data.get('screen_resolution', 'below_1440p')
+        if screen_resolution == 'above_1440p':
+            resolution_price = 15
+        elif screen_resolution == '4k':
+            resolution_price = 20
+        else:
+            resolution_price = 0
+
+        # Add to laptop add-ons total
+        laptop_addon_total = (
+            battery_discount +
+            large_screen_price +
+            touch_screen_price +
+            hz_price +
+            resolution_price
+        )
 
         itemized_prices.update({
             'laptop_base_price': laptop_addon_total,
             'battery_discount': battery_discount,
             'large_screen_price': large_screen_price,
             'touch_screen_price': touch_screen_price,
-            'hz_price': hz_price
+            'hz_price': hz_price,
+            'resolution_price': resolution_price
         })
 
-        total_price += battery_discount + large_screen_price + touch_screen_price + hz_price
+        total_price += battery_discount + large_screen_price + touch_screen_price + hz_price + resolution_price
 
     # Desktop-specific pricing
     else:
