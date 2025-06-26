@@ -213,11 +213,16 @@ def calculate():
             battery_discount = -5
 
         # Fix screen size pricing
-        try:
-            screen_size = float(data.get('screen_size', '15.6').strip())
-            large_screen_price = 15 if float(screen_size) > 15.6 else 0
-        except (ValueError, TypeError) as e:
-            screen_size = 15.6
+        screen_size_raw = data.get('screen_size', '').strip()
+        if screen_size_raw:
+            try:
+                screen_size = float(screen_size_raw)
+                large_screen_price = 15 if screen_size > 15.6 else 0
+            except (ValueError, TypeError):
+                screen_size = ''
+                large_screen_price = 0
+        else:
+            screen_size = ''
             large_screen_price = 0
 
         has_touch_screen = data.get('has_touch_screen')

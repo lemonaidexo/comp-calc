@@ -165,7 +165,7 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             hdd2_storage_unit: hddDevices[1]?.unit || 'GB',
             is_laptop: formData.get('is_laptop') === 'yes',
             battery_capacity: formData.get('is_laptop') === 'yes' ? formData.get('battery_capacity') : '',
-            diagonal_screen: formData.get('is_laptop') === 'yes' ? (formData.get('screen_size') || '15.6') : '',
+            diagonal_screen: formData.get('is_laptop') === 'yes' ? (formData.get('screen_size') || '') : '',
             wifi_kind: formData.get('wifi_kind'),
             // --- Add this line ---
             bluetooth: formData.get('desktop_bluetooth') === 'yes' ? 'bluetooth-true' : 'bluetooth-false'
