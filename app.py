@@ -232,13 +232,13 @@ def calculate():
             has_touch_screen = str(has_touch_screen).lower() == 'yes'
         touch_screen_price = 15 if has_touch_screen else 0
 
-        # New: Screen over 120hz
-        screen_over_120hz = data.get('screen_over_120hz', False)
-        if isinstance(screen_over_120hz, bool):
-            screen_over_120hz = screen_over_120hz
+        # Screen over 60hz
+        screen_over_60hz = data.get('screen_over_60hz', False)
+        if isinstance(screen_over_60hz, bool):
+            screen_over_60hz = screen_over_60hz
         else:
-            screen_over_120hz = str(screen_over_120hz).lower() == 'yes'
-        hz_price = 20 if screen_over_120hz else 0
+            screen_over_60hz = str(screen_over_60hz).lower() == 'yes'
+        hz_price = 20 if screen_over_60hz else 0
 
         # New: Screen resolution pricing
         screen_resolution = data.get('screen_resolution', 'below_1440')

@@ -30,7 +30,7 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         passmark_score: parseFloat(formData.get('passmark_score') || 0),
         custom_build: formData.get('custom_build') === 'yes',
         desktop_bluetooth: formData.get('desktop_bluetooth') === 'yes',
-        screen_over_120hz: formData.get('screen_over_120hz') === 'yes',
+        screen_over_60hz: formData.get('screen_over_60hz') === 'yes',
         screen_resolution: formData.get('screen_resolution')
     };
 
@@ -86,7 +86,7 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             resultHTML += `<p>Touch Screen: $${result.touch_screen_price}</p>`;
         }
         if (result.hz_price) {
-            resultHTML += `<p>120hz+ Screen: $${result.hz_price}</p>`;
+            resultHTML += `<p>60hz+ Screen: $${result.hz_price}</p>`;
         }
         if (result.resolution_price) {
             resultHTML += `<p>Screen Resolution: $${result.resolution_price}</p>`;
