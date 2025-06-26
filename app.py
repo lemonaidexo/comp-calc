@@ -236,8 +236,8 @@ def calculate():
         hz_price = 20 if screen_over_120hz else 0
 
         # New: Screen resolution pricing
-        screen_resolution = data.get('screen_resolution', 'below_1440p')
-        if screen_resolution == 'above_1440p':
+        screen_resolution = data.get('screen_resolution', 'below_1440')
+        if screen_resolution == 'above_1440':
             resolution_price = 15
         elif screen_resolution == '4k':
             resolution_price = 20
