@@ -183,14 +183,15 @@
             </div>
 
             <div class="box" id="notes">
-                <span class="deselected-value">
-                    Battery Capacity (if applicable):
-                    <span class="lbl-text" blanks="8" id="lbl-battery-capacity"></span>%
-                </span>
-                <br>
-                <h9 class="header">Free Geek Twin Cities has a 30-Day hardware guarantee. See Back for more information.</h9>
-                <br>
-                <p class="lbl-text" id="lbl-notes"></p>
+                <div>
+                    <h7 class="header" style="display: block; margin-bottom: 1.5em;">
+                        Any hardware issues that are not specified on this sheet are covered within 30 days of your purchase under our Hardware Guarantee policy.
+                        To be eligible for our hardware guarantee, you must present your receipt of purchase and this build sheet so that we can properly diagnose the machine.
+                    </h7>
+                </div>
+                <div style="text-align: right; font-size: 1em; background: white; padding: 2px 8px; border-radius: 4px; margin-top: 10px;">
+                    <span id="printed-date"></span>
+                </div>
             </div>
 
         </div>
@@ -330,9 +331,14 @@
                 </p>
             </div>
 
-            <div class="box" id="notes">
-                <h7 style="height: 400px;" class="header">Any hardware issues that are not specified on this sheet are covered within 30 days of your purchase under our Hardware Guarantee policy.
-                     To be eligible for our hardware guarantee, you must present your receipt of purchase and this build sheet so that we can properly diagnose the machine.</h6>
+            <div class="box" id="notes" style="position: relative;">
+                <h7 class="header" style="display: block; margin-bottom: 2.5em;">
+                    Any hardware issues that are not specified on this sheet are covered within 30 days of your purchase under our Hardware Guarantee policy.
+                    To be eligible for our hardware guarantee, you must present your receipt of purchase and this build sheet so that we can properly diagnose the machine.
+                </h7>
+                <div style="position: absolute; right: 10px; bottom: 10px; font-size: 1em; padding: 2px 8px; border-radius: 4px;">
+                    <span id="printed-date"></span>
+                </div>
             </div>
 
         </div>
@@ -342,3 +348,12 @@
 
 <script src="../static/label.js"></script>
 <script src="../static/pc_label.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const now = new Date();
+        const mm = String(now.getMonth() + 1).padStart(2, '0');
+        const dd = String(now.getDate()).padStart(2, '0');
+        const yyyy = now.getFullYear();
+        document.getElementById('printed-date').textContent = `${mm}/${dd}/${yyyy}`;
+    });
+</script>
