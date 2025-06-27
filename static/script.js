@@ -152,7 +152,6 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             cpu: `${formData.get('kind') === 'intel' ? 'Intel' : 'AMD'} ${formData.get('model')}`,
             ram: formData.get('ram_size'),
             OS: osMapping[formData.get('os')] || formData.get('os'),
-            // Storage data...
             ssd1_storage: ssdDevices[0]?.size || '',
             ssd1_storage_unit: ssdDevices[0]?.unit || 'GB',
             ssd1_type: ssdDevices[0]?.kind === 'NvME' ? 'NVMe' : 'SATA',
@@ -167,8 +166,8 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             battery_capacity: formData.get('is_laptop') === 'yes' ? formData.get('battery_capacity') : '',
             diagonal_screen: formData.get('is_laptop') === 'yes' ? (formData.get('screen_size') || '') : '',
             wifi_kind: formData.get('wifi_kind'),
-            // --- Add this line ---
-            bluetooth: formData.get('desktop_bluetooth') === 'yes' ? 'bluetooth-true' : 'bluetooth-false'
+            bluetooth: formData.get('desktop_bluetooth') === 'yes' ? 'bluetooth-true' : 'bluetooth-false',
+            touch_screen: formData.get('has_touch_screen') === 'yes' ? 'touch-screen-true' : 'touch-screen-false'
         };
         
         // Store data in sessionStorage

@@ -137,6 +137,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('diagonal-screen').value = data.diagonal_screen;
         }
         
+        if (data.touch_screen) {
+            document.getElementById('touch-screen').value = data.touch_screen;
+        }
         // Populate storage devices
         if (data.ssd1_storage) {
             document.getElementById('ssd1-storage').value = data.ssd1_storage;
@@ -189,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (data.bluetooth !== undefined) {
             document.getElementById('bluetooth').value = data.bluetooth;
         }
-        
         // Clear the stored data after using it
         sessionStorage.removeItem('calculatorData');
     }
