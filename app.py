@@ -177,17 +177,8 @@ def calculate():
         storage_price = storage_obj.storage_price()
         storage_prices.append(storage_price)
         total_storage_price += storage_price
-
-    def operating_system():
-        """
-        Determines the price of the operating system.
-        """
-        if os.lower() == 'windows11':
-            return 15
-        else:
-            return 0
         
-    os_price = operating_system()
+    os_price = 15 if os.lower() == 'windows11' else 0
 
     itemized_prices = {
         'processor_price': processor_price,
@@ -291,7 +282,6 @@ def calculate():
 
     # GPU Price
     has_gpu = data['has_gpu']
-    gpu_type = data.get('gpu_type')
     passmark_score = float(data.get('passmark_score', 0))
     graphics = Graphics(has_gpu, passmark_score)
     gpu_price = round(graphics.gpu_price())
