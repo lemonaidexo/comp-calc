@@ -289,12 +289,6 @@ def calculate():
     itemized_prices['gpu_price'] = gpu_price
     total_price += gpu_price
 
-    # RAM discount for 4GB
-    if ram_size == 4:
-        ram_discount = -5
-        itemized_prices['ram_discount'] = ram_discount
-        total_price += ram_discount
-
     # Custom build charge
     custom_build_price = 20 if data['custom_build'] else 0
     itemized_prices['custom_build_price'] = custom_build_price
