@@ -46,7 +46,6 @@ class Processor:
         Calculates the processor price based on the kind, core, and generation.
         """
         if self.kind.lower() == 'amd':
-            print(f"AMD Processor selected with user price: {self.user_price}")
             return self.user_price
         if self.kind.lower() == 'intel':
             return self._intel_processor_price()
@@ -273,12 +272,17 @@ def calculate():
         desktop_bluetooth = data.get('desktop_bluetooth', False)
         bluetooth_price = 10 if desktop_bluetooth else 0
 
+        # Custom build charge
+        custom_build_price = 20 if data['custom_build'] else 0
+        itemized_prices['custom_build_price'] = custom_build_price
+
         itemized_prices.update({
             'wifi_price': wifi_price,
-            'bluetooth_price': bluetooth_price
+            'bluetooth_price': bluetooth_price,
+            'custom_build_price': custom_build_price
         })
 
-        total_price += wifi_price + bluetooth_price
+        total_price += wifi_price + bluetooth_price + custom_build_price
 
     # GPU Price
     has_gpu = data['has_gpu']
@@ -288,11 +292,6 @@ def calculate():
 
     itemized_prices['gpu_price'] = gpu_price
     total_price += gpu_price
-
-    # Custom build charge
-    custom_build_price = 20 if data['custom_build'] else 0
-    itemized_prices['custom_build_price'] = custom_build_price
-    total_price += custom_build_price
 
     # Final rounding and returning the result
     total_price = round(total_price)
