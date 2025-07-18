@@ -79,11 +79,15 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="screen_over_60hz">Is the screen over 60hz?</label>
+                            <label for="screen_over_60hz">Is the screen at least 60hz?</label>
                             <select class="form-control" id="screen_over_60hz" name="screen_over_60hz">
                                 <option value="no">No</option>
                                 <option value="yes">Yes</option>
                             </select>
+                        </div>
+                        <div class="form-group" id="refresh-rate-group" style="display: none;">
+                            <label for="refresh_rate">Refresh Rate (Hz)</label>
+                            <input type="number" class="form-control" id="refresh_rate" name="refresh_rate" min="60" step="1">
                         </div>
                         <!-- Screen Resolution Selection -->
                         <div class="form-group">

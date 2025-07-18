@@ -31,6 +31,7 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         custom_build: formData.get('custom_build') === 'yes',
         desktop_bluetooth: formData.get('desktop_bluetooth') === 'yes',
         screen_over_60hz: formData.get('screen_over_60hz') === 'yes',
+        refresh_rate: formData.get('refresh_rate') || '',
         screen_resolution: formData.get('screen_resolution')
     };
 
@@ -167,7 +168,8 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             diagonal_screen: formData.get('is_laptop') === 'yes' ? (formData.get('screen_size') || '') : '',
             wifi_kind: formData.get('wifi_kind'),
             bluetooth: formData.get('desktop_bluetooth') === 'yes' ? 'bluetooth-true' : 'bluetooth-false',
-            touch_screen: formData.get('has_touch_screen') === 'yes' ? 'touch-screen-true' : 'touch-screen-false'
+            touch_screen: formData.get('has_touch_screen') === 'yes' ? 'touch-screen-true' : 'touch-screen-false',
+            refresh_rate: formData.get('refresh_rate') || '',
         };
         
         // Store data in sessionStorage
@@ -232,6 +234,15 @@ function toggleGpuOptions() {
     const hasGpu = document.getElementById('has_gpu').value === 'yes';
     document.getElementById('gpu-options').style.display = hasGpu ? '' : 'none';
 }
+
+// Show/hide refresh rate input based on screen_over_60hz selection
+document.getElementById('screen_over_60hz').addEventListener('change', function() {
+    const show = this.value === 'yes';
+    document.getElementById('refresh-rate-group').style.display = show ? 'block' : 'none';
+    if (!show) {
+        document.getElementById('refresh_rate').value = '';
+    }
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     toggleLaptopOptions(); 

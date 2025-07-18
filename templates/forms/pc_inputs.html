@@ -54,6 +54,9 @@
         <span>X</span>
         <input class="short-label-input" style="margin-left: 1%;" type="number" step="1"
             name="resolution2" id="resolution2">
+
+        <label for="refresh-rate">Refresh Rate (Hz):</label>
+        <input class="short-label-input" type="number" step="1" name="refresh-rate" id="refresh-rate" />
         
         <label for="touch-screen">Touch Screen:</label>
         <select name="touch-screen" id="touch-screen" class="adjust-right">
@@ -351,15 +354,7 @@
     <div id="notes-div">
         <div class="search-parameter">
             <h4 class="headers">Notes</h4>
-
             <div style="margin-bottom: -5px;" class="search-parameter">
-                <label for="condition">*Condition:</label>
-                <select id="condition" name="condition" class="adjust-right">
-                    <option value="Great Condition">Great Condition</option>
-                    <option value="Good Condition">Good Condition</option>
-                    <option value="OK Condition">OK Condition</option>
-                </select>
-
                 <label for="battery-capacity">Battery Capacity (%):</label>
                 <input class="short-label-input" type="number" min="0" max="100"
                     name="battery-capacity" id="battery-capacity" />

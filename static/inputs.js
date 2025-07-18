@@ -136,6 +136,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (data.diagonal_screen) {
             document.getElementById('diagonal-screen').value = data.diagonal_screen;
         }
+        if (data.refresh_rate) {
+            // For the input field
+            const refreshInput = document.getElementById('refresh-rate');
+            if (refreshInput) refreshInput.value = data.refresh_rate;
+            // For the label
+            const refreshLabel = document.getElementById('lbl-refresh-rate');
+            if (refreshLabel) refreshLabel.textContent = data.refresh_rate;
+        }
         
         if (data.touch_screen) {
             document.getElementById('touch-screen').value = data.touch_screen;

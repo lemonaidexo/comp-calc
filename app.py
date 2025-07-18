@@ -228,7 +228,18 @@ def calculate():
             screen_over_60hz = screen_over_60hz
         else:
             screen_over_60hz = str(screen_over_60hz).lower() == 'yes'
-        hz_price = 20 if screen_over_60hz else 0
+        refresh_rate_raw = data.get('refresh_rate', '')
+        try:
+            refresh_rate = int(refresh_rate_raw)
+        except (ValueError, TypeError):
+            refresh_rate = None
+
+        if refresh_rate and refresh_rate >= 120:
+            hz_price = 40
+        elif refresh_rate and refresh_rate >= 60:
+            hz_price = 20
+        else:
+            hz_price = 0
 
         # New: Screen resolution pricing
         screen_resolution = data.get('screen_resolution', 'below_1440')
