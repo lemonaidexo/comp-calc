@@ -32,7 +32,9 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         desktop_bluetooth: formData.get('desktop_bluetooth') === 'yes',
         screen_over_60hz: formData.get('screen_over_60hz') === 'yes',
         refresh_rate: formData.get('refresh_rate') || '',
-        screen_resolution: formData.get('screen_resolution')
+        screen_resolution: formData.get('screen_resolution'),
+        has_rgb: formData.get('has_rgb') === 'yes',
+        has_cooler: formData.get('has_cooler') === 'yes'
     };
 
     const response = await fetch('/calculate', {
@@ -101,6 +103,12 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
 
     // GPU price and total
     resultHTML += result.gpu_price ? `<p>GPU Price: $${result.gpu_price}</p>` : '';
+    if (result.rgb_price) {
+        resultHTML += `<p>RGB Strip/Fans: $${result.rgb_price}</p>`;
+    }
+    if (result.cooler_price) {
+        resultHTML += `<p>Aftermarket Cooler: $${result.cooler_price}</p>`;
+    }
     resultHTML += `<h3>Total Price: $${result.total_price}</h3>`;
 
     document.getElementById('result').innerHTML = resultHTML;
@@ -170,6 +178,18 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
             bluetooth: formData.get('desktop_bluetooth') === 'yes' ? 'bluetooth-true' : 'bluetooth-false',
             touch_screen: formData.get('has_touch_screen') === 'yes' ? 'touch-screen-true' : 'touch-screen-false',
             refresh_rate: formData.get('refresh_rate') || '',
+            has_rgb: document.getElementById('has_rgb').value === 'yes',
+            has_cooler: document.getElementById('has_cooler').value === 'yes',
+            notes: (notes => {
+                let noteText = '';
+                if (document.getElementById('has_rgb').value === 'yes') {
+                    noteText += 'RGB Strip/Fan: +$5';
+                }
+                if (document.getElementById('has_cooler').value === 'yes') {
+                    noteText += (noteText ? '\n' : '') + 'Aftermarket Cooler: +$5';
+                }
+                return noteText;
+            })()
         };
         
         // Store data in sessionStorage
@@ -225,9 +245,22 @@ function toggleProcessorOptions() {
 
 function toggleLaptopOptions() {
     const isLaptop = document.getElementById('is_laptop').value === 'yes';
+    // Existing laptop option toggles
     document.getElementById('laptop-options').style.display = isLaptop ? 'block' : 'none';
     document.getElementById('desktop-options').style.display = isLaptop ? 'none' : 'block';
     document.getElementById('desktop-extra-options').style.display = isLaptop ? 'none' : 'block';
+    
+    // RGB and Cooler toggles
+    const rgbFormGroup = document.querySelector('select[name="has_rgb"]').closest('.form-group');
+    const coolerFormGroup = document.querySelector('select[name="has_cooler"]').closest('.form-group');
+    rgbFormGroup.style.display = isLaptop ? 'none' : 'block';
+    coolerFormGroup.style.display = isLaptop ? 'none' : 'block';
+    
+    // Reset selections when switching to laptop
+    if (isLaptop) {
+        document.getElementById('has_rgb').value = 'no';
+        document.getElementById('has_cooler').value = 'no';
+    }
 }
 
 function toggleGpuOptions() {

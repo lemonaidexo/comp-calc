@@ -189,6 +189,15 @@ def calculate():
 
     total_price = processor_price + ram_price + os_price + total_storage_price
 
+    rgb_price = 5 if data.get('has_rgb') else 0
+    itemized_prices['rgb_price'] = rgb_price
+    total_price += rgb_price
+
+    # Add cooler price calculation
+    cooler_price = 5 if data.get('has_cooler') else 0
+    itemized_prices['cooler_price'] = cooler_price
+    total_price += cooler_price
+
     # Laptop-specific pricing
     if is_laptop:
         battery_capacity = int(data['battery_capacity'])

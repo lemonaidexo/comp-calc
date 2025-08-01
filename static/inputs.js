@@ -200,6 +200,20 @@ document.addEventListener('DOMContentLoaded', function() {
         if (data.bluetooth !== undefined) {
             document.getElementById('bluetooth').value = data.bluetooth;
         }
+
+        const notesTextarea = document.querySelector('textarea[name="notes"]');
+        let noteText = '';
+
+        if (data.has_rgb) {
+            noteText += 'RGB Strip/Fan: +$5.';
+        }
+        if (data.has_cooler) {
+            noteText += (noteText ? '\n' : '') + 'Aftermarket Cooler: +$5.';
+        }
+
+        if (noteText) {
+            notesTextarea.value = noteText;
+        }
         // Clear the stored data after using it
         sessionStorage.removeItem('calculatorData');
     }
