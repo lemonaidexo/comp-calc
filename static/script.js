@@ -96,9 +96,20 @@ document.getElementById('priceCalcForm').addEventListener('submit', async functi
         }
         resultHTML += '</div>';
     } else {
-        resultHTML += `<p>WiFi Price (${data.wifi_kind || 'None'}): $${result.wifi_price || 0}</p>`;
-        resultHTML += `<p>Custom Build: $${result.custom_build_price || 0}</p>`;
-        resultHTML += `<p>Bluetooth: $${result.bluetooth_price || 0}</p>`;
+        // Only show WiFi price if there is one
+        if (data.wifi_kind && data.wifi_kind !== 'none') {
+            resultHTML += `<p>WiFi Price (${data.wifi_kind}): $${result.wifi_price || 0}</p>`;
+        }
+        
+        // Only show Custom Build price if it's selected
+        if (data.custom_build) {
+            resultHTML += `<p>Custom Build: $${result.custom_build_price || 0}</p>`;
+        }
+        
+        // Only show Bluetooth price if it's selected
+        if (data.desktop_bluetooth) {
+            resultHTML += `<p>Bluetooth: $${result.bluetooth_price || 0}</p>`;
+        }
     }
 
     // GPU price and total
