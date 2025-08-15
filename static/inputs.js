@@ -46,17 +46,24 @@ $(".has-other-option").on("change", function() {
 
 // Keep only this simpler version
 $("#input-form").on("submit", function(event) {
-    // Get required fields
-    const baseSpeedInput = document.getElementById('base-speed');
-    const coresInput = document.getElementById('cores');
-    const threadsInput = document.getElementById('threads');
-    const ramTypeInput = document.getElementById('ram-type');
-    const clockRateInput = document.getElementById('clock-rate');
-    const ramUpgradableInput = document.getElementById('ram-upgradable');
-    const slotsUsedInput = document.getElementById('slots-used');
-    const slotsEmptyInput = document.getElementById('slots-empty');
+    // Get all the required inputs
+    const [
+        baseSpeedInput, coresInput, threadsInput,
+        ramTypeInput, clockRateInput, ramUpgradableInput,
+        slotsUsedInput, slotsEmptyInput, wifiInputs
+    ] = [
+        document.getElementById('base-speed'),
+        document.getElementById('cores'),
+        document.getElementById('threads'),
+        document.getElementById('ram-type'),
+        document.getElementById('clock-rate'),
+        document.getElementById('ram-upgradable'),
+        document.getElementById('slots-used'),
+        document.getElementById('slots-empty'),
+        document.querySelectorAll('[name^="802-bgn"], [name^="dual-band"], [name^="ax"], [name^="ac"], [name^="none-wireless"]')
+    ];
 
-    // Remove previous highlights
+    // Remove any existing missing-field markers
     [
         baseSpeedInput, coresInput, threadsInput,
         ramTypeInput, clockRateInput, ramUpgradableInput,
@@ -64,8 +71,9 @@ $("#input-form").on("submit", function(event) {
     ].forEach(input => {
         input.classList.remove('missing-field');
     });
-
-    let missing = false;
+    wifiInputs.forEach(input => {
+        input.closest('.search-parameter').classList.remove('missing-field');
+    });    let missing = false;
 
     if (!baseSpeedInput.value) {
         baseSpeedInput.classList.add('missing-field');
@@ -101,8 +109,17 @@ $("#input-form").on("submit", function(event) {
         missing = true;
     }
 
+    // Check if at least one WiFi option is selected
+    const anyWifiSelected = Array.from(wifiInputs).some(input => input.checked);
+    if (!anyWifiSelected) {
+        wifiInputs.forEach(input => {
+            input.closest('.search-parameter').classList.add('missing-field');
+        });
+        missing = true;
+    }
+
     if (missing) {
-        alert("Please enter values for all required CPU and RAM fields before printing the build sheet.");
+        alert("Please enter values for all required fields (CPU, RAM, and WiFi) before printing the build sheet.");
         event.preventDefault();
         return false;
     }
@@ -182,14 +199,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 '802.11-bgn': '802-bgn',
                 'Dual Band': 'dual-band',
                 'ac': 'ac',
-                'ax': 'ax',
-                'none': 'none-wireless'
+                'ax': 'ax'
+                // Removed 'none' mapping to prevent checking none-wireless
             };
             
-            // Check the appropriate WiFi option
-            const checkboxId = wifiMapping[data.wifi_kind];
-            if (checkboxId) {
-                document.getElementById(checkboxId).checked = true;
+            // Only check WiFi option if it's not 'none'
+            if (data.wifi_kind !== 'none') {
+                const checkboxId = wifiMapping[data.wifi_kind];
+                if (checkboxId) {
+                    document.getElementById(checkboxId).checked = true;
+                }
             }
         }
 

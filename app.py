@@ -193,7 +193,6 @@ def calculate():
     itemized_prices['rgb_price'] = rgb_price
     total_price += rgb_price
 
-    # Add cooler price calculation
     cooler_price = 5 if data.get('has_cooler') else 0
     itemized_prices['cooler_price'] = cooler_price
     total_price += cooler_price
@@ -211,7 +210,7 @@ def calculate():
         elif battery_capacity < 90:
             battery_discount = -5
 
-        # Fix screen size pricing
+        # Screen Size Pricing
         screen_size_raw = data.get('screen_size', '').strip()
         if screen_size_raw:
             try:

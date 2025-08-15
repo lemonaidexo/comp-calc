@@ -228,5 +228,11 @@ select {
 
 .missing-field {
     border: 2px solid red !important;
-    background-color: #ffeaea;
+}
+
+.search-parameter.missing-field {
+    border: 2px solid red !important;
+    padding: 5px;
+    border-radius: 4px;
+    margin: -5px;
 }
